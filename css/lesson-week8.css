@@ -1,0 +1,7 @@
+/* عنوان بلمسة امتحان (Indigo للتركيز + Amber للتنبيه) */
+header h1{
+  background: linear-gradient(90deg, #0f172a, #1d4ed8 30%, #f59e0b 70%, #0f172a);
+  -webkit-background-clip:text; background-clip:text; color:transparent;
+}
+
+section[aria-label="أقسام الامتحان"] .card p{ margin-bottom: 6px; }

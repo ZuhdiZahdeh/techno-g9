@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>الأسبوع ٨ | امتحان منتصف الفصل + تعليمات وتقويم عملي وتأملات علاجية</title>
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;800&display=swap" rel="stylesheet">
+
+  <!-- CSS (theme → base → components → page) -->
+  <link rel="stylesheet" href="../css/tokens-theme.css">
+  <link rel="stylesheet" href="../css/base-rtl.css">
+  <link rel="stylesheet" href="../css/components-ui.css">
+  <link rel="stylesheet" href="../css/lesson-week8.css">
+</head>
+<body>
+  <div class="container" id="app">
+
+    <header>
+      <h1>الأسبوع ٨: امتحان منتصف الفصل (Midterm)</h1>
+      <p>الصف التاسع (١٤–١٥ سنة) — قسم نظري + عملي مختبر + برمجة/وسائط + روبركات وتقويم علاجي سريع.</p>
+      <div class="toolbar" role="toolbar" aria-label="أدوات عامة">
+        <button class="btn primary" id="startFocus">بدء مؤقّت ٤٥ دقيقة</button>
+        <button class="btn ghost" id="toggleFont">تكبير الخط</button>
+        <button class="btn accent" onclick="window.print()">طباعة هذه الصفحة</button>
+      </div>
+    </header>
+
+    <!-- Row 1 -->
+    <section class="grid" aria-label="أقسام الامتحان">
+      <article class="card col-6">
+        <h2><span class="icon">🧭</span> نظرة عامة وخارطة الدرجات</h2>
+        <p>مدّة الامتحان: ٤٥ دقيقة — أقسام: نظري ٢٠، عملي مختبر ١٥، برمجة/وسائط ٥.</p>
+        <div class="targets">
+          <button class="btn" data-open="g1">١) خارطة الدرجات (Blueprint)</button>
+          <button class="btn" data-open="g2">٢) تعليمات المراقبة</button>
+          <button class="btn" data-open="g3">٣) المادة المسموح بها</button>
+        </div>
+      </article>
+
+      <article class="card col-6">
+        <h2><span class="icon">📝</span> حِزم الطباعة</h2>
+        <p>غلاف الامتحان، ورقة إجابة، ورقة عملي مختبر، ورقة برمجة/وسائط.</p>
+        <div class="targets">
+          <button class="btn" data-open="pkg_cover">غلاف الامتحان</button>
+          <button class="btn" data-open="pkg_answer">ورقة الإجابة (نظري)</button>
+          <button class="btn" data-open="pkg_lab">ورقة العملي (مختبر)</button>
+          <button class="btn" data-open="pkg_prog">ورقة البرمجة/وسائط</button>
+        </div>
+      </article>
+    </section>
+
+    <!-- Row 2 -->
+    <section class="grid" style="margin-top:18px">
+      <article class="card col-4">
+        <h2><span class="icon">📘</span> القسم النظري (٢٠)</h2>
+        <p>MCQ + صواب/خطأ + قصيرة حول رياح/شمس/مياه وV/I وP≈V×I.</p>
+        <div class="targets">
+          <button class="btn" data-open="theory_spec">مواصفات الأسئلة</button>
+          <button class="btn" data-open="theory_key">مفتاح تصحيح مختصر</button>
+        </div>
+      </article>
+
+      <article class="card col-4">
+        <h2><span class="icon">🔬</span> العملي المختبري (١٥)</h2>
+        <p>قراءات V/I وتفسير أثر السرعة/الزاوية/التظليل/التدفّق.</p>
+        <div class="targets">
+          <button class="btn" data-open="lab_tasks">مهام العملي</button>
+          <button class="btn" data-open="lab_rubric">روبرك العملي</button>
+        </div>
+      </article>
+
+      <article class="card col-4">
+        <h2><span class="icon">💻</span> برمجة/وسائط (٥)</h2>
+        <p>Scratch: بث/متغيّر يغيّر عدّادًا + لقطة شاشة.</p>
+        <div class="targets">
+          <button class="btn" data-open="code_task">مهمة البرمجة/وسائط</button>
+          <button class="btn" data-open="code_rubric">روبرك البرمجة</button>
+        </div>
+      </article>
+    </section>
+
+    <!-- Row 3 -->
+    <section class="grid" style="margin-top:18px">
+      <article class="card col-6">
+        <h2><span class="icon">🩺</span> تقويم علاجي سريع</h2>
+        <p>تحليل أخطاء سريع بعد التسليم + خطة تحسين شخصية.</p>
+        <div class="targets">
+          <button class="btn" data-open="remed_sheet">نموذج تحليل الأخطاء</button>
+          <button class="btn" data-open="remed_plan">خطة تحسين أسبوعية</button>
+        </div>
+      </article>
+
+      <article class="card col-6">
+        <h2><span class="icon">📦</span> الموارد والإجراءات</h2>
+        <p>ما يلزم للمراقبة، الترقيم، التسليم، والأرشفة.</p>
+        <div class="targets">
+          <button class="btn" data-open="resources">قائمة الموارد</button>
+          <button class="btn" data-open="procedures">إجراءات سريعة</button>
+        </div>
+      </article>
+    </section>
+
+    <!-- Modal -->
+    <div class="modal-backdrop" id="backdrop" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <div class="modal" role="document">
+        <header>
+          <h3 id="modalTitle">تفاصيل</h3>
+          <div>
+            <button class="btn ghost" id="printModal" title="طباعة">طباعة</button>
+            <button class="btn danger" id="closeModal">إغلاق ✕</button>
+          </div>
+        </header>
+        <div class="content" id="modalContent" tabindex="0"></div>
+        <div class="actions">
+          <button class="btn primary" id="closeBottom">تم</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- JS (data → helpers → app) -->
+  <script src="../js/content-week8.js"></script>
+  <script src="../js/ui-helpers.js"></script>
+  <script src="../js/lesson-week8-app.js"></script>
+</body>
+</html>

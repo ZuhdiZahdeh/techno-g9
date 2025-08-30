@@ -1,0 +1,7 @@
+/* لمسة لونية توحي بالمراجعة (Indigo للتركيز + Teal للاستدامة) */
+header h1{
+  background: linear-gradient(90deg, #0f172a, #1d4ed8 30%, #0ea5a4 70%, #0f172a);
+  -webkit-background-clip:text; background-clip:text; color:transparent;
+}
+
+section[aria-label="الأقسام الرئيسية"] .card p{ margin-bottom: 6px; }
