@@ -1,0 +1,8 @@
+/* تدرّج يعبّر عن الشمس (Amber) ثمّ طيف سماوي */
+header h1{
+  background: linear-gradient(90deg, #0f172a, #f59e0b 25%, #fde047 45%, #06b6d4 75%, #0f172a);
+  -webkit-background-clip:text; background-clip:text; color:transparent;
+}
+
+/* لمسة فراغ بسيطة */
+section[aria-label="الأقسام الرئيسية"] .card p{ margin-bottom: 6px; }

@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>الأسبوع ٥ | طاقة المياه — التدفق/الارتفاع ودفّاعة مائية 3D</title>
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;800&display=swap" rel="stylesheet">
+
+  <!-- CSS (theme → base → components → page) -->
+  <link rel="stylesheet" href="../css/tokens-theme.css">
+  <link rel="stylesheet" href="../css/base-rtl.css">
+  <link rel="stylesheet" href="../css/components-ui.css">
+  <link rel="stylesheet" href="../css/lesson-week5.css">
+</head>
+<body>
+  <div class="container" id="app">
+
+    <header>
+      <h1>الأسبوع ٥: طاقة المياه — تدفّق/ارتفاع & دفّاعة مائية (3D)</h1>
+      <p>الصف التاسع (١٤–١٥ سنة) — تجربة مائية + تصميم 3D (Impeller/Wheel) + ربط بصري في Scratch.</p>
+      <div class="toolbar" role="toolbar" aria-label="أدوات عامة">
+        <button class="btn primary" id="startFocus">بدء مؤقّت ٥ دقائق للأنشطة</button>
+        <button class="btn ghost" id="toggleFont">تكبير الخط</button>
+        <button class="btn accent" onclick="window.print()">طباعة هذا الدرس</button>
+      </div>
+    </header>
+
+    <!-- Row 1 -->
+    <section class="grid" aria-label="الأقسام الرئيسية">
+      <article class="card col-6">
+        <h2><span class="icon">🎯</span> الأهداف التعليمية</h2>
+        <p>فهم أساسيات الهيدروديناميكا الصفّية، قياس V/I، تحليل التدفق/الارتفاع، تصميم 3D، ربط النتائج برمجيًا.</p>
+        <div class="targets">
+          <button class="btn" data-open="g1">١) لماذا طاقة المياه؟</button>
+          <button class="btn" data-open="g2">٢) أساسيات النظام المائي</button>
+          <button class="btn" data-open="g3">٣) بروتوكول قياس V/I (تدفّق/ارتفاع)</button>
+          <button class="btn" data-open="g4">٤) تحليل التدفق والارتفاع والريش</button>
+          <button class="btn" data-open="g5">٥) تصميم Impeller/Wheel (Tinkercad)</button>
+          <button class="btn" data-open="g6">٦) ربط النتائج في Scratch</button>
+        </div>
+      </article>
+
+      <article class="card col-6">
+        <h2><span class="icon">🧪</span> محطات الاستكشاف</h2>
+        <p>إعداد تدفّق، قياس DMM، تركيب دفّاعة، إلكترونيات، Scratch، Tinkercad/طباعة، مشاركة نتائج.</p>
+        <div class="targets">
+          <button class="btn" data-open="st_setup">محطة إعداد الماء/الخزان</button>
+          <button class="btn" data-open="st_flow">محطة التدفق/الارتفاع</button>
+          <button class="btn" data-open="st_impeller">محطة تركيب الدفّاعة</button>
+          <button class="btn" data-open="st_elec">محطة الإلكترونيات/الحِمل</button>
+          <button class="btn" data-open="st_scratch">محطة Scratch</button>
+          <button class="btn" data-open="st_3d">محطة Tinkercad/الطباعة</button>
+        </div>
+      </article>
+    </section>
+
+    <!-- Row 2 -->
+    <section class="grid" style="margin-top:18px">
+      <article class="card col-4">
+        <h2><span class="icon">🧭</span> خطة الزمن (٤٥–٥٠ د)</h2>
+        <p>تهيئة → محطات → شرح → توسّع → تقويم.</p>
+        <div class="targets">
+          <button class="btn" data-open="timeline">عرض الخطة الزمنية</button>
+        </div>
+      </article>
+
+      <article class="card col-4">
+        <h2><span class="icon">🧠</span> الشرح والتوسّع</h2>
+        <p>استنتاج العلاقة المبسّطة بين التدفق/الارتفاع والقدرة، وتحسين التصميم.</p>
+        <div class="targets">
+          <button class="btn" data-open="explain">نقاط الشرح</button>
+          <button class="btn" data-open="elaborate">التوسّع (تحسين التصميم/الكود)</button>
+        </div>
+      </article>
+
+      <article class="card col-4">
+        <h2><span class="icon">🛡️</span> السلامة والإتاحة</h2>
+        <p>فصل الماء عن الكهرباء، أرضية جافة، تهوية للطابعة، WCAG.</p>
+        <div class="targets">
+          <button class="btn" data-open="safety">إرشادات السلامة</button>
+          <button class="btn" data-open="access">إتاحة الوصول</button>
+        </div>
+      </article>
+    </section>
+
+    <!-- Row 3 -->
+    <section class="grid" style="margin-top:18px">
+      <article class="card col-6">
+        <h2><span class="icon">📝</span> التقويم داخل الحصة</h2>
+        <p>Quiz قصير، ورقة قياس (تدفّق/ارتفاع)، مشروع 3D/Scratch مصغّر، بطاقة خروج.</p>
+        <div class="targets">
+          <button class="btn" data-open="assess_quiz">الاختبار القصير</button>
+          <button class="btn" data-open="assess_ws">ورقة قياس (جدول)</button>
+          <button class="btn" data-open="assess_project">مشروع 3D/Scratch</button>
+          <button class="btn" data-open="assess_rubric">روبرك مختصر</button>
+        </div>
+      </article>
+
+      <article class="card col-6">
+        <h2><span class="icon">📦</span> الموارد والأدوات</h2>
+        <p>خزان/مضخة صغيرة، أنبوب، دفّاعة/دينامو تعليمي، DMM، PLA، Slicer.</p>
+        <div class="targets">
+          <button class="btn" data-open="resources">قائمة الموارد</button>
+          <button class="btn" data-open="links">روابط مفيدة</button>
+        </div>
+      </article>
+    </section>
+
+    <!-- Modal -->
+    <div class="modal-backdrop" id="backdrop" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <div class="modal" role="document">
+        <header>
+          <h3 id="modalTitle">تفاصيل</h3>
+          <div>
+            <button class="btn ghost" id="printModal" title="طباعة">طباعة</button>
+            <button class="btn danger" id="closeModal">إغلاق ✕</button>
+          </div>
+        </header>
+        <div class="content" id="modalContent" tabindex="0"></div>
+        <div class="actions">
+          <button class="btn primary" id="closeBottom">تم</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- JS (data → helpers → app) -->
+  <script src="../js/content-week5.js"></script>
+  <script src="../js/ui-helpers.js"></script>
+  <script src="../js/lesson-week5-app.js"></script>
+</body>
+</html>

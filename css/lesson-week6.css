@@ -1,0 +1,8 @@
+/* عنوان بلمسة إعلامية (Amber للتوعية + Teal للاستدامة) */
+header h1{
+  background: linear-gradient(90deg, #0f172a, #f59e0b 25%, #0ea5a4 70%, #0f172a);
+  -webkit-background-clip:text; background-clip:text; color:transparent;
+}
+
+/* مسافات خفيفة */
+section[aria-label="الأقسام الرئيسية"] .card p{ margin-bottom: 6px; }

@@ -1,0 +1,22 @@
+tokens-theme.css:root{
+  /* Theme */
+  --bg: #DCDCDC;            /* صفحة خلفية Gainsboro */
+  --body-text: #0f172a;     /* نص خارج البطاقات */
+  --muted: #475569;         /* نص ثانوي خارج البطاقات */
+
+  /* Card & UI */
+  --card: #0f172a;          /* خلفية البطاقات الداكنة */
+  --text: #e2e8f0;          /* نص داخل البطاقة */
+  --muted-on-card: #94a3b8; /* نص ثانوي داخل البطاقة */
+
+  /* Accent */
+  --primary: #0ea5a4;   /* teal */
+  --primary-2:#22c55e;  /* green */
+  --accent: #f59e0b;    /* amber */
+  --danger: #ef4444;
+  --ring:   #14b8a6;
+
+  /* Shape */
+  --radius: 16px;
+  --shadow: 0 6px 24px rgba(0,0,0,.2);
+}

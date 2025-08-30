@@ -1,0 +1,8 @@
+/* عنوان بألوان توحي بالرياح/الحركة */
+header h1{
+  background: linear-gradient(90deg, #0f172a, #22d3ee 30%, #22c55e 70%, #0f172a);
+  -webkit-background-clip:text; background-clip:text; color:transparent;
+}
+
+/* تحسين مسافة بسيطة */
+section[aria-label="الأقسام الرئيسية"] .card p{ margin-bottom: 6px; }

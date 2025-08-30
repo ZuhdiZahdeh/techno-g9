@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>الأسبوع ٦ | مشروع وسائط — ملصق/مطوية بالطاقة النظيفة (A4 + QR + Scratch + 3D)</title>
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;800&display=swap" rel="stylesheet">
+
+  <!-- CSS (theme → base → components → page) -->
+  <link rel="stylesheet" href="../css/tokens-theme.css">
+  <link rel="stylesheet" href="../css/base-rtl.css">
+  <link rel="stylesheet" href="../css/components-ui.css">
+  <link rel="stylesheet" href="../css/lesson-week6.css">
+</head>
+<body>
+  <div class="container" id="app">
+
+    <header>
+      <h1>الأسبوع ٦: مشروع وسائط — ملصق/مطوية الطاقة النظيفة</h1>
+      <p>الصف التاسع (١٤–١٥ سنة) — تصميم رسالة توعية مبنيّة على بيانات وتجارب حقيقية + Scratch + 3D.</p>
+      <div class="toolbar" role="toolbar" aria-label="أدوات عامة">
+        <button class="btn primary" id="startFocus">بدء مؤقّت ٥ دقائق للأنشطة</button>
+        <button class="btn ghost" id="toggleFont">تكبير الخط</button>
+        <button class="btn accent" onclick="window.print()">طباعة هذا الدرس</button>
+      </div>
+    </header>
+
+    <!-- Row 1 -->
+    <section class="grid" aria-label="الأقسام الرئيسية">
+      <article class="card col-6">
+        <h2><span class="icon">🎯</span> الأهداف التعليمية</h2>
+        <p>صياغة رسالة علمية موجّهة، توظيف بيانات التجارب، تصميم وسائط قابلة للطباعة مع مراعاة الإتاحة.</p>
+        <div class="targets">
+          <button class="btn" data-open="g1">١) موجز المشروع & المخرجات</button>
+          <button class="btn" data-open="g2">٢) اختيار البيانات والرسالة</button>
+          <button class="btn" data-open="g3">٣) مبادئ التصميم البصري (CRAP)</button>
+          <button class="btn" data-open="g4">٤) ملصق A4/مطوية ثلاث طيات</button>
+          <button class="btn" data-open="g5">٥) QR + Scratch + 3D</button>
+          <button class="btn" data-open="g6">٦) التسليم والتراخيص</button>
+        </div>
+      </article>
+
+      <article class="card col-6">
+        <h2><span class="icon">🧪</span> محطات العمل</h2>
+        <p>قصة ورسالة، جمع الأصول، تخطيط بصري، QR/ضغط صور، Scratch، بروفة طباعة.</p>
+        <div class="targets">
+          <button class="btn" data-open="st_story">محطة الرسالة/السيناريو</button>
+          <button class="btn" data-open="st_assets">محطة جمع الأصول</button>
+          <button class="btn" data-open="st_layout">محطة التخطيط البصري</button>
+          <button class="btn" data-open="st_qr">محطة QR/ضغط الصور</button>
+          <button class="btn" data-open="st_scratch">محطة Scratch</button>
+          <button class="btn" data-open="st_print">محطة بروفة الطباعة</button>
+        </div>
+      </article>
+    </section>
+
+    <!-- Row 2 -->
+    <section class="grid" style="margin-top:18px">
+      <article class="card col-4">
+        <h2><span class="icon">🧭</span> خطة الزمن (٤٥–٥٠ د)</h2>
+        <p>تهيئة → محطات → شرح → إنتاج → تقويم.</p>
+        <div class="targets">
+          <button class="btn" data-open="timeline">عرض الخطة الزمنية</button>
+        </div>
+      </article>
+
+      <article class="card col-4">
+        <h2><span class="icon">🧠</span> الشرح والتوسّع</h2>
+        <p>تحويل النتائج إلى قصة مقنعة، فيديو ٢٠–٣٠ ثانية (اختياري).</p>
+        <div class="targets">
+          <button class="btn" data-open="explain">نقاط الشرح</button>
+          <button class="btn" data-open="elaborate">التوسّع (إعلان قصير)</button>
+        </div>
+      </article>
+
+      <article class="card col-4">
+        <h2><span class="icon">🛡️</span> السلامة والإتاحة</h2>
+        <p>حقوق الصور، موافقات النشر، تباين الألوان، أحجام الخط.</p>
+        <div class="targets">
+          <button class="btn" data-open="safety">إرشادات السلامة/الخصوصية</button>
+          <button class="btn" data-open="access">إتاحة الوصول (WCAG)</button>
+        </div>
+      </article>
+    </section>
+
+    <!-- Row 3 -->
+    <section class="grid" style="margin-top:18px">
+      <article class="card col-6">
+        <h2><span class="icon">📝</span> التقويم داخل الحصة</h2>
+        <p>Quiz تصميمي قصير، ورقة تخطيط، مشروع الملصق/المطوية، بطاقة خروج.</p>
+        <div class="targets">
+          <button class="btn" data-open="assess_quiz">الاختبار القصير</button>
+          <button class="btn" data-open="assess_ws">ورقة تخطيط (Canvas)</button>
+          <button class="btn" data-open="assess_project">متطلبات المشروع</button>
+          <button class="btn" data-open="assess_rubric">روبرك مختصر</button>
+        </div>
+      </article>
+
+      <article class="card col-6">
+        <h2><span class="icon">📦</span> الموارد والأدوات</h2>
+        <p>Canva/Slides، مولّد QR، ضاغط صور، صور مرخصة، Scratch، طابعة 3D.</p>
+        <div class="targets">
+          <button class="btn" data-open="resources">قائمة الموارد</button>
+          <button class="btn" data-open="links">روابط مساعدة</button>
+        </div>
+      </article>
+    </section>
+
+    <!-- Modal -->
+    <div class="modal-backdrop" id="backdrop" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <div class="modal" role="document">
+        <header>
+          <h3 id="modalTitle">تفاصيل</h3>
+          <div>
+            <button class="btn ghost" id="printModal" title="طباعة">طباعة</button>
+            <button class="btn danger" id="closeModal">إغلاق ✕</button>
+          </div>
+        </header>
+        <div class="content" id="modalContent" tabindex="0"></div>
+        <div class="actions">
+          <button class="btn primary" id="closeBottom">تم</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- JS (data → helpers → app) -->
+  <script src="../js/content-week6.js"></script>
+  <script src="../js/ui-helpers.js"></script>
+  <script src="../js/lesson-week6-app.js"></script>
+</body>
+</html>

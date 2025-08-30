@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>الصف التاسع | الصفحة الرئيسية — مبحث التكنولوجيا</title>
+
+  <!-- خطوط -->
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;800&display=swap" rel="stylesheet">
+
+  <!-- CSS (theme → base → components → page) -->
+  <link rel="stylesheet" href="css/tokens-theme.css">
+  <link rel="stylesheet" href="css/base-rtl.css">
+  <link rel="stylesheet" href="css/components-ui.css">
+  <link rel="stylesheet" href="css/home.css">
+</head>
+<body>
+  <div class="container">
+
+    <header class="home-header">
+      <h1>الصف التاسع — مبحث التكنولوجيا</h1>
+      <p>خطة الفصل الأوّل: الطاقة النظيفة × Scratch × Tinkercad × طباعة ثلاثية الأبعاد</p>
+
+      <div class="home-toolbar" role="toolbar" aria-label="أدوات عامة">
+        <div class="search-wrap">
+          <input id="searchBox" type="search" inputmode="search" placeholder="ابحث باسم الدرس أو الكلمات المفتاحية…" aria-label="بحث">
+          <button id="clearSearch" class="btn ghost" title="مسح البحث">مسح</button>
+        </div>
+        <div class="quick-links">
+          <a class="btn accent" href="html/lesson-clean-energy.html">ابدأ من الأسبوع ١</a>
+          <button class="btn primary" id="openNewest">أحدث درس</button>
+        </div>
+      </div>
+    </header>
+
+    <!-- شبكة البطاقات -->
+    <section aria-label="دروس الفصل الأول">
+      <div id="lessonsGrid" class="grid" role="list">
+        <!-- تُحقن البطاقات ديناميكيًا من home.js -->
+      </div>
+
+      <noscript>
+        <div class="card col-12" role="listitem">
+          <h2>روابط الدروس (للمتصفحات بدون JavaScript)</h2>
+          <ul>
+            <li><a href="html/lesson-clean-energy.html">الأسبوع ١: الدرس المتكامل — الطاقة النظيفة × Scratch × Tinkercad × طباعة ٣D</a></li>
+            <li><a href="html/lesson-week2-clean-vs-fossil.html">الأسبوع ٢: الطاقة النظيفة مقابل الأحفوري — المقارنة والحُجج</a></li>
+            <li><a href="html/lesson-week3-wind-turbine.html">الأسبوع ٣: طاقة الرياح — العنفة وقياسات V/I</a></li>
+            <li><a href="html/lesson-week4-solar-pv.html">الأسبوع ٤: الطاقة الشمسية — PV وزاوية الميل والتظليل</a></li>
+            <li><a href="html/lesson-week5-hydro-power.html">الأسبوع ٥: طاقة المياه — التدفق/الارتفاع ودفّاعة 3D</a></li>
+			<li><a href="html/lesson-week6-media-project.html">الأسبوع ٦: مشروع وسائط — ملصق/مطوية بالطاقة النظيفة (A4 + QR + Scratch + 3D)</a></li>
+
+          </ul>
+        </div>
+      </noscript>
+    </section>
+
+    <footer class="home-footer">
+      <div class="foot-col">
+        <h3>مراجع سريعة</h3>
+        <ul>
+          <li>Scratch: <span class="tag">scratch.mit.edu</span></li>
+          <li>Tinkercad: <span class="tag">tinkercad.com</span></li>
+          <li>Slicer (Cura/PrusaSlicer)</li>
+        </ul>
+      </div>
+      <div class="foot-col">
+        <h3>إرشادات عامة</h3>
+        <ul>
+          <li>سلامة المختبرات وجهود منخفضة (٣–٦V)</li>
+          <li>دعم RTL وإمكانية الوصول (WCAG 2.1 AA)</li>
+          <li>مواد قابلة للطباعة من داخل كل درس</li>
+        </ul>
+      </div>
+    </footer>
+
+  </div>
+
+  <!-- JS -->
+  <script src="js/home.js"></script>
+</body>
+</html>

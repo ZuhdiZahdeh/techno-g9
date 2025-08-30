@@ -1,0 +1,8 @@
+/* تدرّج يعبّر عن الماء (أزرق/تركواز) */
+header h1{
+  background: linear-gradient(90deg, #0f172a, #06b6d4 25%, #22c55e 60%, #0f172a);
+  -webkit-background-clip:text; background-clip:text; color:transparent;
+}
+
+/* لمسة فراغ بسيطة */
+section[aria-label="الأقسام الرئيسية"] .card p{ margin-bottom: 6px; }

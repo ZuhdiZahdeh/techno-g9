@@ -1,0 +1,5 @@
+/* تحسينات بصرية خاصة بعنوان الصفحة */
+header h1{
+  background: linear-gradient(90deg, #0f172a, #22c55e 30%, #06b6d4 70%, #0f172a);
+  -webkit-background-clip:text; background-clip:text; color:transparent;
+}
