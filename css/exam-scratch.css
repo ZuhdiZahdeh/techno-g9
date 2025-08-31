@@ -1,0 +1,5 @@
+/* Header gradient: Indigo + Cyan (هوية برمجية) */
+header h1{
+  background: linear-gradient(90deg, #0f172a, #1d4ed8 35%, #06b6d4 70%, #0f172a);
+  -webkit-background-clip:text; background-clip:text; color:transparent;
+}

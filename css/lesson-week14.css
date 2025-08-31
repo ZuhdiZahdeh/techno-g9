@@ -1,0 +1,6 @@
+/* ألوان توحي بالبيانات: Indigo للتركيز + Emerald/Teal للثقة */
+header h1{
+  background: linear-gradient(90deg, #0f172a, #1d4ed8 30%, #10b981 70%, #0f172a);
+  -webkit-background-clip:text; background-clip:text; color:transparent;
+}
+section[aria-label="الأقسام الرئيسية"] .card p{ margin-bottom: 6px; }

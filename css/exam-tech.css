@@ -1,0 +1,5 @@
+/* Header gradient: Teal + Indigo + Amber (هوية الطاقة النظيفة) */
+header h1{
+  background: linear-gradient(90deg, #0f172a, #0ea5a4 25%, #1d4ed8 60%, #f59e0b 85%, #0f172a);
+  -webkit-background-clip:text; background-clip:text; color:transparent;
+}

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>امتحان شامل — كتاب سكراتش | الصف التاسع</title>
+
+  <!-- Shared -->
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/tokens-theme.css">
+  <link rel="stylesheet" href="../css/base-rtl.css">
+  <link rel="stylesheet" href="../css/components-ui.css">
+  <!-- Exam-specific -->
+  <link rel="stylesheet" href="../css/exam-scratch.css">
+</head>
+<body>
+  <div class="container" id="app">
+
+    <header>
+      <h1>امتحان شامل — كتاب سكراتش</h1>
+      <p>الصف التاسع | المدّة: ٩٠ دقيقة | العلامة الكلية: ١٠٠</p>
+      <div class="toolbar" role="toolbar">
+        <button class="btn primary" id="startTimer">بدء مؤقّت ٩٠ دقيقة</button>
+        <button class="btn ghost" id="toggleFont">تكبير الخط</button>
+        <button class="btn accent" onclick="window.print()">طباعة صفحة الامتحان</button>
+      </div>
+    </header>
+
+    <section class="grid" aria-label="Exam sections">
+      <article class="card col-6">
+        <h2><span class="icon">🧭</span> معلومات الامتحان</h2>
+        <p>التعليمات العامة وتوزيع العلامات.</p>
+        <div class="targets">
+          <button class="btn" data-open="info">التعليمات العامة</button>
+          <button class="btn" data-open="weights">توزيع العلامات</button>
+        </div>
+      </article>
+
+      <article class="card col-6">
+        <h2><span class="icon">🧩</span> أقسام الأسئلة</h2>
+        <p>الأقسام من (أ) إلى (و).</p>
+        <div class="targets">
+          <button class="btn" data-open="A">القسم (أ): اختيار من متعدد</button>
+          <button class="btn" data-open="B">القسم (ب): صواب/خطأ</button>
+          <button class="btn" data-open="C">القسم (ج): أسئلة قصيرة</button>
+          <button class="btn" data-open="D">القسم (د): قراءة كود وتتبع</button>
+          <button class="btn" data-open="E">القسم (هـ): مشروع مصغّر</button>
+          <button class="btn" data-open="F">القسم (و): تصحيح أخطاء</button>
+        </div>
+      </article>
+    </section>
+
+    <section class="grid" style="margin-top:18px">
+      <article class="card col-12">
+        <h2><span class="icon">👩‍🏫</span> للمعلّم</h2>
+        <p>إظهار نموذج الإجابة والروبركات (افتح الصفحة بـ <code>?teacher=1</code>).</p>
+        <div class="targets">
+          <button class="btn ghost" data-open="keys">إظهار/إخفاء نموذج الإجابة (للمعلّم)</button>
+        </div>
+      </article>
+    </section>
+
+    <!-- Modal -->
+    <div class="modal-backdrop" id="backdrop" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <div class="modal" role="document">
+        <header>
+          <h3 id="modalTitle">تفاصيل</h3>
+          <div>
+            <button class="btn ghost" id="printModal" title="طباعة">طباعة</button>
+            <button class="btn danger" id="closeModal">إغلاق ✕</button>
+          </div>
+        </header>
+        <div class="content" id="modalContent" tabindex="0"></div>
+        <div class="actions">
+          <button class="btn primary" id="closeBottom">تم</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- JS -->
+  <script src="../js/content-exam-scratch.js"></script>
+  <script src="../js/ui-helpers.js"></script>
+  <script src="../js/exam-scratch-app.js"></script>
+</body>
+</html>

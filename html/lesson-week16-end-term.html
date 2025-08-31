@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>الأسبوع ١٦ | نهاية الفصل الأوّل — عروض نهائية + معرض + تأملات + أرشفة</title>
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;800&display=swap" rel="stylesheet">
+
+  <!-- CSS (theme → base → components → page) -->
+  <link rel="stylesheet" href="../css/tokens-theme.css">
+  <link rel="stylesheet" href="../css/base-rtl.css">
+  <link rel="stylesheet" href="../css/components-ui.css">
+  <link rel="stylesheet" href="../css/lesson-week16.css">
+</head>
+<body>
+  <div class="container" id="app">
+
+    <header>
+      <h1>الأسبوع ١٦: نهاية الفصل — عروض نهائية ومعرض وتأملات</h1>
+      <p>الصف التاسع (١٤–١٥ سنة) — عرض مشروع، مراجعة أقران، تلميع أخير، تسليم وأرشفة، استبيان وتأملات.</p>
+      <div class="toolbar" role="toolbar" aria-label="أدوات عامة">
+        <button class="btn primary" id="startFocus">بدء مؤقّت العرض (٣ دقائق)</button>
+        <button class="btn ghost" id="toggleFont">تكبير الخط</button>
+        <button class="btn accent" onclick="window.print()">طباعة هذه الصفحة</button>
+      </div>
+    </header>
+
+    <!-- Row 1 -->
+    <section class="grid" aria-label="الأقسام الرئيسية">
+      <article class="card col-6">
+        <h2><span class="icon">🎯</span> الأهداف التعليمية</h2>
+        <p>عرض مشروع نهائي بإيجاز، تقديم تغذية راجعة بنّاءة، تلميع وتسليم منظم، كتابة تأملات ختامية، وإعداد معرض رقمي.</p>
+        <div class="targets">
+          <button class="btn" data-open="g1">١) نطاق الأسبوع الختامي</button>
+          <button class="btn" data-open="g2">٢) هيكل العرض (٣ دقائق)</button>
+          <button class="btn" data-open="g3">٣) نموذج تغذية الأقران (Rubric)</button>
+          <button class="btn" data-open="g4">٤) قائمة تلميع (Polish Checklist)</button>
+          <button class="btn" data-open="g5">٥) آلية التسليم والأرشفة</button>
+          <button class="btn" data-open="g6">٦) استبيان وتأملات ختامية</button>
+        </div>
+      </article>
+
+      <article class="card col-6">
+        <h2><span class="icon">🧪</span> محطات العمل (45–50 د)</h2>
+        <p>عرض → مراجعة أقران → تلميع → تصدير/تسليم → تأملات → إعداد المعرض.</p>
+        <div class="targets">
+          <button class="btn" data-open="st_present">محطة العرض</button>
+          <button class="btn" data-open="st_peer">محطة مراجعة الأقران</button>
+          <button class="btn" data-open="st_polish">محطة التلميع</button>
+          <button class="btn" data-open="st_export">محطة التصدير/التسليم</button>
+          <button class="btn" data-open="st_reflect">محطة التأملات</button>
+          <button class="btn" data-open="st_gallery">محطة إعداد المعرض</button>
+        </div>
+      </article>
+    </section>
+
+    <!-- Row 2 -->
+    <section class="grid" style="margin-top:18px">
+      <article class="card col-4">
+        <h2><span class="icon">🧭</span> خطة الزمن (٤٥–٥٠ د)</h2>
+        <p>تهيئة سريعة → دورات عرض قصيرة → تسليم وتوثيق → ختام واحتفاء.</p>
+        <div class="targets">
+          <button class="btn" data-open="timeline">عرض الخطة الزمنية</button>
+        </div>
+      </article>
+
+      <article class="card col-4">
+        <h2><span class="icon">🧠</span> الشرح والتوسّع</h2>
+        <p>نصائح الإلقاء، وأفضل ممارسات تنظيم الملفات وأسماء الإصدارات.</p>
+        <div class="targets">
+          <button class="btn" data-open="explain">نقاط الشرح</button>
+          <button class="btn" data-open="elaborate">التوسّع (نشر/معرض)</button>
+        </div>
+      </article>
+
+      <article class="card col-4">
+        <h2><span class="icon">🛡️</span> السلامة والإتاحة</h2>
+        <p>موافقات نشر الوسائط، الوصولية في العروض، وحفظ نسخ احتياطية.</p>
+        <div class="targets">
+          <button class="btn" data-open="safety">إرشادات السلامة/النشر</button>
+          <button class="btn" data-open="access">إتاحة الوصول (WCAG)</button>
+        </div>
+      </article>
+    </section>
+
+    <!-- Row 3 -->
+    <section class="grid" style="margin-top:18px">
+      <article class="card col-6">
+        <h2><span class="icon">📝</span> التقويم داخل الحصة</h2>
+        <p>روبرك العرض (٢٠ نقطة)، بطاقة مراجعة أقران، ملف تسليم نهائي، استبيان تأمّل.</p>
+        <div class="targets">
+          <button class="btn" data-open="assess_rubric">روبرك العرض (٢٠)</button>
+          <button class="btn" data-open="assess_peer">بطاقة مراجعة أقران</button>
+          <button class="btn" data-open="assess_package">حزمة التسليم النهائي</button>
+          <button class="btn" data-open="assess_reflect">نموذج التأملات</button>
+        </div>
+      </article>
+
+      <article class="card col-6">
+        <h2><span class="icon">📦</span> الموارد والروابط</h2>
+        <p>قوالب شرائح/ملصق، نماذج PDF، إرشادات رفع للموقع/المعرض.</p>
+        <div class="targets">
+          <button class="btn" data-open="resources">قائمة الموارد</button>
+          <button class="btn" data-open="links">روابط مفيدة</button>
+        </div>
+      </article>
+    </section>
+
+    <!-- Modal -->
+    <div class="modal-backdrop" id="backdrop" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <div class="modal" role="document">
+        <header>
+          <h3 id="modalTitle">تفاصيل</h3>
+          <div>
+            <button class="btn ghost" id="printModal" title="طباعة">طباعة</button>
+            <button class="btn danger" id="closeModal">إغلاق ✕</button>
+          </div>
+        </header>
+        <div class="content" id="modalContent" tabindex="0"></div>
+        <div class="actions">
+          <button class="btn primary" id="closeBottom">تم</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- JS (data → helpers → app) -->
+  <script src="../js/content-week16.js"></script>
+  <script src="../js/ui-helpers.js"></script>
+  <script src="../js/lesson-week16-app.js"></script>
+</body>
+</html>

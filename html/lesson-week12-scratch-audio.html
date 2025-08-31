@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>الأسبوع ١٢ | Scratch — تسجيل الأصوات وإدراجها والتزامن الصوتي</title>
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;800&display=swap" rel="stylesheet">
+
+  <!-- CSS (theme → base → components → page) -->
+  <link rel="stylesheet" href="../css/tokens-theme.css">
+  <link rel="stylesheet" href="../css/base-rtl.css">
+  <link rel="stylesheet" href="../css/components-ui.css">
+  <link rel="stylesheet" href="../css/lesson-week12.css">
+</head>
+<body>
+  <div class="container" id="app">
+
+    <header>
+      <h1>الأسبوع ١٢: Scratch — تسجيل الأصوات وإدراجها والتزامن</h1>
+      <p>الصف التاسع (١٤–١٥ سنة) — تسجيل/تحرير صوت، مؤثرات Pitch/Pan/Volume، تزامن مع Broadcast، مشروع صوتي قصير عن الطاقة النظيفة.</p>
+      <div class="toolbar" role="toolbar" aria-label="أدوات عامة">
+        <button class="btn primary" id="startFocus">بدء مؤقّت ٥ دقائق للمحطات</button>
+        <button class="btn ghost" id="toggleFont">تكبير الخط</button>
+        <button class="btn accent" onclick="window.print()">طباعة هذا الدرس</button>
+      </div>
+    </header>
+
+    <!-- Row 1 -->
+    <section class="grid" aria-label="الأقسام الرئيسية">
+      <article class="card col-6">
+        <h2><span class="icon">🎯</span> الأهداف التعليمية</h2>
+        <p>تسجيل/إدراج صوت، ضبط مستوى الصوت، إضافة مؤثرات أساسية، تزامن الصوت مع المشاهد، إخراج مشروع قصير.</p>
+        <div class="targets">
+          <button class="btn" data-open="g1">١) نطاق المهارات</button>
+          <button class="btn" data-open="g2">٢) تسجيل الصوت داخل Scratch</button>
+          <button class="btn" data-open="g3">٣) إدراج وتشغيل/إيقاف الصوت</button>
+          <button class="btn" data-open="g4">٤) المؤثرات (Pitch/Pan/Volume)</button>
+          <button class="btn" data-open="g5">٥) تزامن الصوت مع Broadcast</button>
+          <button class="btn" data-open="g6">٦) حفظ/لقطة وتسليم</button>
+        </div>
+      </article>
+
+      <article class="card col-6">
+        <h2><span class="icon">🧪</span> محطات العمل (45–50 د)</h2>
+        <p>Mic-Test، Record، Insert/Control، FX، Sync، Export — ٥–٧ دقائق لكل محطة.</p>
+        <div class="targets">
+          <button class="btn" data-open="st_mic">محطة Mic-Test</button>
+          <button class="btn" data-open="st_record">محطة Record</button>
+          <button class="btn" data-open="st_insert">محطة Insert/Control</button>
+          <button class="btn" data-open="st_fx">محطة FX</button>
+          <button class="btn" data-open="st_sync">محطة Sync</button>
+          <button class="btn" data-open="st_export">محطة Export</button>
+        </div>
+      </article>
+    </section>
+
+    <!-- Row 2 -->
+    <section class="grid" style="margin-top:18px">
+      <article class="card col-4">
+        <h2><span class="icon">🧭</span> خطة الزمن (٤٥–٥٠ د)</h2>
+        <p>تهيئة → محطات → شرح موجز → تقويم سريع.</p>
+        <div class="targets">
+          <button class="btn" data-open="timeline">عرض الخطة الزمنية</button>
+        </div>
+      </article>
+
+      <article class="card col-4">
+        <h2><span class="icon">🧠</span> الشرح والتوسّع</h2>
+        <p>نصائح تسجيل نظيف، قصة/سيناريو صوتي قصير، توثيق صوتي لمشاهد الطاقة.</p>
+        <div class="targets">
+          <button class="btn" data-open="explain">نقاط الشرح</button>
+          <button class="btn" data-open="elaborate">التوسّع (Voice-over)</button>
+        </div>
+      </article>
+
+      <article class="card col-4">
+        <h2><span class="icon">🛡️</span> السلامة والإتاحة</h2>
+        <p>مستوى صوت آمن، سماعات/ميكروفون المدرسة، تسميات عربية واضحة، WCAG.</p>
+        <div class="targets">
+          <button class="btn" data-open="safety">إرشادات السلامة</button>
+          <button class="btn" data-open="access">إتاحة الوصول</button>
+        </div>
+      </article>
+    </section>
+
+    <!-- Row 3 -->
+    <section class="grid" style="margin-top:18px">
+      <article class="card col-6">
+        <h2><span class="icon">📝</span> التقويم داخل الحصة</h2>
+        <p>Quiz (٨ بنود)، ورقة مهام صوتية، Mini-Project: تعليق صوتي ١٥–٢٠ ثانية مع تزامن.</p>
+        <div class="targets">
+          <button class="btn" data-open="assess_quiz">Quiz قصير (٨)</button>
+          <button class="btn" data-open="assess_ws">ورقة مهام صوتية</button>
+          <button class="btn" data-open="assess_project">Mini-Project (Voice-over)</button>
+          <button class="btn" data-open="assess_rubric">روبرك مختصر</button>
+        </div>
+      </article>
+
+      <article class="card col-6">
+        <h2><span class="icon">📦</span> الموارد والروابط</h2>
+        <p>Scratch (ويب/أوفلاين)، ميكروفونات، سماعات، نصوص قصيرة للطاقة النظيفة.</p>
+        <div class="targets">
+          <button class="btn" data-open="resources">قائمة الموارد</button>
+          <button class="btn" data-open="links">روابط مفيدة</button>
+        </div>
+      </article>
+    </section>
+
+    <!-- Modal -->
+    <div class="modal-backdrop" id="backdrop" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <div class="modal" role="document">
+        <header>
+          <h3 id="modalTitle">تفاصيل</h3>
+          <div>
+            <button class="btn ghost" id="printModal" title="طباعة">طباعة</button>
+            <button class="btn danger" id="closeModal">إغلاق ✕</button>
+          </div>
+        </header>
+        <div class="content" id="modalContent" tabindex="0"></div>
+        <div class="actions">
+          <button class="btn primary" id="closeBottom">تم</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- JS (data → helpers → app) -->
+  <script src="../js/content-week12.js"></script>
+  <script src="../js/ui-helpers.js"></script>
+  <script src="../js/lesson-week12-app.js"></script>
+</body>
+</html>

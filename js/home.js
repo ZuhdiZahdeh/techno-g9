@@ -65,7 +65,89 @@ const LESSONS = [
   emoji: '🧪',
   desc: 'امتحان نظري + عملي مختبر + برمجة/وسائط + روبركات وتقويم علاجي.',
   tags: ['Midterm','V/I','Scratch','3D','روبرك']
-}
+},
+ {
+    id: 'w9',
+    title: 'الأسبوع ٩: مراجعة Scratch — الواجهة والإحداثيات والحركة والأحداث',
+    href: 'html/lesson-week9-scratch-review.html',
+    emoji: '🐱',
+    desc: 'جولة سريعة: الواجهة، (x,y)، الحركة، الأحداث، متغيّر score.',
+    tags: ['Scratch','Review','Intro']
+  },
+  {
+    id: 'w10',
+    title: 'الأسبوع ١٠: Scratch — التحكّم بالكائن',
+    href: 'html/lesson-week10-scratch-control.html',
+    emoji: '🎮',
+    desc: 'مفاتيح اتجاه، حدود/ارتداد، أنيميشن مظاهر، اصطدام، نقاط.',
+    tags: ['Scratch','Control','Animation','Score']
+  },
+  {
+    id: 'w11',
+    title: 'الأسبوع ١١: Scratch — بثّ الرسائل واستقبالها',
+    href: 'html/lesson-week11-scratch-broadcast.html',
+    emoji: '📡',
+    desc: 'تزامن كائنات، تسلسل مشاهد، مؤقّتات بسيطة، Mini-Project.',
+    tags: ['Scratch','Broadcast','Scenes']
+  },
+  {
+    id: 'w12',
+    title: 'الأسبوع ١٢: Scratch — تسجيل الأصوات وإدراجها والتزامن',
+    href: 'html/lesson-week12-scratch-audio.html',
+    emoji: '🎙️',
+    desc: 'تسجيل/إدراج صوت، Volume/Pitch، تزامن مع Broadcast.',
+    tags: ['Scratch','Audio','Broadcast']
+  },
+  {
+    id: 'w13',
+    title: 'الأسبوع ١٣: Scratch — الرسّام (Paint Editor) والتصميم بالمتجهات',
+    href: 'html/lesson-week13-scratch-painter.html',
+    emoji: '🎨',
+    desc: 'Vector/Bitmap، Stroke/Fill، نص عربي واضح، Logo متحرك.',
+    tags: ['Scratch','Painter','Vector','Logo']
+  },
+  {
+    id: 'w14',
+    title: 'الأسبوع ١٤: Scratch — المتغيّرات واللوائح',
+    href: 'html/lesson-week14-scratch-data.html',
+    emoji: '🧮',
+    desc: 'set/change/show، مؤقّت/عداد، HUD، List + ask/answer.',
+    tags: ['Scratch','Variables','Lists','Quiz']
+  },
+  {
+    id: 'w15',
+    title: 'الأسبوع ١٥: Scratch — المنطق المتقدّم + My Blocks',
+    href: 'html/lesson-week15-scratch-logic.html',
+    emoji: '🧩',
+    desc: 'If/Else، حلقات، and/or/not، إجراءات مخصّصة بمدخلات.',
+    tags: ['Scratch','Logic','MyBlocks','Refactor']
+  },
+  {
+    id: 'w16',
+    title: 'الأسبوع ١٦: نهاية الفصل — عروض نهائية ومعرض وتأملات',
+    href: 'html/lesson-week16-end-term.html',
+    emoji: '🎉',
+    desc: 'عرض ٣ دقائق، مراجعة أقران، تلميع وتسليم، أرشفة ومعرض.',
+    tags: ['Final','Showcase','Rubric','Archive']
+  },
+   {
+    id: 'exam-tech',
+    type: 'exam',
+    title: 'امتحان شامل — كتاب التكنولوجيا (٩٠ دقيقة)',
+    href: 'html/exam-tech-term1.html',
+    emoji: '🧪',
+    desc: 'امتحان يغطي الطاقة النظيفة والقياس V/I والقدرة P≈V×I وسلامة المختبر ومبادئ 3D.',
+    tags: ['Exam','Technology','Term1']
+  },
+  {
+    id: 'exam-scratch',
+    type: 'exam',
+    title: 'امتحان شامل — كتاب سكراتش (٩٠ دقيقة)',
+    href: 'html/exam-scratch-term1.html',
+    emoji: '💻',
+    desc: 'امتحان يغطي الواجهة/الحركة/الأحداث، البثّ والصوت، الرسّام، المتغيّرات/اللوائح، والمنطق/My Blocks.',
+    tags: ['Exam','Scratch','Term1']
+  }
 
 ];
 
@@ -131,9 +213,17 @@ clearBtn.addEventListener('click', () => {
   box.focus();
 });
 
-// Quick: open newest (آخر أسبوع)
+// Quick: open newest (آخر درس حقيقي وليس امتحان)
 $('#openNewest').addEventListener('click', () => {
-  // يعتمد على ترتيب LESSONS (آخر عنصر هو الأحدث)
-  const newest = LESSONS[LESSONS.length - 1];
-  window.location.href = newest.href;
+  // ابحث عن آخر عنصر type !== 'exam'
+  for (let i = LESSONS.length - 1; i >= 0; i--) {
+    const it = LESSONS[i];
+    if (!it.type || it.type !== 'exam') {
+      window.location.href = it.href;
+      return;
+    }
+  }
+  // fallback: إن لم يوجد دروس
+  window.location.href = LESSONS[LESSONS.length - 1].href;
 });
+

@@ -1,0 +1,6 @@
+/* ألوان توحي بالمنطق والتحكّم: Indigo للتركيز + Teal للاتساق + لمسة Emerald */
+header h1{
+  background: linear-gradient(90deg, #0f172a, #1d4ed8 28%, #0ea5a4 62%, #10b981 85%, #0f172a);
+  -webkit-background-clip:text; background-clip:text; color:transparent;
+}
+section[aria-label="الأقسام الرئيسية"] .card p{ margin-bottom: 6px; }

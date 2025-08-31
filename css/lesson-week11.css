@@ -1,0 +1,6 @@
+/* ألوان توحي بالتزامن/التبديل: Indigo + Amber + Teal */
+header h1{
+  background: linear-gradient(90deg, #0f172a, #1d4ed8 25%, #f59e0b 55%, #0ea5a4 80%, #0f172a);
+  -webkit-background-clip:text; background-clip:text; color:transparent;
+}
+section[aria-label="الأقسام الرئيسية"] .card p{ margin-bottom: 6px; }

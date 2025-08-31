@@ -1,0 +1,6 @@
+/* ألوان توحي بالتصميم: Indigo للتركيز + Teal للهوية + لمسة Amber للتباين */
+header h1{
+  background: linear-gradient(90deg, #0f172a, #1d4ed8 25%, #0ea5a4 60%, #f59e0b 85%, #0f172a);
+  -webkit-background-clip:text; background-clip:text; color:transparent;
+}
+section[aria-label="الأقسام الرئيسية"] .card p{ margin-bottom: 6px; }
