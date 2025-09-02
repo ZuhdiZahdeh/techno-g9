@@ -1,4 +1,10 @@
-/* Home header styling (Gainsboro background comes from tokens-theme.css) */
+/* --- Force page background to LightGray --- */
+html, body {
+  background: LightGray !important;
+}
+
+/* (اختياري) لو أردت العنوان فقط بلون LightGray بدل الصفحة كلها: */
+/* .home-header { background: LightGray; border-radius: var(--radius); } */
 .home-header h1{
   margin: 0 0 4px 0;
   font-size: clamp(22px, 3.6vw, 36px);
