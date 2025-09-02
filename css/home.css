@@ -71,4 +71,24 @@ html, body {
 }
 .foot-col h3{ margin: 0 0 6px; font-size: 18px; }
 .foot-col ul{ margin: 0; padding-inline-start: 18px; color: var(--muted-on-card); }
+/* --- Keep all cards white, regardless of page background or dark mode --- */
+.card,
+.week-card,
+.card.highlight {
+  background: #fff !important; /* يثبت الأبيض على كل البطاقات */
+}
+
+/* (اختياري) إن أردت فقرة القراءة بنفس الأبيض أيضًا */
+.reading-text {
+  background: #fff;  /* كانت مائلة للأخضر الفاتح سابقًا */
+}
+
+/* (اختياري) إذا كنت تستخدم الوضع الداكن وتريد نصًا داكنًا فوق بطاقات بيضاء */
+@media (prefers-color-scheme: dark) {
+  .card,
+  .week-card {
+    color: #122131; /* يجعل النص مقروءًا على خلفية بيضاء */
+  }
+}
+
 @media (max-width: 980px){ .foot-col{ grid-column: span 12; } }
