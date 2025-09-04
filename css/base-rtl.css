@@ -38,3 +38,31 @@ html, body {
 @media (prefers-color-scheme: dark) {
   .card, .week-card { color: #122131; }
 }
+/* === Cards: subtle border + shadow + better text contrast === */
+.card,
+.week-card,
+.card.highlight{
+  background:#fff !important;                 /* نحافظ على الأبيض */
+  border:1px solid rgba(2, 8, 23, .08);        /* حدود رقيقة جدًا */
+  box-shadow: 0 4px 14px rgba(2, 8, 23, .06);  /* ظل هادئ */
+  border-radius: 14px;                         /* زوايا أنعم (اختياري) */
+}
+
+/* نصوص أوضح فوق الخلفية البيضاء */
+.card h2,.week-card h2{ color:#0f172a; }
+.card p,.week-card p{ color:#334155; }         /* Slate-700 */
+
+/* لمسة تفاعلية خفيفة عند المرور بالفأرة */
+.card:hover,
+.week-card:hover{
+  box-shadow: 0 10px 24px rgba(2, 8, 23, .10);
+  transform: translateY(-2px);
+  transition: box-shadow .18s ease, transform .18s ease;
+}
+
+/* تحسينات للوضع الداكن مع بقاء البطاقة بيضاء للنص المقروء */
+@media (prefers-color-scheme: dark){
+  .card,.week-card{ color:#122131; }           /* نص داكن واضح */
+  .card p,.week-card p{ color:#1f2937; }       /* Gray-800 فوق الأبيض */
+  .card,.week-card{ border-color: rgba(148,163,184,.22); }
+}
