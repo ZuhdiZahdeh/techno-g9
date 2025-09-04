@@ -18,3 +18,23 @@ header h1{
   -webkit-background-clip:text; background-clip:text; color:transparent;
 }
 header p{margin:0; color:var(--muted)}
+/* === Global overrides for all pages === */
+html, body {
+  /* نفس الخلفية الرمادية المستخدمة في الصفحة الرئيسية */
+  background: LightGray !important;
+}
+
+/* ثبّت لون بطاقات الواجهة أبيض فوق الخلفية الرمادية */
+.card,
+.week-card,
+.card.highlight {
+  background: #fff !important;
+  /* حدود خفيفة وظل لطيف لتمييزها أكثر (اختياري) */
+  border: 1px solid rgba(148,163,184,.16);
+  box-shadow: 0 4px 14px rgba(2, 8, 23, .06);
+}
+
+/* تحسين تباين النص في الوضع الداكن على بطاقات بيضاء */
+@media (prefers-color-scheme: dark) {
+  .card, .week-card { color: #122131; }
+}
