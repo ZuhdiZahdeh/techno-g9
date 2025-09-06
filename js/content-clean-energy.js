@@ -310,6 +310,8 @@ Battery: when I receive [sun] -> repeat 20 { change [power v] by (sunAngle) }
         <li>DMM، بروتوبورد، أسلاك، مقاومات ٢٢٠–٣٣٠Ω، LED.</li>
         <li>طابعة ثلاثية الأبعاد (PLA) + Cura/PrusaSlicer.</li>
         <li>Scratch + Tinkercad (حسابات الطلاب).</li>
+	<li>العرض التقديمي: <a href="../assets/clean-energy-2022.pptx">تكنولوجيا الطاقة النظيفة (PPTX)</a></li>
+
       </ul>
     `
   },
@@ -438,3 +440,23 @@ Object.assign(window.CONTENT, {
   }
 
 });
+// === مودال العرض التقديمي (PPTX) ===
+window.CONTENT.res_ppt = {
+  title: 'العرض التقديمي — تكنولوجيا الطاقة النظيفة (PPTX)',
+  body: `
+    <p>عرض شرائح يدعم درس الأسبوع الأوّل (الأهداف، المفاهيم، المصادر، غير المتجددة وسلبياتها، أفكار الحلول). مناسب للبروجكتر أو للمراجعة المنزلية.</p>
+    <div class="targets" style="margin:10px 0; gap:10px">
+      <a class="btn primary" href="../assets/clean-energy-2022.pptx" download>تنزيل العرض (PPTX)</a>
+      <a class="btn ghost" href="../assets/clean-energy-2022.pptx" target="_blank" rel="noopener">فتح في تبويب جديد</a>
+    </div>
+    <h4>محتويات سريعة</h4>
+    <ul>
+      <li>الأهداف: التعرف إلى أهمية الطاقة النظيفة ومصادر الطاقة، إنتاج وسائط ونماذج لحلول بيئية.</li>
+      <li>تعريف الطاقة وأنواعها.</li>
+      <li>مصادر غير متجددة (نفط، فحم، غاز) وتشكّلها وأضرارها الشائعة.</li>
+      <li>مصادر متجددة/نظيفة وبدائل عملية.</li>
+    </ul>
+    <div class="tag">نصيحة: أرفق النشاطات والروابط ضمن المودالات الأخرى لسهولة الوصول.</div>
+  `
+};
+
