@@ -66,3 +66,14 @@
   .modal-backdrop{display:none !important}
   .toolbar{display:none}
 }
+/* Accessibility: make green buttons legible on dark backgrounds */
+.btn.primary,
+.btn.open {
+  color: #fff !important;         /* نص أبيض واضح */
+}
+
+/* لو احتجت التوافق مع الروابط داخل الأزرار */
+.btn.primary:visited,
+.btn.open:visited {
+  color: #fff !important;
+}

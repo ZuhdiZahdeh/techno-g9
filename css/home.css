@@ -92,3 +92,5 @@ html, body {
 }
 
 @media (max-width: 980px){ .foot-col{ grid-column: span 12; } }
+/* Force white text on the green "Open" buttons in Home as well */
+.btn.open { color: #fff !important; }
