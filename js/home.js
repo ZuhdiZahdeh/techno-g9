@@ -227,3 +227,11 @@ $('#openNewest').addEventListener('click', () => {
   window.location.href = LESSONS[LESSONS.length - 1].href;
 });
 
+LESSONS.push({
+  id: 'w1-student',
+  title: 'دليل الطالب — الطاقة النظيفة (الأسبوع ١)',
+  href: 'html/lesson-clean-energy-student.html',
+  emoji: '📘',
+  desc: 'ملخصات واضحة ومباشرة: تعريف، أهمية، مصادر، سلبيات، هل تعلم + الموارد وروابط العرض.',
+  tags: ['Student','Review','Energy']
+});

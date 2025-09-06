@@ -66,3 +66,4 @@ html, body {
   .card p,.week-card p{ color:#1f2937; }       /* Gray-800 فوق الأبيض */
   .card,.week-card{ border-color: rgba(148,163,184,.22); }
 }
+.btn.accent { color: #fff !important; }
