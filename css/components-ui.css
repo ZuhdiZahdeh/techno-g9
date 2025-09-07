@@ -3,7 +3,7 @@
 
 .btn{
   appearance:none; border:0; cursor:pointer;
-  background: linear-gradient(135deg, rgba(15,23,42,.1), rgba(15,23,42,.06));
+  background: linear-gradient(DarkCyan , LightGrey , CadetBlue);
   color: var(--btn-ghost-fg);
   padding:10px 14px; border-radius:12px;
   box-shadow: var(--shadow);
@@ -46,7 +46,7 @@
 }
 
 .targets{display:flex; flex-wrap:wrap; gap:8px; margin-top:10px}
-.targets .btn{font-size:14px; padding:8px 12px}
+.targets .btn{font-size:20px; padding:8px 12px}
 
 /* Modal */
 .modal-backdrop{position:fixed; inset:0; background:rgba(2,6,23,.6); display:none; align-items:center; justify-content:center; z-index:50}
