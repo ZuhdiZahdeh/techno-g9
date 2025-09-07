@@ -3,7 +3,7 @@
 
 .btn{
   appearance:none; border:0; cursor:pointer;
-  background: linear-gradient(DarkCyan , LightGrey , CadetBlue);
+  background: linear-gradient(DarkCyan , CadetBlue);
   color: var(--btn-ghost-fg);
   padding:10px 14px; border-radius:12px;
   box-shadow: var(--shadow);

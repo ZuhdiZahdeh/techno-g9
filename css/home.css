@@ -25,7 +25,7 @@
 
 .card-actions{ display:flex; gap:8px; flex-wrap:wrap; margin-top: 10px; }
 /* “Open” button في الصفحة الرئيسية يستخدم نفس متغيّرات primary */
-.btn.open{ background: var(--btn-primary-bg); color: var(--btn-primary-fg) !important; }
+
 .btn.outline{ background: transparent; color: var(--text); border: 1px solid rgba(226,232,240,.25); }
 
 /* Footer */
