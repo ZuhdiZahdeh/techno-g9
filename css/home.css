@@ -26,7 +26,6 @@
 .card-actions{ display:flex; gap:8px; flex-wrap:wrap; margin-top: 10px; }
 /* “Open” button في الصفحة الرئيسية يستخدم نفس متغيّرات primary */
 
-.btn.outline{ background: transparent; color: var(--text); border: 1px solid rgba(226,232,240,.25); }
 
 /* Footer */
 .home-footer{ display:grid; gap:16px; grid-template-columns: repeat(12,1fr); margin-top: 28px; }
