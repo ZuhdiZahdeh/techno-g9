@@ -16,16 +16,21 @@
   --danger: #ef4444;
   --ring:   #14b8a6;
 
-  /* Buttons (single source of truth) */
-  --btn-primary-bg: linear-gradient(135deg, rgba(20,184,166,.10), rgba(34,197,94,.10));
-  --btn-primary-fg: #ffffff;
+  /* Buttons (central, high-contrast) */
+  --btn-primary-bg:       #0ea5a4;  /* teal صلب بدل التدرّج */
+  --btn-primary-bg-hover: #0c8c8a;  /* أغمق قليلاً عند التحويم */
+  --btn-primary-fg:       #ffffff;
 
-  --btn-accent-bg:  linear-gradient(135deg, rgba(245,158,11,.6), rgba(245,158,11,.5));
-  --btn-accent-fg:  #ffffff;
+  --btn-accent-bg:        #f59e0b;  /* amber صلب */
+  --btn-accent-bg-hover:  #d97706;
+  --btn-accent-fg:        #ffffff;
 
-  --btn-ghost-fg:   #0b1220;
+  --btn-ghost-fg:         #0f172a;
+  --btn-ghost-bg:         #f1f5f9;  /* خلفية خفيفة للـ Ghost داخل البطاقات البيضاء */
+  --btn-ghost-bg-hover:   #e2e8f0;
+  --btn-ghost-border:     #cbd5e1;
 
-  /* Shape */
+ /* Shape */
   --radius: 16px;
   --shadow: 0 6px 24px rgba(0,0,0,.2);
 }

@@ -12,11 +12,29 @@
 }
 .btn:hover{transform: translateY(-1px)}
 .btn:focus{outline:2px solid var(--ring); outline-offset:2px}
+.btn.ghost:hover{ background: var(--btn-ghost-bg-hover); }
 
-/* Variants (centralized) */
-.btn.primary{ background: var(--btn-primary-bg); color: var(--btn-primary-fg) !important; }
-.btn.accent { background: var(--btn-accent-bg);  color: var(--btn-accent-fg)  !important; }
-.btn.ghost  { background: transparent;           color: var(--btn-ghost-fg); }
+/* Variants */
+.btn.primary{
+  background: var(--btn-primary-bg);
+  color: var(--btn-primary-fg) !important;
+  border: 1px solid rgba(0,0,0,.05);
+}
+.btn.primary:hover{ background: var(--btn-primary-bg-hover); }
+
+.btn.accent{
+  background: var(--btn-accent-bg);
+  color: var(--btn-accent-fg) !important;
+  border: 1px solid rgba(0,0,0,.05);
+}
+.btn.accent:hover{ background: var(--btn-accent-bg-hover); }
+
+/* Ghost واضح على بطاقة بيضاء */
+.btn.ghost{
+  background: var(--btn-ghost-bg);
+  color: var(--btn-ghost-fg);
+  border: 1px solid var(--btn-ghost-border);
+}
 
 /* Grid */
 .grid{display:grid; gap:18px; grid-template-columns: repeat(12, 1fr)}
