@@ -6,7 +6,7 @@
 
   /* Card & UI */
   --card: #0f172a;          /* خلفية البطاقات الداكنة (تُستخدم في بعض الصفحات) */
-  --text: #e2e8f0;          /* نص داخل البطاقة الداكنة */
+  --text: #00008B;          /* نص داخل البطاقة الداكنة */
   --muted-on-card: #94a3b8; /* نص ثانوي داخل البطاقة الداكنة */
 
   /* Accent palette */
@@ -17,10 +17,10 @@
   --ring:   #14b8a6;
 
   /* Buttons (single source of truth) */
-  --btn-primary-bg: linear-gradient(135deg, rgba(20,184,166,.25), rgba(34,197,94,.20));
+  --btn-primary-bg: linear-gradient(135deg, rgba(20,184,166,.10), rgba(34,197,94,.10));
   --btn-primary-fg: #ffffff;
 
-  --btn-accent-bg:  linear-gradient(135deg, rgba(245,158,11,.26), rgba(245,158,11,.14));
+  --btn-accent-bg:  linear-gradient(135deg, rgba(245,158,11,.10), rgba(245,158,11,.5));
   --btn-accent-fg:  #ffffff;
 
   --btn-ghost-fg:   #0b1220;
