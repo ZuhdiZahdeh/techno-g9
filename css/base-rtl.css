@@ -25,7 +25,7 @@ html, body {
 }
 
 /* ثبّت لون بطاقات الواجهة أبيض فوق الخلفية الرمادية */
-.card,
+
 .week-card,
 .card.highlight {
   background: #fff !important;
@@ -33,7 +33,12 @@ html, body {
   border: 1px solid rgba(148,163,184,.16);
   box-shadow: 0 4px 14px rgba(2, 8, 23, .06);
 }
-
+.card  {
+  background:  #0ea5a4;  !important;
+  /* حدود خفيفة وظل لطيف لتمييزها أكثر (اختياري) */
+  border: 1px solid rgba(148,163,184,.16);
+  box-shadow: 0 4px 14px rgba(2, 8, 23, .06);
+}
 /* تحسين تباين النص في الوضع الداكن على بطاقات بيضاء */
 @media (prefers-color-scheme: dark) {
   .card, .week-card { color: #122131; }

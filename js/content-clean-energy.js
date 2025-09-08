@@ -310,7 +310,8 @@ Battery: when I receive [sun] -> repeat 20 { change [power v] by (sunAngle) }
         <li>DMM، بروتوبورد، أسلاك، مقاومات ٢٢٠–٣٣٠Ω، LED.</li>
         <li>طابعة ثلاثية الأبعاد (PLA) + Cura/PrusaSlicer.</li>
         <li>Scratch + Tinkercad (حسابات الطلاب).</li>
-	<li>العرض التقديمي: <a href="../assets/clean-energy-2022.pptx">تكنولوجيا الطاقة النظيفة (PPTX)</a></li>
+	<li>العرض التقديمي: <a href="https://raw.githubusercontent.com/ZuhdiZahdeh/techno-g9/main/assets/clean-energy-2022.pptx
+">تكنولوجيا الطاقة النظيفة (PPTX)</a></li>
 
       </ul>
     `

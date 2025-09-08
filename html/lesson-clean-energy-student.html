@@ -14,20 +14,18 @@
   <link rel="stylesheet" href="../css/student-clean-energy.css">
 </head>
 <body>
-  <div class="container">
+  <div class="container" id="top">
 
     <header class="student-hero">
       <h1>دليل الطالب — الطاقة النظيفة × Scratch × Tinkercad × طباعة ثلاثية الأبعاد</h1>
       <p>صفحة مُبسّطة لتكون <b>مرجعًا للدراسة</b> قبل الامتحانات: مفاهيم أساسية، ملخصات سريعة، وروابط الموارد.</p>
-<nav class="toc" aria-label="قائمة مختصرة">
-  <a href="lesson-clean-energy.html" class="btn ghost">صفحة المعلّم</a>
-  <a href="#concepts" class="btn ghost">مفاهيم أساسية</a>
-  <a href="#resources" class="btn ghost">الموارد والأدوات</a>
-  <a href="#links" class="btn ghost">روابط مفيدة</a>
-  <a href="#ppt" class="btn primary">العرض التقديمي (PPTX)</a>
-  <a href="#gallery" class="btn ghost">صور الدرس</a>
-</nav>
-
+      <nav class="toc" aria-label="قائمة مختصرة">
+        <a href="lesson-clean-energy.html" class="btn ghost">صفحة المعلّم</a>
+        <a href="#concepts" class="btn ghost">مفاهيم أساسية</a>
+        <a href="#links" class="btn ghost">روابط مفيدة</a>
+        <a href="#ppt" class="btn primary">العرض التقديمي (PPTX)</a>
+        <a href="#gallery" class="btn ghost">صور الدرس</a>
+      </nav>
     </header>
 
     <!-- مفاهيم أساسية -->
@@ -110,21 +108,6 @@
       </article>
     </section>
 
-    <!-- الموارد والأدوات -->
-    <section id="resources" class="grid" style="margin-top:18px">
-      <article class="card col-12">
-        <h2><span class="icon">📦</span> الموارد والأدوات</h2>
-        <ul class="bullet">
-          <li>عنفة/مروحة تعليمية + مولّد صغير.</li>
-          <li>خلية/لوح شمسي ٣–٦V + حمل (LED/مروحة صغيرة).</li>
-          <li>DMM، بروتوبورد، أسلاك، مقاومات ٢٢٠–٣٣٠Ω، LED.</li>
-          <li>طابعة ثلاثية الأبعاد (PLA) + Cura/PrusaSlicer.</li>
-          <li>Scratch + Tinkercad (حسابات المدرسة).</li>
-        </ul>
-        <div class="tag">نصيحة: اطّلع على دليل السلامة في درس المختبر قبل أي تجربة.</div>
-      </article>
-    </section>
-
     <!-- روابط مفيدة + PPTX -->
     <section id="links" class="grid" style="margin-top:18px">
       <article class="card col-6">
@@ -140,8 +123,13 @@
         <h2><span class="icon">📑</span> العرض التقديمي (PPTX)</h2>
         <p>عرض شرائح يدعم درس الأسبوع الأوّل (الأهداف، المفاهيم، المصادر، سلبيات غير المتجددة، أفكار الحلول).</p>
         <div class="targets">
-          <a class="btn primary" href="../assets/clean-energy-2022.pptx" download><span aria-hidden="true">📑</span> تنزيل العرض (PPTX)</a>
-          <a class="btn ghost" href="../assets/clean-energy-2022.pptx" target="_blank" rel="noopener">فتح في تبويب جديد</a>
+          <!-- استخدم رابط RAW إن كان الملف LFS -->
+          <a class="btn primary" href="https://raw.githubusercontent.com/ZuhdiZahdeh/techno-g9/main/assets/clean-energy-2022.pptx" download>
+            تنزيل العرض (PPTX)
+          </a>
+          <a class="btn ghost" href="https://raw.githubusercontent.com/ZuhdiZahdeh/techno-g9/main/assets/clean-energy-2022.pptx" target="_blank" rel="noopener">
+            فتح في تبويب جديد
+          </a>
         </div>
       </article>
     </section>
