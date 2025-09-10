@@ -72,3 +72,13 @@ html, body {
   .card,.week-card{ border-color: rgba(148,163,184,.22); }
 }
 .btn.accent { color: #fff !important; }
+/* زر عائم للعودة للرئيسية */
+.home-fab{
+  position: fixed; inset-inline-start: 16px; inset-block-end: 16px;
+  background:#fff; color:#0f172a; border:1px solid rgba(2,8,23,.08);
+  box-shadow:0 8px 22px rgba(2,8,23,.12); border-radius:12px;
+  padding:10px 12px; font-size:14px; line-height:1; z-index:9999;
+}
+.home-fab:hover{ transform: translateY(-2px); box-shadow:0 14px 30px rgba(2,8,23,.16); transition:.18s; }
+.home-fab .ico{ margin-inline-end:6px }
+
