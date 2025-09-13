@@ -7,6 +7,8 @@
 
   <!-- Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;800&display=swap" rel="stylesheet">
+	<!-- معرض الصور -->
+	<link rel="stylesheet" href="../css/lightbox.css">
 
   <!-- CSS (theme → base → components → page) -->
   <link rel="stylesheet" href="../css/tokens-theme.css">
@@ -144,41 +146,45 @@
       </div>
     </div>
 <!-- صور توضيحية للأسبوع ٣ -->
+<!-- صور توضيحية للأسبوع ٣ -->
 <section id="gallery" class="grid" style="margin-top:18px">
   <article class="card col-12">
     <h2><span class="icon">🖼️</span> صور توضيحية — طاقة الرياح</h2>
-    <div class="gallery" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:12px">
+
+    <!-- شبكة المصغّرات -->
+    <div class="gallery w3-thumbs">
       <figure>
-        <img src="../assets/study/week3/w3-01-cutaway.jpg" alt="مقطع داخل العنفة يوضّح المكوّنات">
+        <img src="../assets/study/week3/w3-01-cutaway.jpg" data-full="../assets/study/week3/w3-01-cutaway.jpg" alt="مقطع داخل العنفة يوضّح المكوّنات">
         <figcaption>مقطع داخل حجرة العنفة (Nacelle) والمكوّنات</figcaption>
       </figure>
       <figure>
-        <img src="../assets/study/week3/w3-02-nacelle-labeled.jpg" alt="تسمية أجزاء الناسل والمولّد والعلبة">
+        <img src="../assets/study/week3/w3-02-nacelle-labeled.jpg" data-full="../assets/study/week3/w3-02-nacelle-labeled.jpg" alt="تسمية أجزاء الناسل والمولّد والعلبة">
         <figcaption>أجزاء الناسل: مولِّد، علبة تروس، مكابح…</figcaption>
       </figure>
       <figure>
-        <img src="../assets/study/week3/w3-03-offshore-farm.jpg" alt="عنفات رياح بحرية">
+        <img src="../assets/study/week3/w3-03-offshore-farm.jpg" data-full="../assets/study/week3/w3-03-offshore-farm.jpg" alt="مزرعة عنفات رياح بحرية">
         <figcaption>مزرعة عنفات رياح بحرية</figcaption>
       </figure>
       <figure>
-        <img src="../assets/study/week3/w3-04-edu-model.jpg" alt="نموذج تعليمي لعنفات الرياح">
+        <img src="../assets/study/week3/w3-04-edu-model.jpg" data-full="../assets/study/week3/w3-04-edu-model.jpg" alt="نموذج تعليمي لعنفات الرياح">
         <figcaption>نموذج تعليمي للعَنفة</figcaption>
       </figure>
       <figure>
-        <img src="../assets/study/week3/w3-05-horizontal-axis.png" alt="عنفات أفقية المحور">
+        <img src="../assets/study/week3/w3-05-horizontal-axis.png" data-full="../assets/study/week3/w3-05-horizontal-axis.png" alt="عنفات أفقية المحور">
         <figcaption>عنفات أفقية المحور (H-AWT)</figcaption>
       </figure>
       <figure>
-        <img src="../assets/study/week3/w3-06-vertical-axis.png" alt="عنفات عمودية المحور">
+        <img src="../assets/study/week3/w3-06-vertical-axis.png" data-full="../assets/study/week3/w3-06-vertical-axis.png" alt="عنفات عمودية المحور">
         <figcaption>عنفات عمودية المحور (V-AWT)</figcaption>
       </figure>
       <figure>
-        <img src="../assets/study/week3/w3-07-nacelle-diagram.png" alt="مخطط مبسّط لمكوّنات الناسل">
+        <img src="../assets/study/week3/w3-07-nacelle-diagram.png" data-full="../assets/study/week3/w3-07-nacelle-diagram.png" alt="مخطط مبسّط لمكوّنات الناسل">
         <figcaption>مخطط مبسّط لمكوّنات الناسل</figcaption>
       </figure>
     </div>
   </article>
 </section>
+
 
   </div>
 
@@ -186,11 +192,12 @@
 <script src="../js/content-week3.js"></script>
 <script src="../js/ui-helpers.js"></script>
 <script src="../js/lesson-week3-app.js"></script>
-
+  <script src="../js/lightbox.js" defer></script>
 
   <!-- أيقونة الصفحة الرئيسية العائمة -->
   <a class="home-fab" href="../index.html" title="العودة للصفحة الرئيسية">
     <span class="ico">🏠</span> الرئيسية
   </a>
+
 </body>
 </html>
