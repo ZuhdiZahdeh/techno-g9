@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>الأسبوع ٣ | طاقة الرياح — العنفة وقياسات V/I والقدرة</title>
+  <title>الأسبوع ٣ | طاقة الرياح — العنفة وقياسات V/I</title>
 
   <!-- Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;800&display=swap" rel="stylesheet">
@@ -12,18 +12,23 @@
   <link rel="stylesheet" href="../css/tokens-theme.css">
   <link rel="stylesheet" href="../css/base-rtl.css">
   <link rel="stylesheet" href="../css/components-ui.css">
-  <link rel="stylesheet" href="../css/lesson-week3.css">
+  <!-- يمكنك لاحقًا إنشاء lesson-week3.css؛ مؤقتًا نستخدم تدرّج الأسبوع ٢ لتناسق الشكل -->
+  <link rel="stylesheet" href="../css/lesson-week2.css">
 </head>
 <body>
   <div class="container" id="app">
 
+    <!-- رأس كما اتفقنا: شريط أدوات + روابط -->
     <header>
-      <h1>الأسبوع ٣: طاقة الرياح — مكوّنات العنفة وقياسات V/I</h1>
-      <p>الصف التاسع (١٤–١٥ سنة) — تجربة رياح + تصميم 3D (Hub+Blade) + ربط بصري في Scratch.</p>
+      <h1>الأسبوع ٣: طاقة الرياح — العنفة وقياسات V/I</h1>
+      <p>الصف التاسع (١٤–١٥ سنة) — تجربة عنفة مصغّرة، قياس DMM، وتمثيل برمجي.</p>
+
       <div class="toolbar" role="toolbar" aria-label="أدوات عامة">
-        <button class="btn primary" id="startFocus">بدء مؤقّت ٥ دقائق للأنشطة</button>
-        <button class="btn ghost" id="toggleFont">تكبير الخط</button>
-        <button class="btn accent" onclick="window.print()">طباعة هذا الدرس</button>
+        <a class="btn ghost" href="../index.html" title="الصفحة الرئيسية">🏠 الرئيسية</a>
+        <a class="btn ghost" href="lesson-week3-student.html#ppt">نسخة الطالب</a>
+        <button class="btn primary" id="startFocus" type="button">بدء مؤقّت ٥ دقائق للأنشطة</button>
+        <button class="btn ghost" id="toggleFont" type="button">تكبير الخط</button>
+        <button class="btn accent" type="button" onclick="window.print()">طباعة هذا الدرس</button>
       </div>
     </header>
 
@@ -31,27 +36,44 @@
     <section class="grid" aria-label="الأقسام الرئيسية">
       <article class="card col-6">
         <h2><span class="icon">🎯</span> الأهداف التعليمية</h2>
-        <p>تعريف/شرح المكوّنات، قياس V/I، تحليل السرعة، تصميم 3D، ربط النتائج برمجيًا.</p>
+        <p>تعريف العنفة، التمييز بينها وبين المروحة، استخدام DMM، قياس V/I، واستنتاج العلاقة مع سرعة الرياح.</p>
         <div class="targets">
-          <button class="btn" data-open="g1">١) لماذا الرياح؟</button>
-          <button class="btn" data-open="g2">٢) مكوّنات العنفة</button>
-          <button class="btn" data-open="g3">٣) بروتوكول قياس V/I</button>
-          <button class="btn" data-open="g4">٤) تحليل السرعة والزاوية</button>
-          <button class="btn" data-open="g5">٥) تصميم Hub+Blade (Tinkercad)</button>
-          <button class="btn" data-open="g6">٦) ربط النتائج في Scratch</button>
+          <button class="btn" data-open="g1">١) المفاهيم والتمييز</button>
+          <button class="btn" data-open="g2">٢) مكونات العنفة وآلية العمل</button>
+          <button class="btn" data-open="g3">٣) DMM وقياسات V/I</button>
+          <button class="btn" data-open="g4">٤) تحليل النتائج</button>
+          <button class="btn" data-open="g5">٥) تمثيل برمجي/3D</button>
+          <button class="btn" data-open="g6">٦) تقويم سريع</button>
         </div>
       </article>
 
       <article class="card col-6">
         <h2><span class="icon">🧪</span> محطات الاستكشاف</h2>
-        <p>رياح (مروحة/عنفة)، قياس DMM، إلكترونيات، Scratch، Tinkercad/طباعة، مناقشة قصيرة.</p>
+        <p>عنفة × سرعات مختلفة، زاوية الشفرات، DMM، Scratch، Tinkercad.</p>
         <div class="targets">
-          <button class="btn" data-open="st_wind">محطة الرياح</button>
-          <button class="btn" data-open="st_measure">محطة القياس DMM</button>
-          <button class="btn" data-open="st_elec">محطة الإلكترونيات</button>
+          <button class="btn" data-open="st_wind">محطة العنفة</button>
+          <button class="btn" data-open="st_angle">محطة زاوية الشفرات</button>
+          <button class="btn" data-open="st_dmm">محطة DMM</button>
           <button class="btn" data-open="st_scratch">محطة Scratch</button>
-          <button class="btn" data-open="st_3d">محطة Tinkercad/الطباعة</button>
-          <button class="btn" data-open="st_share">محطة مشاركة النتائج</button>
+          <button class="btn" data-open="st_3d">محطة Tinkercad</button>
+        </div>
+      </article>
+    </section>
+
+    <!-- Row: Basic Concepts (NEW) -->
+    <section class="grid" style="margin-top:18px">
+      <article class="card col-12">
+        <h2><span class="icon">📚</span> مفاهيم أساسية (طاقة الرياح)</h2>
+        <p>بطاقات سريعة: التعريفات الأساسية، DMM، مبدأ العمل، سؤال التفكير.</p>
+        <div class="targets">
+          <button class="btn" data-open="w3_def_turbine">تعريف عنفة الرياح</button>
+          <button class="btn" data-open="w3_fan_vs_turbine">الفرق بين العنفة والمروحة</button>
+          <button class="btn" data-open="w3_dmm">تعريف جهاز DMM</button>
+          <button class="btn" data-open="w3_note_wind">ملاحظة هامة (السرعة ⇢ V/I)</button>
+          <button class="btn" data-open="w3_current_def">تعريف شدة التيار</button>
+          <button class="btn" data-open="w3_voltage_def">تعريف فرق الجهد</button>
+          <button class="btn" data-open="w3_principle">مبدأ عمل العنفات</button>
+          <button class="btn" data-open="w3_q_bulb">سؤال: لا يعمل المصباح؟</button>
         </div>
       </article>
     </section>
@@ -60,34 +82,22 @@
     <section class="grid" style="margin-top:18px">
       <article class="card col-4">
         <h2><span class="icon">🧭</span> خطة الزمن (٤٥–٥٠ د)</h2>
-        <p>تهيئة → محطات → شرح → توسّع → تقويم.</p>
-        <div class="targets">
-          <!-- زرّ عرض تقديمي لطاقة الرياح -->
-<a class="btn accent" href="../slides/wind-energy-2022.pptx" download aria-label="تحميل عرض تقديمي لطاقة الرياح">
-  عرض تقديمي: طاقة الرياح (PPTX)
-</a>
-
-<!-- فيديو توضيحي (اختياري) -->
-<a class="btn ghost" href="https://youtu.be/DILJJwsFl3w" target="_blank" rel="noopener" aria-label="مشاهدة فيديو يوضّح آلية توليد الكهرباء من الرياح">
-  فيديو: آلية التوليد
-</a>
-
-          <button class="btn" data-open="timeline">عرض الخطة الزمنية</button>
-        </div>
+        <p>تهيئة → محطات → شرح → تمثيل → تقويم.</p>
+        <div class="targets"><button class="btn" data-open="timeline">عرض الخطة</button></div>
       </article>
 
       <article class="card col-4">
         <h2><span class="icon">🧠</span> الشرح والتوسّع</h2>
-        <p>استنتاج العلاقة بين السرعة والقدرة وربطها بتصميم الريشة.</p>
+        <p>العلاقة بين سرعة الرياح والقدرة P≈V×I، وزاوية الشفرات.</p>
         <div class="targets">
           <button class="btn" data-open="explain">نقاط الشرح</button>
-          <button class="btn" data-open="elaborate">التوسّع (تحسين التصميم/الكود)</button>
+          <button class="btn" data-open="elaborate">التوسّع (Scratch/3D)</button>
         </div>
       </article>
 
       <article class="card col-4">
         <h2><span class="icon">🛡️</span> السلامة والإتاحة</h2>
-        <p>تثبيت المراوح، أمان الجهد المنخفض، تهوية الطابعة، WCAG.</p>
+        <p>تثبيت العنفة، أمان الشفرات، توصيلات منخفضة الجهد.</p>
         <div class="targets">
           <button class="btn" data-open="safety">إرشادات السلامة</button>
           <button class="btn" data-open="access">إتاحة الوصول</button>
@@ -99,18 +109,17 @@
     <section class="grid" style="margin-top:18px">
       <article class="card col-6">
         <h2><span class="icon">📝</span> التقويم داخل الحصة</h2>
-        <p>Quiz قصير، ورقة قياس، مشروع 3D/Scratch مصغّر، بطاقة خروج.</p>
+        <p>Quiz قصير، جدول قياسات، بطاقة خروج.</p>
         <div class="targets">
           <button class="btn" data-open="assess_quiz">الاختبار القصير</button>
-          <button class="btn" data-open="assess_ws">ورقة قياس (جدول V/I)</button>
-          <button class="btn" data-open="assess_project">مشروع 3D/Scratch</button>
+          <button class="btn" data-open="assess_ws">ورقة قياسات V/I</button>
           <button class="btn" data-open="assess_rubric">روبرك مختصر</button>
         </div>
       </article>
 
       <article class="card col-6">
         <h2><span class="icon">📦</span> الموارد والأدوات</h2>
-        <p>عنفة مصغّرة/مروحة، مولّد صغير، DMM، بروتوبورد، PLA، Slicer.</p>
+        <p>عنفة مصغّرة، مروحة/مجفف هواء، DMM، بروتوبورد، LED + مقاومات.</p>
         <div class="targets">
           <button class="btn" data-open="resources">قائمة الموارد</button>
           <button class="btn" data-open="links">روابط مفيدة</button>
@@ -137,9 +146,14 @@
 
   </div>
 
-  <!-- JS (data → helpers → app) -->
+  <!-- JS -->
   <script src="../js/content-week3.js"></script>
   <script src="../js/ui-helpers.js"></script>
   <script src="../js/lesson-week3-app.js"></script>
+
+  <!-- أيقونة الصفحة الرئيسية العائمة -->
+  <a class="home-fab" href="../index.html" title="العودة للصفحة الرئيسية">
+    <span class="ico">🏠</span> الرئيسية
+  </a>
 </body>
 </html>
