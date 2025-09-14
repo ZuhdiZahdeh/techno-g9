@@ -1,0 +1,12 @@
+# Normalize line endings
+* text=auto
+
+
+
+# Web assets use LF
+*.html text eol=lf
+*.css  text eol=lf
+*.js   text eol=lf
+*.json text eol=lf
+*.md   text eol=lf
+*.yml  text eol=lf
