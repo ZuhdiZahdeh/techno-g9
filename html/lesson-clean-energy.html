@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>الصف التاسع | الطاقة النظيفة × Scratch × Tinkercad × طباعة ثلاثية الأبعاد</title>
-
+  <link rel="stylesheet" href="../css/lightbox.css"><!-- Lightbox -->
   <!-- Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;800&display=swap" rel="stylesheet">
 
@@ -20,13 +20,13 @@
     <header>
       <h1>الطاقة النظيفة × Scratch × Tinkercad × طباعة ثلاثية الأبعاد</h1>
       <p>الصف التاسع (١٤–١٥ سنة) — حصّة تفاعلية تربط التجربة العملية بالبرمجة والتصميم الثلاثي الأبعاد.</p>
-<div class="toolbar" role="toolbar" aria-label="أدوات عامة">
-  <a class="btn ghost" href="../index.html" title="الصفحة الرئيسية">🏠 الرئيسية</a>
-  <a class="btn ghost" href="lesson-clean-energy-student.html#ppt">نسخة الطالب</a>
-  <button class="btn primary" id="startFocus">بدء مؤقّت ٥ دقائق للأنشطة</button>
-  <button class="btn ghost" id="toggleFont">تكبير الخط</button>
-  <button class="btn accent" onclick="window.print()">طباعة هذا الدرس</button>
-</div>
+      <div class="toolbar" role="toolbar" aria-label="أدوات عامة">
+        <a class="btn ghost" href="../index.html" title="الصفحة الرئيسية">🏠 الرئيسية</a>
+        <a class="btn ghost" href="lesson-clean-energy-student.html#ppt">نسخة الطالب</a>
+        <button class="btn primary" id="startFocus">بدء مؤقّت ٥ دقائق للأنشطة</button>
+        <button class="btn ghost" id="toggleFont">تكبير الخط</button>
+        <button class="btn accent" onclick="window.print()">طباعة هذا الدرس</button>
+      </div>
     </header>
 
     <!-- Row 1 -->
@@ -58,7 +58,7 @@
       </article>
     </section>
 
-    <!-- Row: Basic Concepts (NEW) -->
+    <!-- Row: Basic Concepts -->
     <section class="grid" style="margin-top:18px">
       <article class="card col-12">
         <h2><span class="icon">📚</span> مفاهيم أساسية (الطاقة)</h2>
@@ -80,9 +80,7 @@
       <article class="card col-4">
         <h2><span class="icon">🧭</span> خطة الزمن (٩٠ د)</h2>
         <p>تهيئة → محطات → شرح → توسّع → تقويم.</p>
-        <div class="targets">
-          <button class="btn" data-open="timeline">عرض الخطة الزمنية</button>
-        </div>
+        <div class="targets"><button class="btn" data-open="timeline">عرض الخطة الزمنية</button></div>
       </article>
 
       <article class="card col-4">
@@ -123,7 +121,6 @@
         <div class="targets">
           <button class="btn" data-open="resources">قائمة الموارد</button>
           <button class="btn" data-open="links">روابط مفيدة</button>
-          <!-- الزر الجديد لعرض الـ PPTX -->
           <button class="btn accent" data-open="res_ppt">العرض التقديمي: تكنولوجيا الطاقة النظيفة (PPTX)</button>
         </div>
       </article>
@@ -146,16 +143,29 @@
       </div>
     </div>
 
-  </div>
+    <!-- معرض الصور (داخل الحاوية) -->
+    <section id="gallery" class="grid" style="margin-top:18px">
+      <article class="card col-12">
+        <h2><span class="icon">🖼️</span> صور الدرس</h2>
+        <p class="muted">صور توضيحية داخل <code>assets/study/week1/</code> (<code>w1-01.png</code> …) ستظهر تلقائيًا.</p>
+        <div class="gallery w-thumbs" data-full-w="720" data-full-h="400" data-path="../assets/study/week1/"></div>
+      </article>
+    </section>
+
+  </div><!-- /container -->
 
   <!-- JS (data → helpers → app) -->
   <script src="../js/content-clean-energy.js"></script>
   <script src="../js/ui-helpers.js"></script>
   <script src="../js/lesson-clean-energy-app.js"></script>
-  <a class="home-fab" href="../index.html" title="الصفحة الرئيسية">
-  <span class="ico">🏠</span> الرئيسية
-</a>
 
+  <!-- Lightbox + autoload -->
+  <script src="../js/lightbox.js" defer></script>
+  <script src="../js/gallery-autoload.js" defer></script>
+
+  <!-- أيقونة الصفحة الرئيسية العائمة -->
+  <a class="home-fab" href="../index.html" title="الصفحة الرئيسية">
+    <span class="ico">🏠</span> الرئيسية
+  </a>
 </body>
 </html>
-

@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>الطاقة النظيفة × Scratch × Tinkercad × طباعة ثلاثية الأبعاد</title>
-
+<link rel="stylesheet" href="../css/lightbox.css">
   <!-- Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;800&display=swap" rel="stylesheet">
 
@@ -17,142 +17,153 @@
 <body>
   <div class="container" id="app">
 
-    <header>
-      <h1>الطاقة النظيفة × Scratch × Tinkercad × طباعة ثلاثية الأبعاد</h1>
-      <p>الصف التاسع (١٤–١٥ سنة) — حصّة تفاعلية تربط التجربة العملية بالبرمجة والتصميم الثلاثي الأبعاد.</p>
+		<header>
+		  <h1>الطاقة النظيفة × Scratch × Tinkercad × طباعة ثلاثية الأبعاد</h1>
+		  <p>الصف التاسع (١٤–١٥ سنة) — حصّة تفاعلية تربط التجربة العملية بالبرمجة والتصميم الثلاثي الأبعاد.</p>
 
-      <div class="toolbar" role="toolbar" aria-label="أدوات عامة">
-        <a class="btn ghost" href="../index.html" title="الصفحة الرئيسية">🏠 الرئيسية</a>
-        <a class="btn ghost" href="lesson-week2-student.html#ppt">نسخة الطالب</a>
-        <button class="btn primary" id="startFocus" type="button">بدء مؤقّت ٥ دقائق للأنشطة</button>
-        <button class="btn ghost" id="toggleFont" type="button">تكبير الخط</button>
-        <button class="btn accent" type="button" onclick="window.print()">طباعة هذا الدرس</button>
-      </div>
-    </header>
+		  <div class="toolbar" role="toolbar" aria-label="أدوات عامة">
+			<a class="btn ghost" href="../index.html" title="الصفحة الرئيسية">🏠 الرئيسية</a>
+			<a class="btn ghost" href="lesson-week2-student.html#ppt">نسخة الطالب</a>
+			<button class="btn primary" id="startFocus" type="button">بدء مؤقّت ٥ دقائق للأنشطة</button>
+			<button class="btn ghost" id="toggleFont" type="button">تكبير الخط</button>
+			<button class="btn accent" type="button" onclick="window.print()">طباعة هذا الدرس</button>
+		  </div>
+		</header>
 
-    <!-- Row 1 -->
-    <section class="grid" aria-label="الأقسام الرئيسية">
-      <article class="card col-6">
-        <h2><span class="icon">🎯</span> الأهداف التعليمية</h2>
-        <p>تفريق/مقارنة/تحليل/بناء حجة مدعومة بأدلة ووسائط.</p>
-        <div class="targets">
-          <button class="btn" data-open="g1">١) تعريف ومصادر الطاقتين</button>
-          <button class="btn" data-open="g2">٢) مقارنة الخصائص (جدول)</button>
-          <button class="btn" data-open="g3">٣) الأثر البيئي والصحي</button>
-          <button class="btn" data-open="g4">٤) الاستخدامات والموثوقية</button>
-          <button class="btn" data-open="g5">٥) إنتاج وسائط/Scratch + Tinkercad</button>
-          <button class="btn" data-open="g6">٦) تقويم وبناء حجة</button>
-        </div>
-      </article>
+		<!-- Row 1 -->
+		<section class="grid" aria-label="الأقسام الرئيسية">
+		  <article class="card col-6">
+			<h2><span class="icon">🎯</span> الأهداف التعليمية</h2>
+			<p>تفريق/مقارنة/تحليل/بناء حجة مدعومة بأدلة ووسائط.</p>
+			<div class="targets">
+			  <button class="btn" data-open="g1">١) تعريف ومصادر الطاقتين</button>
+			  <button class="btn" data-open="g2">٢) مقارنة الخصائص (جدول)</button>
+			  <button class="btn" data-open="g3">٣) الأثر البيئي والصحي</button>
+			  <button class="btn" data-open="g4">٤) الاستخدامات والموثوقية</button>
+			  <button class="btn" data-open="g5">٥) إنتاج وسائط/Scratch + Tinkercad</button>
+			  <button class="btn" data-open="g6">٦) تقويم وبناء حجة</button>
+			</div>
+		  </article>
 
-      <article class="card col-6">
-        <h2><span class="icon">🧪</span> محطات الاستكشاف</h2>
-        <p>فرز بطاقات، مصفوفة قرار، إلكترونيات، Scratch، Tinkercad/٣D، مناقشة منظَّمة.</p>
-        <div class="targets">
-          <button class="btn" data-open="st_sort">محطة الفرز والتصنيف</button>
-          <button class="btn" data-open="st_matrix">محطة مصفوفة القرار</button>
-          <button class="btn" data-open="st_elec">محطة الإلكترونيات</button>
-          <button class="btn" data-open="st_scratch">محطة Scratch</button>
-          <button class="btn" data-open="st_3d">محطة Tinkercad/الطباعة</button>
-          <button class="btn" data-open="st_debate">محطة المناقشة</button>
-        </div>
-      </article>
-    </section>
+		  <article class="card col-6">
+			<h2><span class="icon">🧪</span> محطات الاستكشاف</h2>
+			<p>فرز بطاقات، مصفوفة قرار، إلكترونيات، Scratch، Tinkercad/٣D، مناقشة منظَّمة.</p>
+			<div class="targets">
+			  <button class="btn" data-open="st_sort">محطة الفرز والتصنيف</button>
+			  <button class="btn" data-open="st_matrix">محطة مصفوفة القرار</button>
+			  <button class="btn" data-open="st_elec">محطة الإلكترونيات</button>
+			  <button class="btn" data-open="st_scratch">محطة Scratch</button>
+			  <button class="btn" data-open="st_3d">محطة Tinkercad/الطباعة</button>
+			  <button class="btn" data-open="st_debate">محطة المناقشة</button>
+			</div>
+		  </article>
+		</section>
 
-    <!-- Row: Basic Concepts (NEW) -->
-    <section class="grid" style="margin-top:18px">
-      <article class="card col-12">
-        <h2><span class="icon">📚</span> مفاهيم أساسية (الطاقة النظيفة)</h2>
-        <p>بطاقات ملخصة: التعريف، أمثلة، إيجابيات، مصطلحات، استخدامات (قديمًا/حديثًا).</p>
-        <div class="targets">
-          <button class="btn" data-open="w2_def">تعريف الطاقة النظيفة</button>
-          <button class="btn" data-open="w2_examples">أمثلة / أشكال الطاقة النظيفة</button>
-          <button class="btn" data-open="w2_pos">إيجابيات الطاقة النظيفة</button>
-          <button class="btn" data-open="w2_terms">مصطلحات أخرى</button>
-          <button class="btn" data-open="w2_uses">استخدامات الطاقة النظيفة (قديمًا/حديثًا)</button>
-        </div>
-      </article>
-    </section>
+		<!-- Row: Basic Concepts (NEW) -->
+		<section class="grid" style="margin-top:18px">
+		  <article class="card col-12">
+			<h2><span class="icon">📚</span> مفاهيم أساسية (الطاقة النظيفة)</h2>
+			<p>بطاقات ملخصة: التعريف، أمثلة، إيجابيات، مصطلحات، استخدامات (قديمًا/حديثًا).</p>
+			<div class="targets">
+			  <button class="btn" data-open="w2_def">تعريف الطاقة النظيفة</button>
+			  <button class="btn" data-open="w2_examples">أمثلة / أشكال الطاقة النظيفة</button>
+			  <button class="btn" data-open="w2_pos">إيجابيات الطاقة النظيفة</button>
+			  <button class="btn" data-open="w2_terms">مصطلحات أخرى</button>
+			  <button class="btn" data-open="w2_uses">استخدامات الطاقة النظيفة (قديمًا/حديثًا)</button>
+			</div>
+		  </article>
+		</section>
 
-    <!-- Row 2 -->
-    <section class="grid" style="margin-top:18px">
-      <article class="card col-4">
-        <h2><span class="icon">🧭</span> خطة الزمن (٤٥–٥٠ د)</h2>
-        <p>تهيئة → محطات → شرح → وسائط → تقويم.</p>
-        <div class="targets">
-          <button class="btn" data-open="timeline">عرض الخطة الزمنية</button>
-        </div>
-      </article>
+		<!-- Row 2 -->
+		<section class="grid" style="margin-top:18px">
+		  <article class="card col-4">
+			<h2><span class="icon">🧭</span> خطة الزمن (٤٥–٥٠ د)</h2>
+			<p>تهيئة → محطات → شرح → وسائط → تقويم.</p>
+			<div class="targets">
+			  <button class="btn" data-open="timeline">عرض الخطة الزمنية</button>
+			</div>
+		  </article>
 
-      <article class="card col-4">
-        <h2><span class="icon">🧠</span> الشرح والتوسّع</h2>
-        <p>إبراز معايير المقارنة وبناء الحجة على أدلة.</p>
-        <div class="targets">
-          <button class="btn" data-open="explain">نقاط الشرح</button>
-          <button class="btn" data-open="elaborate">التوسّع (وسائط/Scratch)</button>
-        </div>
-      </article>
+		  <article class="card col-4">
+			<h2><span class="icon">🧠</span> الشرح والتوسّع</h2>
+			<p>إبراز معايير المقارنة وبناء الحجة على أدلة.</p>
+			<div class="targets">
+			  <button class="btn" data-open="explain">نقاط الشرح</button>
+			  <button class="btn" data-open="elaborate">التوسّع (وسائط/Scratch)</button>
+			</div>
+		  </article>
 
-      <article class="card col-4">
-        <h2><span class="icon">🛡️</span> السلامة والإتاحة</h2>
-        <p>أمان التجارب والطباعات، وإتاحة الوصول (WCAG).</p>
-        <div class="targets">
-          <button class="btn" data-open="safety">إرشادات السلامة</button>
-          <button class="btn" data-open="access">إتاحة الوصول</button>
-        </div>
-      </article>
-    </section>
+		  <article class="card col-4">
+			<h2><span class="icon">🛡️</span> السلامة والإتاحة</h2>
+			<p>أمان التجارب والطباعات، وإتاحة الوصول (WCAG).</p>
+			<div class="targets">
+			  <button class="btn" data-open="safety">إرشادات السلامة</button>
+			  <button class="btn" data-open="access">إتاحة الوصول</button>
+			</div>
+		  </article>
+		</section>
 
-    <!-- Row 3 -->
-    <section class="grid" style="margin-top:18px">
-      <article class="card col-6">
-        <h2><span class="icon">📝</span> التقويم داخل الحصة</h2>
-        <p>Quiz قصير، ورقة مقارنة، مشروع وسائط/Scratch، بطاقة خروج.</p>
-        <div class="targets">
-          <button class="btn" data-open="assess_quiz">الاختبار القصير</button>
-          <button class="btn" data-open="assess_ws">ورقة مقارنة (جدول)</button>
-          <button class="btn" data-open="assess_project">مشروع وسائط/Scratch</button>
-          <button class="btn" data-open="assess_rubric">روبرك مختصر</button>
-        </div>
-      </article>
+		<!-- Row 3 -->
+		<section class="grid" style="margin-top:18px">
+		  <article class="card col-6">
+			<h2><span class="icon">📝</span> التقويم داخل الحصة</h2>
+			<p>Quiz قصير، ورقة مقارنة، مشروع وسائط/Scratch، بطاقة خروج.</p>
+			<div class="targets">
+			  <button class="btn" data-open="assess_quiz">الاختبار القصير</button>
+			  <button class="btn" data-open="assess_ws">ورقة مقارنة (جدول)</button>
+			  <button class="btn" data-open="assess_project">مشروع وسائط/Scratch</button>
+			  <button class="btn" data-open="assess_rubric">روبرك مختصر</button>
+			</div>
+		  </article>
 
-      <article class="card col-6">
-        <h2><span class="icon">📦</span> الموارد والأدوات</h2>
-        <p>بطاقات مصادر الطاقة، لافتات/مصفوفات، حواسيب، PLA، DMM، بروتوبورد.</p>
-        <div class="targets">
-          <button class="btn" data-open="resources">قائمة الموارد</button>
-          <button class="btn" data-open="links">روابط مفيدة</button>
-        </div>
-      </article>
-    </section>
+		  <article class="card col-6">
+			<h2><span class="icon">📦</span> الموارد والأدوات</h2>
+			<p>بطاقات مصادر الطاقة، لافتات/مصفوفات، حواسيب، PLA، DMM، بروتوبورد.</p>
+			<div class="targets">
+			  <button class="btn" data-open="resources">قائمة الموارد</button>
+			  <button class="btn" data-open="links">روابط مفيدة</button>
+			</div>
+		  </article>
+		</section>
 
-    <!-- Modal -->
-    <div class="modal-backdrop" id="backdrop" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
-      <div class="modal" role="document">
-        <header>
-          <h3 id="modalTitle">تفاصيل</h3>
-          <div>
-            <button class="btn ghost" id="printModal" title="طباعة">طباعة</button>
-            <button class="btn danger" id="closeModal">إغلاق ✕</button>
-          </div>
-        </header>
-        <div class="content" id="modalContent" tabindex="0"></div>
-        <div class="actions">
-          <button class="btn primary" id="closeBottom">تم</button>
-        </div>
-      </div>
-    </div>
+		<!-- Modal -->
+		<div class="modal-backdrop" id="backdrop" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+		  <div class="modal" role="document">
+			<header>
+			  <h3 id="modalTitle">تفاصيل</h3>
+			  <div>
+				<button class="btn ghost" id="printModal" title="طباعة">طباعة</button>
+				<button class="btn danger" id="closeModal">إغلاق ✕</button>
+			  </div>
+			</header>
+			<div class="content" id="modalContent" tabindex="0"></div>
+			<div class="actions">
+			  <button class="btn primary" id="closeBottom">تم</button>
+			</div>
+		  </div>
+		</div>
+		<!-- معرض الصور (تضيفها لاحقًا) -->
+		<section id="gallery" class="grid" style="margin-top:18px">
+		  <article class="card col-12">
+			<h2><span class="icon">🖼️</span> صور الدرس</h2>
+			<p class="muted">صور توضيحية داخل <code>assets/study/week2/</code> (<code>w2-01.png</code> …).</p>
+			<div class="gallery w-thumbs" data-full-w="720" data-full-h="400" data-path="../assets/study/week2/"></div>
+		  </article>
+		</section>
 
+		<footer class="student-footer">
+		  <a href="#top" class="btn ghost">⬆ العودة للأعلى</a>
+		</footer>
   </div>
-
-  <!-- JS (data → helpers → app) -->
-  <script src="../js/content-week2.js"></script>
-  <script src="../js/ui-helpers.js"></script>
-  <script src="../js/lesson-week2-app.js"></script>
-
-  <!-- أيقونة الصفحة الرئيسية العائمة -->
-  <a class="home-fab" href="../index.html" title="العودة للصفحة الرئيسية">
+    <!-- أيقونة الصفحة الرئيسية العائمة -->
+    <a class="home-fab" href="../index.html" title="العودة للصفحة الرئيسية">
     <span class="ico">🏠</span> الرئيسية
-  </a>
+	</a>
+  <!-- JS (data → helpers → app) -->
+	<script src="../js/content-week2.js"></script>
+	<script src="../js/ui-helpers.js"></script>
+	<script src="../js/lesson-week2-app.js"></script>
+	<script src="../js/lightbox.js" defer></script>
+	<script src="../js/gallery-autoload.js" defer></script>
 </body>
 </html>

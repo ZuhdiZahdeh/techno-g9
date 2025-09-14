@@ -1,6 +1,6 @@
 /* ========== Lightbox (reusable) ========== */
 
-/* شبكة المصغّرات (الثَمب) */
+/* شبكة المصغّرات */
 .w-thumbs{
   display:grid;
   grid-template-columns:repeat(auto-fill,minmax(220px,1fr));
@@ -14,7 +14,7 @@
 }
 .w-thumbs figcaption{ margin-top:6px; font-size:.9rem; color:#475569 }
 
-/* نافذة اللايت بوكس */
+/* طبقة اللايت بوكس */
 .w-lightbox{
   position:fixed; inset:0; display:none;
   align-items:center; justify-content:center;
@@ -25,13 +25,26 @@
   background:#fff; border-radius:14px; padding:10px;
   box-shadow:0 20px 40px rgba(0,0,0,.25);
   max-width:calc(100vw - 32px);
+  max-height:calc(100vh - 32px);
 }
 
-/* حجم الصورة داخل اللايت بوكس (ثابت أو حسب الـdata attrs) */
+/* صورة اللايت-بوكس — مرنة مع الحفاظ على النسبة */
 .w-lightbox img{
-  width:var(--lb-w,540px);
-  height:var(--lb-h,305px);
-  object-fit:cover; display:block; border-radius:10px; max-width:100%;
+  display:block; border-radius:10px;
+  /* العرض المفضّل لسطح المكتب + حافة آمنة */
+  width: min(var(--lb-w, 720px), calc(100vw - 48px));
+  /* اجعل الارتفاع يتبع العرض مع سقف للارتفاع */
+  height: auto;
+  max-height: calc(100vh - 160px);
+  /* حافظ على النسبة (يُمرَّر من JS) */
+  aspect-ratio: var(--lb-aspect, 16/9);
+  object-fit: contain; /* بلا قص */
 }
 
-.w-actions{ display:flex; gap:8px; justify-content:flex-end; margin-top:8px }
+/* تحسين للموبايل */
+@media (max-width: 640px){
+  .w-lightbox img{
+    width: calc(100vw - 32px);
+    max-height: calc(100vh - 120px);
+  }
+}

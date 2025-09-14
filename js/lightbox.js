@@ -1,79 +1,69 @@
 /* ========== Lightbox (reusable) ==========
-   - يربط تلقائيًا بكل .w-thumbs في الصفحة
-   - يدعم التخصيص عبر data-full-w / data-full-h على حاوية المعرض
-   - الصورة الكاملة تُؤخذ من data-full على <img> وإلا src نفسه
-   - يصدّر WLightbox.bind(root, {w,h}) للربط اليدوي عند الحاجة
+   - يلتقط نقر أي <img> داخل .w-thumbs (تفويض أحداث)
+   - تخصيص الأبعاد عبر data-full-w / data-full-h على حاوية المعرض
+   - يحافظ على النسبة عبر --lb-aspect
 */
 (function(){
-  function buildBox(w,h){
-    var box = document.createElement('div');
-    box.className = 'w-lightbox';
-    box.id = 'wLightbox';
-    if(w) box.style.setProperty('--lb-w', w + 'px');
-    if(h) box.style.setProperty('--lb-h', h + 'px');
-    box.innerHTML =
-      '<div class="card" role="dialog" aria-modal="true">' +
-        '<img id="wLbImg" alt="">' +
-        '<div class="w-actions">' +
-          '<button class="btn ghost" id="wLbOpen" type="button">فتح في تبويب جديد ↗</button>' +
-          '<button class="btn danger" id="wLbClose" type="button">إغلاق ✕</button>' +
-        '</div>' +
-      '</div>';
-    document.body.appendChild(box);
-    return box;
-  }
-
-  function ensureBox(opts){
+  function ensureBox(){
     var box = document.getElementById('wLightbox');
-    if(!box) box = buildBox(opts && opts.w, opts && opts.h);
+    if(!box){
+      box = document.createElement('div');
+      box.className = 'w-lightbox';
+      box.id = 'wLightbox';
+      box.innerHTML =
+        '<div class="card" role="dialog" aria-modal="true">' +
+          '<img id="wLbImg" alt="">' +
+          '<div class="w-actions">' +
+            '<button class="btn ghost" id="wLbOpen" type="button">فتح في تبويب جديد ↗</button>' +
+            '<button class="btn danger" id="wLbClose" type="button">إغلاق ✕</button>' +
+          '</div>' +
+        '</div>';
+      document.body.appendChild(box);
+    }
     return box;
   }
 
-  function bind(root, opts){
-    root = root || document;
-    opts = opts || {};
-    var box = ensureBox(opts);
+  function applySize(box, size){
+    if(!size) return;
+    if(size.w) box.style.setProperty('--lb-w', size.w + 'px');
+    if(size.h) box.style.setProperty('--lb-h', size.h + 'px');
+    if(size.w && size.h) box.style.setProperty('--lb-aspect', size.w + ' / ' + size.h);
+  }
+
+  function getGallerySize(container){
+    return {
+      w: parseInt(container.getAttribute('data-full-w') || 720, 10),
+      h: parseInt(container.getAttribute('data-full-h') || 400, 10)
+    };
+  }
+
+  function open(full, alt, size){
+    var box = ensureBox();
+    applySize(box, size);
     var img = box.querySelector('#wLbImg');
     var openBtn = box.querySelector('#wLbOpen');
     var closeBtn= box.querySelector('#wLbClose');
 
-    function open(full, alt, size){
-      if(size && size.w) box.style.setProperty('--lb-w', size.w + 'px');
-      if(size && size.h) box.style.setProperty('--lb-h', size.h + 'px');
-      img.src = full; img.alt = alt || '';
-      box.classList.add('open');
-      openBtn.onclick = function(){ window.open(full, '_blank'); };
-    }
+    img.src = full; img.alt = alt || '';
+    box.classList.add('open');
+    openBtn.onclick = function(){ window.open(full, '_blank'); };
+
     function close(){ box.classList.remove('open'); }
-
-    // اربط جميع معارض .w-thumbs
-    root.querySelectorAll('.w-thumbs').forEach(function(container){
-      var cSize = {
-        w: parseInt(container.getAttribute('data-full-w') || opts.w || 540, 10),
-        h: parseInt(container.getAttribute('data-full-h') || opts.h || 305, 10)
-      };
-      container.querySelectorAll('img').forEach(function(th){
-        th.addEventListener('click', function(){
-          var full = th.getAttribute('data-full') || th.src;
-          open(full, th.alt, cSize);
-        });
-      });
-    });
-
-    // إغلاق بالزر/بالنقر خارج/بالـEsc
-    closeBtn.addEventListener('click', close);
-    box.addEventListener('click', function(e){ if(e.target === box) close(); });
-    window.addEventListener('keydown', function(e){ if(e.key === 'Escape') close(); });
+    closeBtn.onclick = close;
+    box.addEventListener('click', function(e){ if(e.target === box) close(); }, { once:true });
+    window.addEventListener('keydown', function esc(e){ if(e.key==='Escape'){ close(); window.removeEventListener('keydown', esc);} });
   }
 
-  // ربط تلقائي عند تحميل DOM
-  function auto(){ bind(document, {}); }
-  if(document.readyState === 'loading'){
-    document.addEventListener('DOMContentLoaded', auto);
-  }else{
-    auto();
-  }
+  // تفويض أحداث: أي نقرة على صورة داخل .w-thumbs
+  document.addEventListener('click', function(ev){
+    var img = ev.target.closest('.w-thumbs img');
+    if(!img) return;
+    var container = img.closest('.w-thumbs');
+    var size = getGallerySize(container);
+    var full = img.getAttribute('data-full') || img.src;
+    open(full, img.alt, size);
+  });
 
-  // تصدير دالة الربط اليدوي
-  window.WLightbox = { bind: bind };
+  // تصدير اختياري لإعادة الربط اليدوي (غير مطلوب مع التفويض)
+  window.WLightbox = { bind: function(){} };
 })();
