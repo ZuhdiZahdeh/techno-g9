@@ -3,203 +3,259 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>الأسبوع ٣ | طاقة الرياح — العنفة وقياسات V/I</title>
+  <title>صفحة المعلّم — طاقة الرياح (الأسبوع ٣)</title>
 
   <!-- Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;800&display=swap" rel="stylesheet">
-	<!-- معرض الصور -->
-	<link rel="stylesheet" href="../css/lightbox.css">
-
-  <!-- CSS (theme → base → components → page) -->
+  <!-- معرض الصور -->
+  <link rel="stylesheet" href="../css/lightbox.css">
+  <!-- CSS العام -->
   <link rel="stylesheet" href="../css/tokens-theme.css">
   <link rel="stylesheet" href="../css/base-rtl.css">
   <link rel="stylesheet" href="../css/components-ui.css">
-  <!-- يمكنك لاحقًا إنشاء lesson-week3.css؛ مؤقتًا نستخدم تدرّج الأسبوع ٢ لتناسق الشكل -->
-  <link rel="stylesheet" href="../css/lesson-week2.css">
+  <link rel="stylesheet" href="../css/lesson-week2.css"><!-- نفس تدرّج العنوان مؤقتًا -->
+  <link rel="stylesheet" href="../css/teacher-clean-energy.css">
+  <style>
+    .k12-badge{display:inline-flex;gap:8px;align-items:center;padding:6px 10px;border-radius:999px;background:var(--brand-100,#eef2ff);border:1px solid rgba(99,102,241,.2)}
+    .tbl td,.tbl th{vertical-align:top}
+    .qa .q{font-weight:600}
+    .qa .a{margin:.25rem 0 .75rem;color:#065f46}
+    .tag.warn{background:#fff7ed;color:#9a3412}
+  </style>
 </head>
 <body>
-  <div class="container" id="app">
+  <div class="container" id="top">
 
-    <!-- رأس كما اتفقنا: شريط أدوات + روابط -->
-    <header>
-      <h1>الأسبوع ٣: طاقة الرياح — العنفة وقياسات V/I</h1>
-      <p>الصف التاسع (١٤–١٥ سنة) — تجربة عنفة مصغّرة، قياس DMM، وتمثيل برمجي.</p>
+    <header class="teacher-hero">
+      <h1>صفحة المعلّم — طاقة الرياح (الأسبوع ٣)</h1>
+      <p class="lead">عنفة الرياح، الفرق عن المروحة، تعريفات V/I، استخدام DMM، مبدأ العمل، وأنشطة مختبرية مع أسئلة تثبيت وإجابات نموذجية.</p>
 
-      <div class="toolbar" role="toolbar" aria-label="أدوات عامة">
-        <a class="btn ghost" href="../index.html" title="الصفحة الرئيسية">🏠 الرئيسية</a>
-        <a class="btn ghost" href="lesson-week3-student.html#ppt">نسخة الطالب</a>
-        <button class="btn primary" id="startFocus" type="button">بدء مؤقّت ٥ دقائق للأنشطة</button>
-        <button class="btn ghost" id="toggleFont" type="button">تكبير الخط</button>
-        <button class="btn accent" type="button" onclick="window.print()">طباعة هذا الدرس</button>
-      </div>
+      <nav class="toc" aria-label="قائمة مختصرة">
+        <a href="../index.html" class="btn ghost">🏠 الرئيسية</a>
+        <a href="lesson-week3-student.html" class="btn ghost">نسخة الطالب</a>
+        <a href="#plan" class="btn ghost">الخطة الزمنية</a>
+        <a href="#concepts" class="btn ghost">مفاهيم الدرس</a>
+        <a href="#lab" class="btn ghost">نشاط المختبر</a>
+        <a href="#questions" class="btn primary">أسئلة التثبيت + الإجابات</a>
+        <a href="#gallery" class="btn ghost">صور الدرس</a>
+        <a href="#ppt" class="btn ghost">العرض التقديمي</a>
+      </nav>
     </header>
 
-    <!-- Row 1 -->
-    <section class="grid" aria-label="الأقسام الرئيسية">
-      <article class="card col-6">
-        <h2><span class="icon">🎯</span> الأهداف التعليمية</h2>
-        <p>تعريف العنفة، التمييز بينها وبين المروحة، استخدام DMM، قياس V/I، واستنتاج العلاقة مع سرعة الرياح.</p>
-        <div class="targets">
-          <button class="btn" data-open="g1">١) المفاهيم والتمييز</button>
-          <button class="btn" data-open="g2">٢) مكونات العنفة وآلية العمل</button>
-          <button class="btn" data-open="g3">٣) DMM وقياسات V/I</button>
-          <button class="btn" data-open="g4">٤) تحليل النتائج</button>
-          <button class="btn" data-open="g5">٥) تمثيل برمجي/3D</button>
-          <button class="btn" data-open="g6">٦) تقويم سريع</button>
-        </div>
-      </article>
-
-      <article class="card col-6">
-        <h2><span class="icon">🧪</span> محطات الاستكشاف</h2>
-        <p>عنفة × سرعات مختلفة، زاوية الشفرات، DMM، Scratch، Tinkercad.</p>
-        <div class="targets">
-          <button class="btn" data-open="st_wind">محطة العنفة</button>
-          <button class="btn" data-open="st_angle">محطة زاوية الشفرات</button>
-          <button class="btn" data-open="st_dmm">محطة DMM</button>
-          <button class="btn" data-open="st_scratch">محطة Scratch</button>
-          <button class="btn" data-open="st_3d">محطة Tinkercad</button>
-        </div>
-      </article>
-    </section>
-
-    <!-- Row: Basic Concepts (NEW) -->
-    <section class="grid" style="margin-top:18px">
+    <!-- بطاقة سياق -->
+    <section class="grid">
       <article class="card col-12">
-        <h2><span class="icon">📚</span> مفاهيم أساسية (طاقة الرياح)</h2>
-        <p>بطاقات سريعة: التعريفات الأساسية، DMM، مبدأ العمل، سؤال التفكير.</p>
-        <div class="targets">
-          <button class="btn" data-open="w3_def_turbine">تعريف عنفة الرياح</button>
-          <button class="btn" data-open="w3_fan_vs_turbine">الفرق بين العنفة والمروحة</button>
-          <button class="btn" data-open="w3_dmm">تعريف جهاز DMM</button>
-          <button class="btn" data-open="w3_note_wind">ملاحظة هامة (السرعة ⇢ V/I)</button>
-          <button class="btn" data-open="w3_current_def">تعريف شدة التيار</button>
-          <button class="btn" data-open="w3_voltage_def">تعريف فرق الجهد</button>
-          <button class="btn" data-open="w3_principle">مبدأ عمل العنفات</button>
-          <button class="btn" data-open="w3_q_bulb">سؤال: لا يعمل المصباح؟</button>
+        <div class="k12-badge">🌬️ <b>طاقة الرياح — الأسبوع ٣</b> <span class="tag">V/I &nbsp;•&nbsp; DMM &nbsp;•&nbsp; مبدأ التحويل</span></div>
+        <p style="margin-top:8px">جميع التعريفات والأنشطة في هذه الصفحة مأخوذة ومطابقة للمحتوى المرفق في وثيقة <b>«طاقة الرياح - الأدوات المستخدمة في النشاط»</b>، مع إعادة تنظيم تربوي وتوسيع طفيف للأسئلة بصياغة صفّية واضحة.</p>
+      </article>
+    </section>
+
+    <!-- الأهداف -->
+    <section id="goals" class="grid">
+      <article class="card col-12">
+        <h2><span class="icon">🎯</span> الأهداف التعليمية</h2>
+        <ul>
+          <li>يعرّف الطالب <b>عنفة الرياح</b> ويميّزها عن <b>المروحة الكهربائية</b>.</li>
+          <li>يوظّف الطالب جهاز <b>DMM</b> لقياس <b>فرق الجهد (V)</b> و<b>شدة التيار (I)</b> بصورة آمنة وصحيحة.</li>
+          <li>يفسّر الطالب مبدأ العمل: <b>طاقة حركية ⇠ الرياح ⇢ حركة ميكانيكية ⇢ كهرباء</b>.</li>
+          <li>يوثّق قراءاته ويستنتج علاقة السرعة بكل من <b>V</b> و<b>I</b> ويطبّق <b>P ≈ V × I</b> تقديريًا.</li>
+        </ul>
+      </article>
+    </section>
+
+    <!-- الخطة الزمنية -->
+    <section id="plan" class="grid">
+      <article class="card col-12">
+        <h2><span class="icon">⏱️</span> الخطة الزمنية (٤٥–٥٠ دقيقة)</h2>
+        <ul>
+          <li><b>٠–٥ د</b>: تهيئة سريعة وسؤال تمهيدي.</li>
+          <li><b>٥–٣٠ د</b>: محطات: (العنفة والسرعات) + (زاوية الشفرات) + (قراءات DMM) + (Scratch تمثيلي).</li>
+          <li><b>٣٠–٤٠ د</b>: مناقشة القراءات، ربط النتائج بقدرة <b>P ≈ V×I</b>.</li>
+          <li><b>٤٠–٥٠ د</b>: ورقة قياسات مختصرة + بطاقة خروج.</li>
+        </ul>
+      </article>
+    </section>
+
+    <!-- مفاهيم أساسية -->
+    <section id="concepts" class="grid">
+      <article class="card col-12">
+        <h2><span class="icon">📚</span> مفاهيم الدرس (مطابقة للملف المعتمد)</h2>
+
+        <div class="study-grid">
+          <section class="study-card">
+            <h3>تعريف طاقة الرياح</h3>
+            <p>طاقة مستمدة من <b>حركة الرياح</b> يمكن تحويلها إلى <b>طاقة كهربائية</b> باستخدام العنفات.</p>
+          </section>
+
+          <section class="study-card">
+            <h3>العنفة vs المروحة</h3>
+            <ul>
+              <li><b>عنفة الرياح</b>: تستفيد من طاقة الرياح لتوليد الكهرباء (تحويل حركي ⇢ كهربائي).</li>
+              <li><b>المروحة</b>: تستهلك كهرباء لتوليد حركة هواء (تحويل كهربائي ⇢ حركي).</li>
+            </ul>
+          </section>
+
+          <section class="study-card">
+            <h3>جهاز القياس الرقمي DMM</h3>
+            <p>جهاز رقمي متعدد الوظائف لقياس <b>فرق الجهد V</b> و<b>شدة التيار I</b> و<b>المقاومة Ω</b>.</p>
+            <ul>
+              <li>قياس <b>V</b> على <b>التوازي</b> مع الحمل.</li>
+              <li>قياس <b>I</b> على <b>التوالي</b> مع الحمل.</li>
+            </ul>
+          </section>
+
+          <section class="study-card">
+            <h3>تعريفات أساسية</h3>
+            <ul>
+              <li><b>شدة التيار (A)</b>: كمية الشحنات الكهربية المتدفقة عبر مقطع في وحدة الزمن.</li>
+              <li><b>فرق الجهد (V)</b>: اختلاف كمية الشحنة/الطاقة بين نقطتين.</li>
+            </ul>
+          </section>
+
+          <section class="study-card">
+            <h3>مبدأ عمل دارة الرياح</h3>
+            <p>وجود رياح ⇢ دوران الشفرات ⇢ تحريض كهربائي في الملف داخل المجال المغناطيسي ⇢ شحنات كهربائية تصل إلى المصباح فتضيئه.</p>
+          </section>
+
+          <section class="study-card">
+            <h3>ملاحظة مهمة</h3>
+            <p class="tag warn"><b>كلما زادت سرعة/طاقة الرياح</b> زادت حركة العنفة وارتفع <b>V</b> و<b>I</b> (علاقة طردية).</p>
+          </section>
         </div>
       </article>
     </section>
 
-    <!-- Row 2 -->
-    <section class="grid" style="margin-top:18px">
-      <article class="card col-4">
-        <h2><span class="icon">🧭</span> خطة الزمن (٤٥–٥٠ د)</h2>
-        <p>تهيئة → محطات → شرح → تمثيل → تقويم.</p>
-        <div class="targets"><button class="btn" data-open="timeline">عرض الخطة</button></div>
-      </article>
-
-      <article class="card col-4">
-        <h2><span class="icon">🧠</span> الشرح والتوسّع</h2>
-        <p>العلاقة بين سرعة الرياح والقدرة P≈V×I، وزاوية الشفرات.</p>
-        <div class="targets">
-          <button class="btn" data-open="explain">نقاط الشرح</button>
-          <button class="btn" data-open="elaborate">التوسّع (Scratch/3D)</button>
-        </div>
-      </article>
-
-      <article class="card col-4">
-        <h2><span class="icon">🛡️</span> السلامة والإتاحة</h2>
-        <p>تثبيت العنفة، أمان الشفرات، توصيلات منخفضة الجهد.</p>
-        <div class="targets">
-          <button class="btn" data-open="safety">إرشادات السلامة</button>
-          <button class="btn" data-open="access">إتاحة الوصول</button>
-        </div>
+    <!-- نشاط مختبر -->
+    <section id="lab" class="grid">
+      <article class="card col-12">
+        <h2><span class="icon">🧪</span> نشاط المختبر (قراءات V/I)</h2>
+        <ol>
+          <li>وجّه تيار هوائي بسرعات <b>منخفضة/متوسطة/عالية</b> نحو العنفة.</li>
+          <li>دوّن القراءات في الجدول، مع ملاحظة زاوية الشفرة إن تغيّرت.</li>
+        </ol>
+        <table class="tbl" style="margin-top:10px">
+          <thead><tr><th>الحالة</th><th>V (فولت)</th><th>I (أمبير)</th><th>ملاحظات</th></tr></thead>
+          <tbody>
+            <tr class="row"><td>سرعة منخفضة</td><td></td><td></td><td></td></tr>
+            <tr class="row"><td>سرعة متوسطة</td><td></td><td></td><td></td></tr>
+            <tr class="row"><td>سرعة عالية</td><td></td><td></td><td></td></tr>
+          </tbody>
+        </table>
+        <p class="tag">تقدير القدرة: <b>P ≈ V × I</b>.</p>
       </article>
     </section>
 
-    <!-- Row 3 -->
-    <section class="grid" style="margin-top:18px">
+    <!-- أسئلة التثبيت + إجابات -->
+    <section id="questions" class="grid" style="margin-top:18px">
+      <article class="card col-12">
+        <h2><span class="icon">📝</span> أسئلة التثبيت (من ملف النشاط) — مع الإجابات النموذجية</h2>
+
+        <div class="qa">
+          <p class="q">س١) لماذا لا يعمل المصباح أحيانًا رغم وجود الهواء؟</p>
+          <p class="a">لأن التيار الكهربائي يكون قليلًا/ضعيفًا بسبب سرعة هواء غير كافية أو توصيل غير صحيح.</p>
+
+          <p class="q">س٢) عند تعريض العنفة لتيار هوائي قوي ماذا تتوقع؟</p>
+          <p class="a">يضيء المصباح (ترتفع V و I نتيجة زيادة السرعة).</p>
+
+          <p class="q">س٣) علّل: يصعب الاعتماد دائمًا على حركة الرياح في توليد الكهرباء.</p>
+          <p class="a">لأن سرعة الرياح <b>غير ثابتة</b> وتتغيّر من وقت لآخر.</p>
+
+          <p class="q">س٤) علّل: تسمية «الطاقة المتجددة» بالطاقة «النظيفة».</p>
+          <p class="a">لأن تشغيلها لا ينتج عنه ملوّثات هوائية مباشرة مقارنة بالأحفورية.</p>
+
+          <hr>
+
+          <p class="q">س٥) أكمل الفراغ:</p>
+          <ul class="a">
+            <li>العنفة <b>تحوّل</b> طاقة الرياح إلى طاقة <b>كهربائية</b>.</li>
+            <li>كلما زادت طاقة الرياح تزداد حركة <b>العنفة</b> ويزداد <b>التيار</b> و<b>فرق الجهد</b> (علاقة طردية).</li>
+            <li>المروحة تعمل <b>بعكس</b> العنفة: تحوّل الطاقة <b>الكهربائية</b> إلى طاقة <b>حركية للهواء</b>.</li>
+            <li><b>DMM</b> جهاز رقمي متعدد لقياس <b>الجهد</b> و<b>التيار</b> و<b>المقاومة</b>.</li>
+          </ul>
+
+          <hr>
+
+          <p class="q">س٦) عرّف المصطلحات:</p>
+          <ul class="a">
+            <li><b>شدة التيار</b>: كمية الشحنات المتدفقة عبر مقطع في وحدة الزمن، وتقاس بالأمبير.</li>
+            <li><b>فرق الجهد</b>: مقدار الاختلاف في طاقة الشحنة بين نقطتين، ويقاس بالفولت.</li>
+            <li><b>المروحة</b>: جهاز يستهلك الكهرباء لتوليد تيار هوائي.</li>
+            <li><b>عنفة الرياح</b>: جهاز يستفيد من حركة الهواء لتوليد كهرباء.</li>
+          </ul>
+
+          <hr>
+
+          <p class="q">س٧) من دراسة تجربة دارة طاقة الرياح:</p>
+          <ul class="a">
+            <li>ارسم الدارة وحدد الأجزاء (العنفة/المولّد/الأسلاك/المصباح).</li>
+            <li>اشرح مبدأ العمل كما ورد في المفاهيم.</li>
+            <li>صف ما يحدث عند هواء قوي/ضعيف (قارن القراءات والإنارة).</li>
+          </ul>
+        </div>
+
+        <p class="tag">يمكن استخدام بنود صواب/خطأ سريعة للمراجعة الشفهية:  
+          <b>العنفة تولّد كهرباء من الهواء (صواب)</b> — <b>قياس V على التوالي (خطأ؛ على التوازي)</b> — <b>زيادة السرعة تزيد V/I (صواب)</b> — <b>P≈V×I (صواب)</b> — <b>وظيفة المروحة تماثل العنفة (خطأ)</b>.
+        </p>
+      </article>
+    </section>
+
+    <!-- روابط مفيدة + PPTX -->
+    <section id="ppt" class="grid" style="margin-top:18px">
       <article class="card col-6">
-        <h2><span class="icon">📝</span> التقويم داخل الحصة</h2>
-        <p>Quiz قصير، جدول قياسات، بطاقة خروج.</p>
-        <div class="targets">
-          <button class="btn" data-open="assess_quiz">الاختبار القصير</button>
-          <button class="btn" data-open="assess_ws">ورقة قياسات V/I</button>
-          <button class="btn" data-open="assess_rubric">روبرك مختصر</button>
-        </div>
+        <h2><span class="icon">🔗</span> روابط مفيدة</h2>
+        <ul class="bullet">
+          <li><b>Scratch</b>: <span class="tag">scratch.mit.edu</span></li>
+          <li><b>Tinkercad</b>: <span class="tag">tinkercad.com</span></li>
+        </ul>
       </article>
 
       <article class="card col-6">
-        <h2><span class="icon">📦</span> الموارد والأدوات</h2>
-        <p>عنفة مصغّرة، مروحة/مجفف هواء، DMM، بروتوبورد، LED + مقاومات.</p>
+        <h2><span class="icon">📑</span> العرض التقديمي (PPTX)</h2>
+        <p>شرائح «طاقة الرياح» (المكونات، آلية العمل، القياسات، أمثلة، نشاطات).</p>
         <div class="targets">
-          <button class="btn" data-open="resources">قائمة الموارد</button>
-          <button class="btn" data-open="links">روابط مفيدة</button>
+          <a class="btn primary" href="https://raw.githubusercontent.com/ZuhdiZahdeh/techno-g9/main/assets/wind-energy-2022.pptx" download>تنزيل العرض (PPTX)</a>
+          <a class="btn ghost" href="https://raw.githubusercontent.com/ZuhdiZahdeh/techno-g9/main/assets/wind-energy-2022.pptx" target="_blank" rel="noopener">فتح في تبويب جديد</a>
         </div>
       </article>
     </section>
 
-    <!-- Modal -->
-    <div class="modal-backdrop" id="backdrop" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
-      <div class="modal" role="document">
-        <header>
-          <h3 id="modalTitle">تفاصيل</h3>
-          <div>
-            <button class="btn ghost" id="printModal" title="طباعة">طباعة</button>
-            <button class="btn danger" id="closeModal">إغلاق ✕</button>
-          </div>
-        </header>
-        <div class="content" id="modalContent" tabindex="0"></div>
-        <div class="actions">
-          <button class="btn primary" id="closeBottom">تم</button>
+    <!-- معرض الصور (نفس مجموعة الأسبوع الثالث) -->
+    <section id="gallery" class="grid" style="margin-top:18px">
+      <article class="card col-12">
+        <h2><span class="icon">🖼️</span> صور الدرس</h2>
+        <div class="gallery w-thumbs" data-full-w="720" data-full-h="400">
+          <figure>
+            <img src="../assets/study/week3/w3-01-cutaway.jpg" data-full="../assets/study/week3/w3-01-cutaway.jpg" alt="مكوّنات الناسل">
+            <figcaption>مكوّنات الناسل</figcaption>
+          </figure>
+          <figure>
+            <img src="../assets/study/week3/w3-03-offshore-farm.jpg" data-full="../assets/study/week3/w3-03-offshore-farm.jpg" alt="مزرعة رياح بحرية">
+            <figcaption>مزرعة رياح بحرية</figcaption>
+          </figure>
+          <figure>
+            <img src="../assets/study/week3/w3-05-horizontal-axis.png" data-full="../assets/study/week3/w3-05-horizontal-axis.png" alt="عنفات أفقية">
+            <figcaption>عنفات أفقية المحور</figcaption>
+          </figure>
+          <figure>
+            <img src="../assets/study/week3/w3-06-vertical-axis.png" data-full="../assets/study/week3/w3-06-vertical-axis.png" alt="عنفات عمودية">
+            <figcaption>عنفات عمودية المحور</figcaption>
+          </figure>
         </div>
-      </div>
-    </div>
-<!-- صور توضيحية للأسبوع ٣ -->
-<!-- صور توضيحية للأسبوع ٣ -->
-<section id="gallery" class="grid" style="margin-top:18px">
-  <article class="card col-12">
-    <h2><span class="icon">🖼️</span> صور توضيحية — طاقة الرياح</h2>
+      </article>
+    </section>
 
-    <!-- شبكة المصغّرات -->
-   <div class="gallery w-thumbs" data-full-w="720" data-full-h="400">
-      <figure>
-        <img src="../assets/study/week3/w3-01-cutaway.jpg" data-full="../assets/study/week3/w3-01-cutaway.jpg" alt="مقطع داخل العنفة يوضّح المكوّنات">
-        <figcaption>مقطع داخل حجرة العنفة (Nacelle) والمكوّنات</figcaption>
-      </figure>
-      <figure>
-        <img src="../assets/study/week3/w3-02-nacelle-labeled.jpg" data-full="../assets/study/week3/w3-02-nacelle-labeled.jpg" alt="تسمية أجزاء الناسل والمولّد والعلبة">
-        <figcaption>أجزاء الناسل: مولِّد، علبة تروس، مكابح…</figcaption>
-      </figure>
-      <figure>
-        <img src="../assets/study/week3/w3-03-offshore-farm.jpg" data-full="../assets/study/week3/w3-03-offshore-farm.jpg" alt="مزرعة عنفات رياح بحرية">
-        <figcaption>مزرعة عنفات رياح بحرية</figcaption>
-      </figure>
-      <figure>
-        <img src="../assets/study/week3/w3-04-edu-model.jpg" data-full="../assets/study/week3/w3-04-edu-model.jpg" alt="نموذج تعليمي لعنفات الرياح">
-        <figcaption>نموذج تعليمي للعَنفة</figcaption>
-      </figure>
-      <figure>
-        <img src="../assets/study/week3/w3-05-horizontal-axis.png" data-full="../assets/study/week3/w3-05-horizontal-axis.png" alt="عنفات أفقية المحور">
-        <figcaption>عنفات أفقية المحور (H-AWT)</figcaption>
-      </figure>
-      <figure>
-        <img src="../assets/study/week3/w3-06-vertical-axis.png" data-full="../assets/study/week3/w3-06-vertical-axis.png" alt="عنفات عمودية المحور">
-        <figcaption>عنفات عمودية المحور (V-AWT)</figcaption>
-      </figure>
-      <figure>
-        <img src="../assets/study/week3/w3-07-nacelle-diagram.png" data-full="../assets/study/week3/w3-07-nacelle-diagram.png" alt="مخطط مبسّط لمكوّنات الناسل">
-        <figcaption>مخطط مبسّط لمكوّنات الناسل</figcaption>
-      </figure>
-    </div>
-  </article>
-</section>
-
-
+    <footer class="teacher-footer">
+      <a href="#top" class="btn ghost">⬆ العودة للأعلى</a>
+    </footer>
   </div>
-
-  <!-- JS -->
-<script src="../js/content-week3.js"></script>
-<script src="../js/ui-helpers.js"></script>
-<script src="../js/lesson-week3-app.js"></script>
-<script src="../js/lightbox.js" defer></script>
-<script src="../js/gallery-autoload.js" defer></script>
-
 
   <!-- أيقونة الصفحة الرئيسية العائمة -->
   <a class="home-fab" href="../index.html" title="العودة للصفحة الرئيسية">
     <span class="ico">🏠</span> الرئيسية
   </a>
 
+  <!-- سكربتات المعرض فقط (لا حاجة لسكريبتات إضافية) -->
+  <script src="../js/lightbox.js" defer></script>
+  <script src="../js/gallery-autoload.js" defer></script>
 </body>
 </html>

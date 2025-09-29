@@ -7,8 +7,8 @@
 
   <!-- Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;800&display=swap" rel="stylesheet">
-	<!-- معرض الصور -->
-	<link rel="stylesheet" href="../css/lightbox.css">
+  <!-- معرض الصور -->
+  <link rel="stylesheet" href="../css/lightbox.css">
   <!-- CSS -->
   <link rel="stylesheet" href="../css/tokens-theme.css">
   <link rel="stylesheet" href="../css/base-rtl.css">
@@ -99,7 +99,6 @@
         <h2><span class="icon">📑</span> العرض التقديمي (PPTX)</h2>
         <p>شرائح «طاقة الرياح» (مكونات العنفة، آلية العمل، أمثلة، نشاطات).</p>
         <div class="targets">
-          <!-- غيّر اسم الملف إن كان مختلفًا في مجلّد assets -->
           <a class="btn primary" href="https://raw.githubusercontent.com/ZuhdiZahdeh/techno-g9/main/assets/wind-energy-2022.pptx" download>
             تنزيل العرض (PPTX)
           </a>
@@ -110,32 +109,50 @@
       </article>
     </section>
 
+    <!-- أسئلة للتثبيت (جديدة) -->
+    <section id="review" class="grid" style="margin-top:18px">
+      <article class="card col-12">
+        <h2><span class="icon">📝</span> أسئلة للتثبيت</h2>
+        <ol>
+          <li>لماذا يصعب الاعتماد دائمًا على طاقة الرياح في إنتاج الكهرباء؟</li>
+          <li>أكمل: كلما زادت طاقة الرياح تزداد حركة ___ ويزداد ___ و___.</li>
+          <li>اختر الإجابة الصحيحة:
+            <ul>
+              <li>العنفة تنتج كهرباء من الهواء (صواب/خطأ).</li>
+              <li>المروحة تنتج كهرباء من الهواء (صواب/خطأ).</li>
+            </ul>
+          </li>
+          <li>عرّف بإيجاز: (العنفة – المروحة – شدة التيار – فرق الجهد).</li>
+          <li>ماذا تتوقع عند تعريض العنفة لتيار هوائي <b>قوي</b>؟ وماذا عن تيار <b>ضعيف</b>؟</li>
+        </ol>
+        <p class="tag">نصيحة: راجع تعريفات V/I وكيفية توصيل DMM قبل الإجابة.</p>
+      </article>
+    </section>
+
     <!-- معرض الصور -->
-	<section id="gallery" class="grid" style="margin-top:18px">
-	<article class="card col-12">
-    <h2><span class="icon">🖼️</span> صور الدرس</h2>
-   <div class="gallery w-thumbs" data-full-w="720" data-full-h="400">
-      <figure>
-        <img src="../assets/study/week3/w3-01-cutaway.jpg" data-full="../assets/study/week3/w3-01-cutaway.jpg" alt="مكوّنات الناسل">
-        <figcaption>مكوّنات الناسل</figcaption>
-      </figure>
-      <figure>
-        <img src="../assets/study/week3/w3-03-offshore-farm.jpg" data-full="../assets/study/week3/w3-03-offshore-farm.jpg" alt="مزرعة رياح بحرية">
-        <figcaption>مزرعة رياح بحرية</figcaption>
-      </figure>
-      <figure>
-        <img src="../assets/study/week3/w3-05-horizontal-axis.png" data-full="../assets/study/week3/w3-05-horizontal-axis.png" alt="عنفات أفقية">
-        <figcaption>عنفات أفقية المحور</figcaption>
-      </figure>
-      <figure>
-        <img src="../assets/study/week3/w3-06-vertical-axis.png" data-full="../assets/study/week3/w3-06-vertical-axis.png" alt="عنفات عمودية">
-        <figcaption>عنفات عمودية المحور</figcaption>
-      </figure>
-    </div>
-  </article>
-</section>
-
-
+    <section id="gallery" class="grid" style="margin-top:18px">
+      <article class="card col-12">
+        <h2><span class="icon">🖼️</span> صور الدرس</h2>
+        <div class="gallery w-thumbs" data-full-w="720" data-full-h="400">
+          <figure>
+            <img src="../assets/study/week3/w3-01-cutaway.jpg" data-full="../assets/study/week3/w3-01-cutaway.jpg" alt="مكوّنات الناسل">
+            <figcaption>مكوّنات الناسل</figcaption>
+          </figure>
+          <figure>
+            <img src="../assets/study/week3/w3-03-offshore-farm.jpg" data-full="../assets/study/week3/w3-03-offshore-farm.jpg" alt="مزرعة رياح بحرية">
+            <figcaption>مزرعة رياح بحرية</figcaption>
+          </figure>
+          <figure>
+            <img src="../assets/study/week3/w3-05-horizontal-axis.png" data-full="../assets/study/week3/w3-05-horizontal-axis.png" alt="عنفات أفقية">
+            <figcaption>عنفات أفقية المحور</figcaption>
+          </figure>
+          <figure>
+            <img src="../assets/study/week3/w3-06-vertical-axis.png" data-full="../assets/study/week3/w3-06-vertical-axis.png" alt="عنفات عمودية">
+            <figcaption>عنفات عمودية المحور</figcaption>
+          </figure>
+        </div>
+      </article>
+    </section>
 
     <footer class="student-footer">
       <a href="#top" class="btn ghost">⬆ العودة للأعلى</a>
@@ -146,7 +163,8 @@
   <a class="home-fab" href="../index.html" title="العودة للصفحة الرئيسية">
     <span class="ico">🏠</span> الرئيسية
   </a>
-   <!-- معرض الصور -->
+
+  <!-- معرض الصور -->
   <script src="../js/lightbox.js" defer></script>
   <script src="../js/gallery-autoload.js" defer></script>
 </body>
