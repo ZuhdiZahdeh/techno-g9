@@ -1,44 +1,59 @@
-/* lesson-week4-app.js — wires buttons, modal, timer, font toggle
-   Depends on: content-week4.js, ui-helpers.js
+/* lesson-week4-app.js — wires buttons to modal, adds timer & font toggle
+   Depends on: content-week4.js (defines window.WEEK4), ui-helpers.js (defines window.UI)
 */
 (function(){
   const { $, $$, openModal, closeModal, arabicDigits } = window.UI;
 
-  // Wire modal buttons
+  // Helper: open card by key with graceful fallback
+  function openCard(key){
+    const dict = window.WEEK4 || {};
+    const entry = dict[key];
+    if(!entry){
+      openModal('المحتوى غير متوفر', `
+        <p class="muted">لا توجد بطاقة بالمفتاح: <code>${key}</code>.</p>
+        <p>تأكد من أنك حدّثت الملف <code>js/content-week4.js</code> إلى آخر إصدار،
+        وأن وسم السكربت في الصفحة يستخدم <code>?v=20251019</code> لتجاوز التخزين المؤقت.</p>
+      `);
+      return;
+    }
+    openModal(entry.title, entry.body);
+  }
+
+  // Wire clicks for all data-open buttons
   $$('[data-open]').forEach(btn=>{
     btn.addEventListener('click', ()=>{
       const key = btn.getAttribute('data-open');
-      const entry = window.WEEK4[key];
-      if(!entry) return;
-      openModal(entry.title, entry.body);
+      openCard(key);
     });
   });
 
-  // Close actions
-  $('#closeModal').onclick = closeModal;
-  $('#closeBottom').onclick = closeModal;
-  window.addEventListener('keydown', e => { if(e.key === 'Escape') closeModal(); });
-  $('#printModal').onclick = () => window.print();
+  // Print modal
+  $('#printModal')?.addEventListener('click', ()=>{
+    window.print();
+  });
 
-  // Font toggle
-  let big = false;
-  $('#toggleFont').onclick = () => {
-    big = !big;
-    document.body.style.fontSize = big ? '18px' : '';
-  };
+  // Close modal
+  $('#closeModal')?.addEventListener('click', closeModal);
+  $('#closeBottom')?.addEventListener('click', closeModal);
 
-  // 5-min focus timer with Arabic digits
-  let timerActive = false, timerId=null, remaining=300;
-  const updateTimerLabel = () => {
-    const mm = String(Math.floor(remaining/60)).padStart(2,'0');
-    const ss = String(remaining%60).padStart(2,'0');
-    $('#startFocus').textContent = `العدّ التنازلي: ${arabicDigits(`${mm}:${ss}`)} (إيقاف)`;
-  };
+  // Font toggle (like Week 2)
+  let large = false;
+  $('#toggleFont')?.addEventListener('click', ()=>{
+    document.documentElement.style.setProperty('--base-font-size', large ? '16px' : '18px');
+    large = !large;
+  });
 
-  $('#startFocus').onclick = () => {
+  // 5-minute focus timer (like Week 2)
+  let timerId = null, timerActive = false, remaining = 300;
+  function updateTimerLabel(){
+    const mm = Math.floor(remaining/60);
+    const ss = remaining%60;
+    $('#startFocus').textContent = `الوقت المتبقي: ${arabicDigits(String(mm).padStart(2,'0'))}:${arabicDigits(String(ss).padStart(2,'0'))}`;
+  }
+  $('#startFocus')?.addEventListener('click', ()=>{
     if(timerActive){
       clearInterval(timerId); timerActive=false;
-      $('#startFocus').textContent = 'بدء مؤقّت ٥ دقائق للأنشطة';
+      $('#startFocus').textContent = 'بدء مؤقّت ٥ دقائق';
       return;
     }
     timerActive = true; remaining = 300;
@@ -52,5 +67,8 @@
         alert('انتهى الوقت!');
       }
     }, 1000);
-  };
+  });
+
+  // Dev console hint: list available keys
+  console.log('[WEEK4 keys]', Object.keys(window.WEEK4||{}));
 })();
