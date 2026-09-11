@@ -1,158 +1,123 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ar" dir="rtl">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>دليل الطالب — الأسبوع ٢: الطاقة النظيفة مقابل الأحفوري</title>
-
-  <!-- Lightbox -->
-  <link rel="stylesheet" href="../css/lightbox.css">
-
-  <!-- Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;800&display=swap" rel="stylesheet">
-
-  <!-- CSS (theme → base → components → page/student) -->
-  <link rel="stylesheet" href="../css/tokens-theme.css">
-  <link rel="stylesheet" href="../css/base-rtl.css">
-  <link rel="stylesheet" href="../css/components-ui.css">
-  <link rel="stylesheet" href="../css/lesson-week2.css"><!-- تدرج عنوان الأسبوع ٢ -->
-  <link rel="stylesheet" href="../css/student-clean-energy.css"><!-- بطاقات الدراسة -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="شرح تطبيقات الطاقة النظيفة للصف التاسع: الرياح والشمس والمياه وحرارة باطن الأرض.">
+  <meta name="theme-color" content="#123c63">
+  <title>الدرس الثاني: تطبيقات الطاقة النظيفة | تكنولوجيا الصف التاسع</title>
+  <link rel="icon" href="../assets/tech-g9-favicon.ico" sizes="any">
+  <link rel="stylesheet" href="../css/student-site.css">
+  <link rel="stylesheet" href="../css/student-clean-energy.css">
 </head>
 <body>
-  <div class="container" id="top">
+  <a class="skip-link" href="#lesson-content">انتقل إلى محتوى الدرس</a>
 
-    <header class="student-hero">
-      <h1>دليل الطالب — الطاقة النظيفة × Scratch × Tinkercad × طباعة ثلاثية الأبعاد</h1>
-      <p class="lead">صفحة مُبسّطة لتكون <b>مرجعًا للدراسة</b> قبل الامتحانات: مفاهيم أساسية، ملخصات سريعة، وروابط الموارد.</p>
+  <header class="site-header">
+    <div class="shell header-row">
+      <a class="brand" href="../index.html" aria-label="الصفحة الرئيسية">
+        <span class="brand-mark" aria-hidden="true">تـ</span>
+        <span><strong>تكنولوجيا الصف التاسع</strong><small>موقع الطالب</small></span>
+      </a>
+      <a class="header-link" href="https://classroom.google.com/c/ODI2MjAwNjM1NzU1" target="_blank" rel="noopener">الصف الافتراضي <span aria-hidden="true">↗</span></a>
+    </div>
+  </header>
 
-      <nav class="toc" aria-label="قائمة مختصرة">
-        <a href="../index.html" class="btn ghost">🏠 الرئيسية</a>
-        <a href="lesson-week2-clean-vs-fossil.html" class="btn ghost">صفحة المعلّم</a>
-        <a href="#concepts" class="btn ghost">مفاهيم أساسية</a>
-        <a href="#links" class="btn ghost">روابط مفيدة</a>
-        <a href="#ppt" class="btn primary">العرض التقديمي (PPTX)</a>
-        <a href="#gallery" class="btn ghost">صور الدرس</a>
-      </nav>
+  <main id="lesson-content" class="shell lesson-shell">
+    <nav class="breadcrumb" aria-label="مسار الصفحة">
+      <a href="../index.html">الرئيسية</a><span aria-hidden="true">/</span><span>الوحدة الأولى</span><span aria-hidden="true">/</span><span>الدرس الثاني</span>
+    </nav>
+
+    <header class="lesson-hero">
+      <span class="lesson-label">الوحدة الأولى - الدرس الثاني</span>
+      <h1>تطبيقات الطاقة النظيفة</h1>
+      <p>استخدم الإنسان الشمس والرياح والمياه منذ القدم، ثم طوّر وسائل الاستفادة منها لتوليد الكهرباء وتشغيل أجهزة حديثة.</p>
+      <ul class="lesson-meta"><li>شرح مبسط</li><li>مقارنة قديمًا وحديثًا</li><li>أسئلة بحث وتفكير</li></ul>
     </header>
 
-    <!-- مفاهيم أساسية -->
-    <section id="concepts" class="grid">
-      <article class="card col-12">
-        <h2><span class="icon">📚</span> مفاهيم أساسية</h2>
-        <p class="lead">اقرأ البطاقات التالية بعناية، فهي تلخّص المطلوب منك في هذا الأسبوع.</p>
+    <nav class="lesson-toc" aria-label="أقسام الدرس">
+      <a class="toc-link" href="#applications">التطبيقات</a>
+      <a class="toc-link" href="#uses">قديمًا وحديثًا</a>
+      <a class="toc-link" href="#review">راجع فهمك</a>
+      <a class="toc-link" href="#resources">المواد المساندة</a>
+    </nav>
 
-        <div class="study-grid">
-          <!-- التعريف -->
-          <section class="study-card" id="c-def">
-            <h3>تعريف الطاقة النظيفة</h3>
-            <p>هي الطاقة <b>الدائمة والتي لا تنضب أبداً مدى الحياة</b>، وهي <b>غير ملوثة للبيئة</b>.</p>
-          </section>
+    <section class="content-section" id="applications" aria-labelledby="applications-title">
+      <div class="section-heading-row">
+        <div><p class="eyebrow">مصادر وتطبيقات</p><h2 class="section-title" id="applications-title">كيف نستفيد من الطاقة النظيفة؟</h2></div>
+      </div>
+      <div class="study-grid">
+        <article class="study-card">
+          <h3>طاقة الرياح</h3>
+          <p>تحوّل العنفة طاقة حركة الرياح إلى حركة دورانية، ثم يحوّل المولد هذه الحركة إلى طاقة كهربائية.</p>
+          <p class="key-line">تحتاج العنفات إلى مناطق تهب فيها الرياح بسرعة مناسبة خلال العام.</p>
+        </article>
+        <article class="study-card">
+          <h3>الطاقة الشمسية</h3>
+          <p>تحوّل الخلايا الشمسية الطاقة الضوئية إلى طاقة كهربائية، وتزداد كفاءتها عندما يصلها ضوء مناسب دون تظليل.</p>
+        </article>
+        <article class="study-card">
+          <h3>طاقة المياه</h3>
+          <p>تُستخدم حركة المياه في تدوير التوربينات وتوليد الكهرباء في السدود، ويمكن الاستفادة من المد والجزر في المناطق الساحلية.</p>
+        </article>
+        <article class="study-card">
+          <h3>حرارة باطن الأرض</h3>
+          <p>يُستخدم البخار الناتج من الينابيع الحارة في تشغيل توربينات تولّد الطاقة الكهربائية.</p>
+        </article>
+      </div>
+    </section>
 
-          <!-- الأمثلة -->
-          <section class="study-card" id="c-examples">
-            <h3>أمثلة / أشكال الطاقة النظيفة</h3>
-            <ul>
-              <li>الطاقة الشمسية (ألواح وخلايا ضوئية).</li>
-              <li>طاقة الرياح (عنفات وطواحين).</li>
-              <li>الطاقة المائية (سدود وتوربينات ومدّ/جزر).</li>
-              <li>الطاقة الحرارية الجوفية.</li>
-            </ul>
-          </section>
-
-          <!-- الإيجابيات -->
-          <section class="study-card" id="c-positives">
-            <h3>إيجابيات الطاقة النظيفة</h3>
-            <ul>
-              <li><b>مصادر لا تنضب عمليًا، فهي متجددة دائمًا.</b></li>
-              <li><b>انبعاثات أقل</b> من الغازات والجسيمات الملوِّثة.</li>
-              <li><b>غير ملوثة للبيئة</b>.</li>
-              <li><b>آمنة</b>.</li>
-              <li><b>رخيصة</b>.</li>
-            </ul>
-          </section>
-
-          <!-- مصطلحات -->
-          <section class="study-card" id="c-terms">
-            <h3>مصطلحات أخرى للطاقة النظيفة</h3>
-            <ul>
-              <li>الطاقة <b>المتجددة</b></li>
-              <li>الطاقة <b>الخضراء</b></li>
-              <li>الطاقة <b>المستدامة</b></li>
-            </ul>
-          </section>
-
-          <!-- الاستخدامات (قديم/حديث) -->
-          <section class="study-card col-12" id="c-uses">
-            <h3>استخدامات الطاقة النظيفة (قديمًا/حديثًا)</h3>
-            <table class="tbl">
-              <thead>
-                <tr><th>الطاقة</th><th>قديمًا</th><th>حديثًا</th></tr>
-              </thead>
-              <tbody>
-                <tr class="row">
-                  <td><b>الشمسية</b></td>
-                  <td>تدفئة المنازل، تجفيف الحبوب، استخراج الملح من مياه البحر</td>
-                  <td>توليد الطاقة الكهربائية، وجود سيارات تعمل بالطاقة الشمسية ، المقطر الشمسي</td>
-                </tr>
-                <tr class="row">
-                  <td><b>الرياح</b></td>
-                  <td>طحن الحبوب، تسيير السفن الشراعية، ضخ المياه</td>
-                  <td>توليد الطاقة الكهربائية</td>
-                </tr>
-                <tr class="row">
-                  <td><b>المياه</b></td>
-                  <td>التنقل بالسفن، استخدام النواعير في طحن الحبوب، ضخ المياه لري المزروعات</td>
-                  <td>توليد الطاقة الكهربائية باستخدام السدود المائية</td>
-                </tr>
-              </tbody>
-            </table>
-          </section>
-        </div>
+    <section class="content-section" id="uses" aria-labelledby="uses-title">
+      <p class="eyebrow">مقارنة</p>
+      <h2 class="section-title" id="uses-title">استخدامات قديمة وحديثة</h2>
+      <article class="wide-card">
+        <table class="comparison-table">
+          <thead><tr><th>مصدر الطاقة</th><th>قديمًا</th><th>حديثًا</th></tr></thead>
+          <tbody>
+            <tr><td><strong>الشمس</strong></td><td>تدفئة المنازل وتجفيف الحبوب واستخراج الملح</td><td>توليد الكهرباء وتسخين المياه وتشغيل بعض المركبات</td></tr>
+            <tr><td><strong>الرياح</strong></td><td>طحن الحبوب وتسيير السفن الشراعية وضخ المياه</td><td>توليد الكهرباء باستخدام العنفات الهوائية</td></tr>
+            <tr><td><strong>المياه</strong></td><td>تشغيل النواعير وطحن الحبوب وري المزروعات</td><td>توليد الكهرباء باستخدام السدود والتوربينات</td></tr>
+          </tbody>
+        </table>
       </article>
     </section>
 
-    <!-- روابط مفيدة + PPTX -->
-    <section id="links" class="grid" style="margin-top:18px">
-      <article class="card col-6">
-        <h2><span class="icon">🔗</span> روابط مفيدة</h2>
-        <ul class="bullet">
-          <li><b>Tinkercad</b>: <span class="tag">tinkercad.com</span></li>
-          <li><b>Scratch</b>: <span class="tag">scratch.mit.edu</span></li>
-          <li>أدلة Slicer (Cura/PrusaSlicer) للمبتدئين.</li>
-        </ul>
-      </article>
-
-      <article id="ppt" class="card col-6">
-        <h2><span class="icon">📑</span> العرض التقديمي (PPTX)</h2>
-        <p>عرض شرائح يدعم مفاهيم الأسبوع ١–٢ (الأهداف، المفاهيم، المقارنات، سلبيات غير المتجددة، بدائل عملية).</p>
-        <div class="targets">
-          <a class="btn primary" href="https://raw.githubusercontent.com/ZuhdiZahdeh/techno-g9/main/assets/clean-energy-2022.pptx" download>
-            تنزيل العرض (PPTX)
-          </a>
-          <a class="btn ghost" href="https://raw.githubusercontent.com/ZuhdiZahdeh/techno-g9/main/assets/clean-energy-2022.pptx" target="_blank" rel="noopener">
-            فتح في تبويب جديد
-          </a>
-        </div>
+    <section class="content-section" id="review" aria-labelledby="review-title">
+      <p class="eyebrow">راجع فهمك</p>
+      <h2 class="section-title" id="review-title">أسئلة بحث وتفكير</h2>
+      <article class="question-card">
+        <ol>
+          <li>ما الصعوبات التي تواجه استغلال طاقة الرياح في توليد الكهرباء؟</li>
+          <li>كيف تتأثر الخلايا الشمسية بزاوية سقوط الضوء والتظليل؟</li>
+          <li>كيف يمكن استغلال المد والجزر في توليد الكهرباء؟</li>
+          <li>اقترح استخدامًا جديدًا لطاقة حرارة باطن الأرض.</li>
+        </ol>
       </article>
     </section>
 
-    <!-- معرض الصور -->
-    <section id="gallery" class="grid" style="margin-top:18px">
-      <article class="card col-12">
-        <h2><span class="icon">🖼️</span> صور الدرس</h2>
-        <p class="muted">صور توضيحية داخل <code>assets/study/week2/</code> (<code>w2-01.png</code> …).</p>
-        <div class="gallery w-thumbs" data-full-w="720" data-full-h="400" data-path="../assets/study/week2/"></div>
-      </article>
+    <section class="content-section" id="resources" aria-labelledby="resources-title">
+      <p class="eyebrow">المواد المساندة</p>
+      <h2 class="section-title" id="resources-title">عروض الدرس</h2>
+      <div class="resource-grid">
+        <article class="resource-card">
+          <h3>عرض طاقة الرياح</h3>
+          <p>شرائح حول مبدأ عمل العنفات وتطبيقاتها.</p>
+          <div class="resource-actions"><a class="resource-link" href="../slides/wind-energy-2022.pptx" download>تنزيل العرض</a></div>
+        </article>
+        <article class="resource-card">
+          <h3>عرض الطاقة الشمسية</h3>
+          <p>شرائح حول الخلايا الشمسية واستخداماتها.</p>
+          <div class="resource-actions"><a class="resource-link" href="../slides/solar-energy-2022.pptx" download>تنزيل العرض</a></div>
+        </article>
+      </div>
     </section>
 
-    <footer class="student-footer">
-      <a href="#top" class="btn ghost">⬆ العودة للأعلى</a>
-    </footer>
+    <nav class="page-nav" aria-label="التنقل بين الدروس">
+      <a href="lesson-clean-energy-student.html">السابق: الطاقة النظيفة</a>
+      <a href="lesson-week3-student.html">النشاط التالي: طاقة الرياح ←</a>
+    </nav>
+  </main>
 
-  </div>
-
-  <!-- Lightbox + autoload -->
-  <script src="../js/lightbox.js" defer></script>
-  <script src="../js/gallery-autoload.js" defer></script>
+  <footer class="site-footer"><div class="shell footer-row"><p>مبحث التكنولوجيا - الصف التاسع</p><p>إعداد المعلم زهدي زاهدة</p></div></footer>
 </body>
 </html>

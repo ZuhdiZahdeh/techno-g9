@@ -1,171 +1,126 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ar" dir="rtl">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>دليل الطالب — طاقة الرياح (الأسبوع ٣)</title>
-
-  <!-- Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;800&display=swap" rel="stylesheet">
-  <!-- معرض الصور -->
-  <link rel="stylesheet" href="../css/lightbox.css">
-  <!-- CSS -->
-  <link rel="stylesheet" href="../css/tokens-theme.css">
-  <link rel="stylesheet" href="../css/base-rtl.css">
-  <link rel="stylesheet" href="../css/components-ui.css">
-  <link rel="stylesheet" href="../css/lesson-week2.css"><!-- نفس تدرّج العنوان مؤقتًا -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="نشاط عملي لتوليد الكهرباء باستخدام طاقة الرياح وقياس فرق الجهد وشدة التيار.">
+  <meta name="theme-color" content="#81560a">
+  <title>نشاط طاقة الرياح | تكنولوجيا الصف التاسع</title>
+  <link rel="icon" href="../assets/tech-g9-favicon.ico" sizes="any">
+  <link rel="stylesheet" href="../css/student-site.css">
   <link rel="stylesheet" href="../css/student-clean-energy.css">
 </head>
 <body>
-  <div class="container" id="top">
+  <a class="skip-link" href="#lesson-content">انتقل إلى محتوى النشاط</a>
 
-    <header class="student-hero">
-      <h1>دليل الطالب — طاقة الرياح (الأسبوع ٣)</h1>
-      <p class="lead">ملخّصات مركّزة: تعريف العنفة، الفرق عن المروحة، DMM، شدة التيار، فرق الجهد، مبدأ العمل، وسؤال التفكير.</p>
+  <header class="site-header">
+    <div class="shell header-row">
+      <a class="brand" href="../index.html" aria-label="الصفحة الرئيسية">
+        <span class="brand-mark" aria-hidden="true">تـ</span>
+        <span><strong>تكنولوجيا الصف التاسع</strong><small>موقع الطالب</small></span>
+      </a>
+      <a class="header-link" href="https://classroom.google.com/c/ODI2MjAwNjM1NzU1" target="_blank" rel="noopener">الصف الافتراضي <span aria-hidden="true">↗</span></a>
+    </div>
+  </header>
 
-      <nav class="toc" aria-label="قائمة مختصرة">
-        <a href="../index.html" class="btn ghost">🏠 الرئيسية</a>
-        <a href="lesson-week3-wind-turbine.html" class="btn ghost">صفحة المعلّم</a>
-        <a href="#concepts" class="btn ghost">مفاهيم أساسية</a>
-        <a href="#links" class="btn ghost">روابط مفيدة</a>
-        <a href="#ppt" class="btn primary">العرض التقديمي (PPTX)</a>
-        <a href="#gallery" class="btn ghost">صور الدرس</a>
-      </nav>
+  <main id="lesson-content" class="shell lesson-shell">
+    <nav class="breadcrumb" aria-label="مسار الصفحة">
+      <a href="../index.html">الرئيسية</a><span aria-hidden="true">/</span><span>الوحدة الأولى</span><span aria-hidden="true">/</span><span>نشاط عملي</span>
+    </nav>
+
+    <header class="lesson-hero activity-hero">
+      <span class="lesson-label">نشاط ٢:١:١</span>
+      <h1>توليد الكهرباء باستخدام طاقة الرياح</h1>
+      <p>نركّب دارة كهربائية بسيطة، نحرّك عنفة هوائية، ثم نقيس فرق الجهد وشدة التيار ونقارن النتائج.</p>
+      <ul class="lesson-meta"><li>عمل جماعي</li><li>قياس باستخدام DMM</li><li>تسجيل النتائج</li></ul>
     </header>
 
-    <!-- مفاهيم أساسية -->
-    <section id="concepts" class="grid">
-      <article class="card col-12">
-        <h2><span class="icon">📚</span> مفاهيم أساسية (طاقة الرياح)</h2>
+    <nav class="lesson-toc" aria-label="أقسام النشاط">
+      <a class="toc-link" href="#concepts">قبل البدء</a>
+      <a class="toc-link" href="#steps">خطوات النشاط</a>
+      <a class="toc-link" href="#measurements">جدول القياس</a>
+      <a class="toc-link" href="#review">أسئلة التثبيت</a>
+      <a class="toc-link" href="#gallery">الصور</a>
+    </nav>
 
-        <div class="study-grid">
-          <section class="study-card" id="c-def-turbine">
-            <h3>تعريف عنفة الرياح</h3>
-            <p>جهاز يحوّل <b>طاقة حركة الرياح</b> إلى <b>طاقة كهربائية</b> عبر دوران الشفرات ونقل الحركة إلى المولّد.</p>
-          </section>
+    <section class="content-section" id="concepts" aria-labelledby="concepts-title">
+      <p class="eyebrow">قبل البدء</p>
+      <h2 class="section-title" id="concepts-title">مفاهيم تحتاجها في النشاط</h2>
+      <div class="study-grid">
+        <article class="study-card"><h3>العنفة الهوائية</h3><p>جهاز يحوّل طاقة حركة الرياح إلى حركة دورانية، ثم يحوّل المولد هذه الحركة إلى طاقة كهربائية.</p></article>
+        <article class="study-card"><h3>العنفة والمروحة</h3><p><strong>العنفة</strong> تنتج الكهرباء من حركة الهواء، بينما <strong>المروحة</strong> تستهلك الكهرباء لتولّد حركة الهواء.</p></article>
+        <article class="study-card"><h3>فرق الجهد V</h3><p>فرق الطاقة الكهربائية بين نقطتين، ويُقاس جهاز DMM على التوازي عند قياسه.</p></article>
+        <article class="study-card"><h3>شدة التيار I</h3><p>معدل تدفق الشحنات الكهربائية في الدارة، ويُقاس جهاز DMM على التوالي عند قياسه.</p></article>
+      </div>
+    </section>
 
-          <section class="study-card" id="c-fan-vs-turbine">
-            <h3>الفرق بين العنفة والمروحة</h3>
-            <ul>
-              <li><b>العنفة:</b> تُنتج كهرباء من الهواء (مولِّد).</li>
-              <li><b>المروحة:</b> تستهلك كهرباء لتولّد هواء (محرك).</li>
-            </ul>
-          </section>
+    <section class="content-section" id="steps" aria-labelledby="steps-title">
+      <p class="eyebrow">التنفيذ</p>
+      <h2 class="section-title" id="steps-title">خطوات النشاط</h2>
+      <ol class="steps-list">
+        <li>ركّب دارة كهربائية بسيطة تصل العنفة الهوائية بمصباح صغير.</li>
+        <li>عرّض شفرات العنفة لتيار هوائي، وراقب إضاءة المصباح.</li>
+        <li>اضبط جهاز DMM لقياس فرق الجهد، ثم سجّل القراءة.</li>
+        <li>اضبط التوصيل بطريقة صحيحة لقياس شدة التيار، ثم سجّل القراءة.</li>
+        <li>غيّر سرعة الهواء وكرّر القياس، ثم قارن النتائج.</li>
+      </ol>
+    </section>
 
-          <section class="study-card" id="c-dmm">
-            <h3>تعريف DMM</h3>
-            <p>جهاز يقيس الجهد (V) والتيار (A) والمقاومة (Ω). V على التوازي، I على التوالي.</p>
-          </section>
-
-          <section class="study-card" id="c-note">
-            <h3>ملاحظة مهمة</h3>
-            <p><b>كلما زادت سرعة/طاقة الرياح</b> زادت حركة العنفة وارتفع <b>V</b> و<b>I</b>.</p>
-          </section>
-
-          <section class="study-card" id="c-current">
-            <h3>شدة التيار (A)</h3>
-            <p>معدل تدفق الشحنات في الدائرة.</p>
-          </section>
-
-          <section class="study-card" id="c-voltage">
-            <h3>فرق الجهد (V)</h3>
-            <p>الطاقة اللازمة لنقل شحنة بين نقطتين.</p>
-          </section>
-
-          <section class="study-card" id="c-principle">
-            <h3>مبدأ عمل العنفات</h3>
-             <p>وجود رياح ⇢ دوران الشفرات ⇢ تحويل الطاقة الحركية الى طاقة كهربائية في الدينمو ⇢ تيار كهربائي يصل إلى المصباح فيضيئه.</p>
-          </section>
-
-          <section class="study-card" id="c-question">
-            <h3>سؤال تفكير</h3>
-            <p>لماذا لا يعمل المصباح أحيانًا مع وجود الهواء؟ جرّب: السرعة، التوصيل، الحمل.</p>
-          </section>
-        </div>
+    <section class="content-section" id="measurements" aria-labelledby="measurements-title">
+      <p class="eyebrow">سجل النتائج</p>
+      <h2 class="section-title" id="measurements-title">جدول القياس</h2>
+      <article class="wide-card">
+        <table class="comparison-table measure-table">
+          <thead><tr><th>المحاولة</th><th>سرعة الهواء</th><th>فرق الجهد V</th><th>شدة التيار I</th><th>ملاحظة</th></tr></thead>
+          <tbody>
+            <tr><td>الأولى</td><td><input aria-label="سرعة الهواء في المحاولة الأولى"></td><td><input aria-label="فرق الجهد في المحاولة الأولى"></td><td><input aria-label="شدة التيار في المحاولة الأولى"></td><td><input aria-label="ملاحظة المحاولة الأولى"></td></tr>
+            <tr><td>الثانية</td><td><input aria-label="سرعة الهواء في المحاولة الثانية"></td><td><input aria-label="فرق الجهد في المحاولة الثانية"></td><td><input aria-label="شدة التيار في المحاولة الثانية"></td><td><input aria-label="ملاحظة المحاولة الثانية"></td></tr>
+            <tr><td>الثالثة</td><td><input aria-label="سرعة الهواء في المحاولة الثالثة"></td><td><input aria-label="فرق الجهد في المحاولة الثالثة"></td><td><input aria-label="شدة التيار في المحاولة الثالثة"></td><td><input aria-label="ملاحظة المحاولة الثالثة"></td></tr>
+          </tbody>
+        </table>
+        <p class="key-line">لاحظ العلاقة بين سرعة دوران العنفة وقيمتي فرق الجهد وشدة التيار.</p>
       </article>
     </section>
 
-    <!-- روابط مفيدة + PPTX -->
-    <section id="links" class="grid" style="margin-top:18px">
-      <article class="card col-6">
-        <h2><span class="icon">🔗</span> روابط مفيدة</h2>
-        <ul class="bullet">
-          <li><b>Tinkercad</b>: <span class="tag">tinkercad.com</span></li>
-          <li><b>Scratch</b>: <span class="tag">scratch.mit.edu</span></li>
-        </ul>
-      </article>
-
-      <article id="ppt" class="card col-6">
-        <h2><span class="icon">📑</span> العرض التقديمي (PPTX)</h2>
-        <p>شرائح «طاقة الرياح» (مكونات العنفة، آلية العمل، أمثلة، نشاطات).</p>
-        <div class="targets">
-          <a class="btn primary" href="https://raw.githubusercontent.com/ZuhdiZahdeh/techno-g9/main/assets/wind-energy-2022.pptx" download>
-            تنزيل العرض (PPTX)
-          </a>
-          <a class="btn ghost" href="https://raw.githubusercontent.com/ZuhdiZahdeh/techno-g9/main/assets/wind-energy-2022.pptx" target="_blank" rel="noopener">
-            فتح في تبويب جديد
-          </a>
-        </div>
-      </article>
-    </section>
-
-    <!-- أسئلة للتثبيت (جديدة) -->
-    <section id="review" class="grid" style="margin-top:18px">
-      <article class="card col-12">
-        <h2><span class="icon">📝</span> أسئلة للتثبيت</h2>
+    <section class="content-section" id="review" aria-labelledby="review-title">
+      <p class="eyebrow">بعد التنفيذ</p>
+      <h2 class="section-title" id="review-title">أسئلة التثبيت</h2>
+      <article class="question-card">
         <ol>
-          <li>لماذا يصعب الاعتماد دائمًا على طاقة الرياح في إنتاج الكهرباء؟</li>
-          <li>أكمل: كلما زادت طاقة الرياح تزداد حركة ___ ويزداد ___ و___.</li>
-          <li>اختر الإجابة الصحيحة:
-            <ul>
-              <li>العنفة تنتج كهرباء من الهواء (صواب/خطأ).</li>
-              <li>المروحة تنتج كهرباء من الهواء (صواب/خطأ).</li>
-            </ul>
-          </li>
-          <li>عرّف بإيجاز: (العنفة – المروحة – شدة التيار – فرق الجهد).</li>
-          <li>ماذا تتوقع عند تعريض العنفة لتيار هوائي <b>قوي</b>؟ وماذا عن تيار <b>ضعيف</b>؟</li>
+          <li>لماذا لا يضيء المصباح أحيانًا رغم وجود تيار هوائي؟</li>
+          <li>كيف أثّرت سرعة الهواء في فرق الجهد وشدة التيار؟</li>
+          <li>ما الفرق بين وظيفة العنفة الهوائية ووظيفة المروحة؟</li>
+          <li>لماذا نغيّر سرعة الهواء ونكرر القياس أكثر من مرة؟</li>
         </ol>
-        <p class="tag">نصيحة: راجع تعريفات V/I وكيفية توصيل DMM قبل الإجابة.</p>
       </article>
     </section>
 
-    <!-- معرض الصور -->
-    <section id="gallery" class="grid" style="margin-top:18px">
-      <article class="card col-12">
-        <h2><span class="icon">🖼️</span> صور الدرس</h2>
-        <div class="gallery w-thumbs" data-full-w="720" data-full-h="400">
-          <figure>
-            <img src="../assets/study/week3/w3-01-cutaway.jpg" data-full="../assets/study/week3/w3-01-cutaway.jpg" alt="مكوّنات الناسل">
-            <figcaption>مكوّنات الناسل</figcaption>
-          </figure>
-          <figure>
-            <img src="../assets/study/week3/w3-03-offshore-farm.jpg" data-full="../assets/study/week3/w3-03-offshore-farm.jpg" alt="مزرعة رياح بحرية">
-            <figcaption>مزرعة رياح بحرية</figcaption>
-          </figure>
-          <figure>
-            <img src="../assets/study/week3/w3-05-horizontal-axis.png" data-full="../assets/study/week3/w3-05-horizontal-axis.png" alt="عنفات أفقية">
-            <figcaption>عنفات أفقية المحور</figcaption>
-          </figure>
-          <figure>
-            <img src="../assets/study/week3/w3-06-vertical-axis.png" data-full="../assets/study/week3/w3-06-vertical-axis.png" alt="عنفات عمودية">
-            <figcaption>عنفات عمودية المحور</figcaption>
-          </figure>
-        </div>
-      </article>
+    <section class="content-section" id="gallery" aria-labelledby="gallery-title">
+      <p class="eyebrow">صور توضيحية</p>
+      <h2 class="section-title" id="gallery-title">العنفات الهوائية</h2>
+      <div class="lesson-gallery">
+        <figure><a href="../assets/study/week3/w3-01-cutaway.jpg" target="_blank"><img src="../assets/study/week3/w3-01-cutaway.jpg" alt="مقطع يوضح مكونات عنفة الرياح" loading="lazy"></a><figcaption>مكوّنات عنفة الرياح من الداخل</figcaption></figure>
+        <figure><a href="../assets/study/week3/w3-03-offshore-farm.jpg" target="_blank"><img src="../assets/study/week3/w3-03-offshore-farm.jpg" alt="مزرعة عنفات رياح بحرية" loading="lazy"></a><figcaption>مزرعة رياح بحرية</figcaption></figure>
+        <figure><a href="../assets/study/week3/w3-05-horizontal-axis.png" target="_blank"><img src="../assets/study/week3/w3-05-horizontal-axis.png" alt="عنفة أفقية المحور" loading="lazy"></a><figcaption>عنفة أفقية المحور</figcaption></figure>
+        <figure><a href="../assets/study/week3/w3-06-vertical-axis.png" target="_blank"><img src="../assets/study/week3/w3-06-vertical-axis.png" alt="عنفة عمودية المحور" loading="lazy"></a><figcaption>عنفة عمودية المحور</figcaption></figure>
+      </div>
     </section>
 
-    <footer class="student-footer">
-      <a href="#top" class="btn ghost">⬆ العودة للأعلى</a>
-    </footer>
-  </div>
+    <section class="content-section" id="resources" aria-labelledby="resources-title">
+      <p class="eyebrow">ملفات النشاط</p>
+      <h2 class="section-title" id="resources-title">المواد المساندة</h2>
+      <div class="resource-grid">
+        <article class="resource-card"><h3>عرض طاقة الرياح</h3><p>شرائح تعليمية حول العنفات وتطبيقاتها.</p><div class="resource-actions"><a class="resource-link" href="../slides/wind-energy-2022.pptx" download>تنزيل العرض</a></div></article>
+        <article class="resource-card"><h3>ورقة عمل النشاط</h3><p>ملف قابل للتنزيل لاستخدامه أثناء تنفيذ النشاط.</p><div class="resource-actions"><a class="resource-link secondary" href="../assets/docs/worksheet_week3_wind.docx" download>تنزيل ورقة العمل</a></div></article>
+      </div>
+    </section>
 
-  <!-- أيقونة الصفحة الرئيسية العائمة -->
-  <a class="home-fab" href="../index.html" title="العودة للصفحة الرئيسية">
-    <span class="ico">🏠</span> الرئيسية
-  </a>
+    <nav class="page-nav" aria-label="التنقل بين الدروس">
+      <a href="lesson-week2-student.html">السابق: تطبيقات الطاقة النظيفة</a>
+      <a href="../index.html">العودة إلى جميع الدروس</a>
+    </nav>
+  </main>
 
-  <!-- معرض الصور -->
-  <script src="../js/lightbox.js" defer></script>
-  <script src="../js/gallery-autoload.js" defer></script>
+  <footer class="site-footer"><div class="shell footer-row"><p>مبحث التكنولوجيا - الصف التاسع</p><p>إعداد المعلم زهدي زاهدة</p></div></footer>
 </body>
 </html>

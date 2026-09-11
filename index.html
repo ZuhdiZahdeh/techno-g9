@@ -1,118 +1,151 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ar" dir="rtl">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>الصف التاسع | الصفحة الرئيسية — مبحث التكنولوجيا</title>
-
-  <!-- خطوط -->
-  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;800&display=swap" rel="stylesheet">
-
-  <!-- CSS (theme → base → components → page) -->
-  <link rel="stylesheet" href="css/tokens-theme.css">
-  <link rel="stylesheet" href="css/base-rtl.css">
-  <link rel="stylesheet" href="css/components-ui.css">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="موقع طلاب الصف التاسع في مبحث التكنولوجيا: دروس الطاقة النظيفة والأنشطة والمواد التعليمية.">
+  <meta name="theme-color" content="#123c63">
+  <title>تكنولوجيا الصف التاسع | موقع الطالب</title>
+  <link rel="icon" href="assets/tech-g9-favicon.ico" sizes="any">
+  <link rel="stylesheet" href="css/student-site.css">
   <link rel="stylesheet" href="css/home.css">
-  <link rel="icon" href="/tech-g9-favicon.ico" sizes="16x16 32x32 48x48 64x64 128x128 256x256 512x512" type="image/x-icon">
-
 </head>
 <body>
-  <div class="container">
+  <a class="skip-link" href="#main-content">انتقل إلى المحتوى</a>
 
-    <header class="home-header">
-      <h1>الصف التاسع — مبحث التكنولوجيا</h1>
-      <p>خطة الفصل الأوّل: الطاقة النظيفة × Scratch × Tinkercad × طباعة ثلاثية الأبعاد</p>
+  <header class="site-header">
+    <div class="shell header-row">
+      <a class="brand" href="index.html" aria-label="الصفحة الرئيسية">
+        <span class="brand-mark" aria-hidden="true">تـ</span>
+        <span>
+          <strong>تكنولوجيا الصف التاسع</strong>
+          <small>الكلية الإبراهيمية - القدس</small>
+        </span>
+      </a>
+      <a class="header-link" href="https://classroom.google.com/c/ODI2MjAwNjM1NzU1" target="_blank" rel="noopener">
+        الصف الافتراضي
+        <span aria-hidden="true">↗</span>
+      </a>
+    </div>
+  </header>
 
-      <div class="home-toolbar" role="toolbar" aria-label="أدوات عامة">
-        <div class="search-wrap">
-          <input id="searchBox" type="search" inputmode="search" placeholder="ابحث باسم الدرس أو الكلمات المفتاحية…" aria-label="بحث">
-          <button id="clearSearch" class="btn ghost" title="مسح البحث">مسح</button>
-        </div>
-        <div class="quick-links">
-          <a class="btn accent" href="html/lesson-clean-energy.html">ابدأ من الأسبوع ١</a>
-          <button class="btn primary" id="openNewest">أحدث درس</button>
+  <main id="main-content" class="shell">
+    <section class="welcome" aria-labelledby="welcome-title">
+      <div class="welcome-copy">
+        <p class="eyebrow">الفصل الدراسي الأول</p>
+        <h1 id="welcome-title">موقع الطالب لمبحث التكنولوجيا</h1>
+        <p class="welcome-text">الدروس والملخصات والأنشطة مرتبة وفق تسلسل الكتاب، لتصل إلى المادة المطلوبة بسرعة من الحاسوب أو الهاتف.</p>
+        <div class="welcome-actions">
+          <a class="button button-primary" href="html/lesson-clean-energy-student.html">ابدأ بالدرس الأول</a>
+          <a class="button button-secondary" id="continueLink" href="html/lesson-clean-energy-student.html">متابعة التعلّم</a>
         </div>
       </div>
-    </header>
 
-    <!-- شبكة البطاقات -->
-    <section aria-label="دروس الفصل الأول">
-      <div id="lessonsGrid" class="grid" role="list">
-        <!-- تُحقن البطاقات ديناميكيًا من home.js -->
+      <div class="unit-focus" aria-label="الوحدة الحالية">
+        <span class="unit-number">01</span>
+        <p>الوحدة الأولى</p>
+        <h2>تكنولوجيا الطاقة النظيفة</h2>
+        <span class="unit-status">المحتوى المتاح حاليًا</span>
       </div>
-
-<noscript>
-  <div class="card col-12" role="listitem">
-    <h2>روابط الدروس (بدون JavaScript)</h2>
-    <ul>
-      <!-- Weeks 1–8 (إن كانت موجودة لديك اتركها كما هي) -->
-      <li><a href="html/lesson-clean-energy.html">الأسبوع ١: الدرس المتكامل — الطاقة النظيفة × Scratch × Tinkercad × طباعة ٣D</a></li>
-      <li><a href="html/lesson-week2-clean-vs-fossil.html">الأسبوع ٢: الطاقة النظيفة مقابل الأحفوري</a></li>
-      <li><a href="html/lesson-week3-wind-turbine.html">الأسبوع ٣: طاقة الرياح — العنفة وقياسات V/I</a></li>
-      <li><a href="html/lesson-week4-wind-energy-applications.html">الأسبوع ٤: الدرس الثاني — تطبيقات الطاقة النظيفة (تطبيقات طاقة الرياح)</a></li>
-      <li><a href="html/lesson-week4-student.html">الأسبوع ٤ (نسخة الطالب): تطبيقات طاقة الرياح</a></li>
-      <li><a href="html/lesson-week5-hydro-power.html">الأسبوع ٥: طاقة المياه — التدفق/الارتفاع ودفّاعة 3D</a></li>
-      <li><a href="html/lesson-week6-media-project.html">الأسبوع ٦: مشروع وسائط — ملصق/مطوية</a></li>
-      <li><a href="html/lesson-week7-review-midterm.html">الأسبوع ٧: مراجعة الوحدة + استعداد لامتحان منتصف الفصل</a></li>
-      <li><a href="html/lesson-week8-midterm-exam.html">الأسبوع ٨: امتحان منتصف الفصل</a></li>
-
-      <!-- Weeks 9–16 (جديدة) -->
-      <li><a href="html/lesson-week9-scratch-review.html">الأسبوع ٩: مراجعة Scratch — الواجهة والإحداثيات والحركة والأحداث</a></li>
-      <li><a href="html/lesson-week10-scratch-control.html">الأسبوع ١٠: Scratch — التحكّم بالكائن</a></li>
-      <li><a href="html/lesson-week11-scratch-broadcast.html">الأسبوع ١١: Scratch — بثّ الرسائل واستقبالها</a></li>
-      <li><a href="html/lesson-week12-scratch-audio.html">الأسبوع ١٢: Scratch — تسجيل الأصوات وإدراجها والتزامن</a></li>
-      <li><a href="html/lesson-week13-scratch-painter.html">الأسبوع ١٣: Scratch — الرسّام (Paint Editor) والتصميم بالمتجهات</a></li>
-      <li><a href="html/lesson-week14-scratch-data.html">الأسبوع ١٤: Scratch — المتغيّرات واللوائح</a></li>
-      <li><a href="html/lesson-week15-scratch-logic.html">الأسبوع ١٥: Scratch — المنطق المتقدّم + My Blocks</a></li>
-      <li><a href="html/lesson-week16-end-term.html">الأسبوع ١٦: نهاية الفصل — عروض نهائية ومعرض وتأملات</a></li>
-    </ul>
-  </div>
-
-  <!-- ... روابط الأسابيع الموجودة لديك ... -->
-
-  <div class="card col-12" role="listitem" style="margin-top:12px">
-    <h2>الامتحانات</h2>
-    <ul>
-      <li><a href="html/exam-tech-term1.html">امتحان شامل — كتاب التكنولوجيا (٩٠ دقيقة)</a></li>
-      <li><a href="html/exam-scratch-term1.html">امتحان شامل — كتاب سكراتش (٩٠ دقيقة)</a></li>
-    </ul>
-  </div>
-</noscript>
-
     </section>
 
-    <footer class="home-footer">
-      <!-- ضمن footer أو قسم جديد -->
-<div class="foot-col">
-  <h3>عروض الدروس</h3>
-  <ul>
-    <li><a href="slides/تكنولوجيا الطاقة النظيفة-2022.pptx" download>الطاقة النظيفة (PPTX)</a></li>
-    <li><a href="slides/تكنولوجيا طاقة الرياح - 2022.pptx" download>طاقة الرياح (PPTX)</a></li>
-    <li><a href="slides/تكنولوجيا الطاقة الشمسية-2022.pptx" download>الطاقة الشمسية (PPTX)</a></li>
-  </ul>
-</div>
-
-      <div class="foot-col">
-        <h3>مراجع سريعة</h3>
-        <ul>
-          <li>Scratch: <span class="tag">scratch.mit.edu</span></li>
-          <li>Tinkercad: <span class="tag">tinkercad.com</span></li>
-          <li>Slicer (Cura/PrusaSlicer)</li>
-        </ul>
+    <section class="learning-section" aria-labelledby="lessons-title">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">مسار التعلّم</p>
+          <h2 id="lessons-title">دروس الوحدة الأولى</h2>
+        </div>
+        <div class="search-control">
+          <label class="sr-only" for="lessonSearch">ابحث في الدروس</label>
+          <input id="lessonSearch" type="search" placeholder="ابحث في الدروس..." autocomplete="off">
+          <button id="clearSearch" type="button" aria-label="مسح البحث" hidden>مسح</button>
+        </div>
       </div>
-      <div class="foot-col">
-        <h3>إرشادات عامة</h3>
-        <ul>
-          <li>سلامة المختبرات وجهود منخفضة (٣–٦V)</li>
-          <li>دعم RTL وإمكانية الوصول (WCAG 2.1 AA)</li>
-          <li>مواد قابلة للطباعة من داخل كل درس</li>
-        </ul>
+
+      <div class="lesson-grid" id="lessonsGrid">
+        <article class="lesson-card" data-search="الطاقة النظيفة مفهوم الطاقة المصادر المتجددة غير المتجددة">
+          <div class="lesson-topline">
+            <span class="lesson-index">الدرس ١</span>
+            <span class="lesson-kind">شرح وملخص</span>
+          </div>
+          <h3>الطاقة النظيفة</h3>
+          <p>مفهوم الطاقة، أهميتها، مصادرها، والفرق بين المصادر المتجددة وغير المتجددة.</p>
+          <ul class="lesson-points" aria-label="محتويات الدرس">
+            <li>مفاهيم أساسية</li>
+            <li>أمثلة وتطبيقات</li>
+            <li>صور تعليمية</li>
+          </ul>
+          <a class="lesson-open" data-lesson-link href="html/lesson-clean-energy-student.html">
+            فتح الدرس
+            <span aria-hidden="true">←</span>
+          </a>
+        </article>
+
+        <article class="lesson-card" data-search="تطبيقات الطاقة النظيفة الشمس الرياح المياه قديم حديث">
+          <div class="lesson-topline">
+            <span class="lesson-index">الدرس ٢</span>
+            <span class="lesson-kind">شرح وملخص</span>
+          </div>
+          <h3>تطبيقات الطاقة النظيفة</h3>
+          <p>استخدامات الطاقة الشمسية وطاقة الرياح وطاقة المياه قديمًا وحديثًا.</p>
+          <ul class="lesson-points" aria-label="محتويات الدرس">
+            <li>تطبيقات الرياح</li>
+            <li>تطبيقات الشمس</li>
+            <li>تطبيقات المياه</li>
+          </ul>
+          <a class="lesson-open" data-lesson-link href="html/lesson-week2-student.html">
+            فتح الدرس
+            <span aria-hidden="true">←</span>
+          </a>
+        </article>
+
+        <article class="lesson-card lesson-card-activity" data-search="نشاط طاقة الرياح العنفة المروحة فرق الجهد شدة التيار dmm">
+          <div class="lesson-topline">
+            <span class="lesson-index">نشاط ٢:١:١</span>
+            <span class="lesson-kind">نشاط عملي</span>
+          </div>
+          <h3>توليد الكهرباء بطاقة الرياح</h3>
+          <p>التعرّف إلى العنفة الهوائية وقياس فرق الجهد وشدة التيار الناتجين عن دورانها.</p>
+          <ul class="lesson-points" aria-label="محتويات النشاط">
+            <li>العنفة والمروحة</li>
+            <li>جهاز DMM</li>
+            <li>أسئلة تثبيت</li>
+          </ul>
+          <a class="lesson-open" data-lesson-link href="html/lesson-week3-student.html">
+            فتح النشاط
+            <span aria-hidden="true">←</span>
+          </a>
+        </article>
       </div>
-    </footer>
 
-  </div>
+      <p class="empty-state" id="emptyState" hidden>لا يوجد درس يطابق كلمات البحث.</p>
+    </section>
 
-  <!-- JS -->
-  <script src="js/home.js"></script>
+    <section class="course-map" aria-labelledby="course-map-title">
+      <div>
+        <p class="eyebrow">خريطة المبحث</p>
+        <h2 id="course-map-title">ماذا ستتعلّم؟</h2>
+      </div>
+      <ol class="course-steps">
+        <li class="is-current">
+          <span>١</span>
+          <div><strong>تكنولوجيا الطاقة النظيفة</strong><small>الدروس والأنشطة الحالية</small></div>
+        </li>
+        <li>
+          <span>٢</span>
+          <div><strong>أساسيات البرمجة باستخدام Scratch</strong><small>يُضاف لاحقًا ضمن تسلسل المبحث</small></div>
+        </li>
+      </ol>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="shell footer-row">
+      <p>مبحث التكنولوجيا - الصف التاسع</p>
+      <p>إعداد المعلم زهدي زاهدة</p>
+    </div>
+  </footer>
+
+  <script src="js/home.js" defer></script>
 </body>
 </html>
