@@ -232,6 +232,206 @@
   background: #f4f8fb;
 }
 
+.term-link {
+  color: var(--teal-600);
+  font-weight: 800;
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 3px;
+}
+
+.noria-explainer {
+  display: grid;
+  grid-template-columns: minmax(260px, 0.82fr) minmax(420px, 1.18fr);
+  align-items: center;
+  gap: 24px;
+  margin-top: 18px;
+  overflow: hidden;
+}
+
+.noria-copy h3 {
+  font-size: clamp(1.35rem, 2.5vw, 1.75rem);
+}
+
+.noria-steps {
+  margin: 16px 0 0;
+  padding-inline-start: 24px;
+}
+
+.noria-steps li + li {
+  margin-top: 7px;
+}
+
+.noria-note {
+  margin-top: 14px !important;
+  padding: 11px 13px;
+  border: 1px solid #f2d08a;
+  border-radius: 10px;
+  color: #593b07;
+  background: var(--amber-100);
+}
+
+.noria-figure {
+  min-width: 0;
+  margin: 0;
+}
+
+.noria-diagram {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 1px solid #c9dbe7;
+  border-radius: 18px;
+  background: #f8fcff;
+}
+
+.noria-diagram:focus-visible {
+  outline: 3px solid rgba(230, 154, 18, 0.55);
+  outline-offset: 4px;
+}
+
+.noria-figure figcaption {
+  margin-top: 8px;
+  color: var(--muted);
+  font-size: 0.82rem;
+  text-align: center;
+}
+
+.noria-channel-wall {
+  fill: #b98952;
+  stroke: #6e4725;
+  stroke-width: 4;
+  stroke-linejoin: round;
+}
+
+.noria-channel-water,
+.noria-irrigation-drop {
+  fill: none;
+  stroke: #1d9ed0;
+  stroke-width: 9;
+  stroke-linecap: round;
+}
+
+.noria-river {
+  fill: url(#noria-river);
+}
+
+.noria-water-current path {
+  fill: none;
+  stroke: #e2f7ff;
+  stroke-width: 8;
+  stroke-linecap: round;
+  stroke-dasharray: 22 16;
+}
+
+.noria-support path {
+  fill: none;
+  stroke: #4c5963;
+  stroke-width: 13;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.noria-wheel {
+  transform-box: view-box;
+  transform-origin: 500px 300px;
+  animation: noria-spin 14s linear infinite;
+}
+
+.noria-wheel-rim,
+.noria-wheel-inner {
+  fill: none;
+  stroke: #71491f;
+  stroke-width: 13;
+}
+
+.noria-wheel-inner {
+  stroke-width: 6;
+  opacity: 0.72;
+}
+
+.noria-spokes path {
+  fill: none;
+  stroke: #8b5b27;
+  stroke-width: 8;
+  stroke-linecap: round;
+}
+
+.noria-wheel-hub {
+  fill: #875624;
+  stroke: #f4c875;
+  stroke-width: 6;
+}
+
+.noria-water-current {
+  animation: noria-flow 1.35s linear infinite;
+}
+
+.noria-pouring-water {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: noria-pour 1.2s ease-in-out infinite;
+}
+
+.noria-pouring-water path {
+  fill: none;
+  stroke: #28aee0;
+  stroke-width: 10;
+  stroke-linecap: round;
+}
+
+.noria-pouring-water circle {
+  fill: #28aee0;
+}
+
+.noria-labels rect {
+  fill: rgba(255, 255, 255, 0.94);
+  stroke: #b8cfdd;
+  stroke-width: 2;
+}
+
+.noria-labels text {
+  fill: var(--navy-950);
+  font-family: "Cairo", Tahoma, Arial, sans-serif;
+  font-size: 18px;
+  font-weight: 800;
+  text-anchor: middle;
+}
+
+.noria-figure:hover .noria-wheel,
+.noria-figure:hover .noria-water-current,
+.noria-figure:hover .noria-pouring-water,
+.noria-figure:focus-within .noria-wheel,
+.noria-figure:focus-within .noria-water-current,
+.noria-figure:focus-within .noria-pouring-water {
+  animation-play-state: paused;
+}
+
+@keyframes noria-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes noria-flow {
+  to {
+    stroke-dashoffset: -38;
+  }
+}
+
+@keyframes noria-pour {
+  0%,
+  100% {
+    opacity: 0.38;
+    transform: translateY(-4px);
+  }
+
+  50% {
+    opacity: 1;
+    transform: translateY(7px);
+  }
+}
+
 .steps-list {
   display: grid;
   gap: 12px;
@@ -376,6 +576,10 @@
     flex-direction: column;
   }
 
+  .noria-explainer {
+    grid-template-columns: 1fr;
+  }
+
   .lesson-toc {
     flex-wrap: nowrap;
     overflow-x: auto;
@@ -429,5 +633,19 @@
   .question-card {
     break-inside: avoid;
     box-shadow: none;
+  }
+
+  .noria-wheel,
+  .noria-water-current,
+  .noria-pouring-water {
+    animation: none !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .noria-wheel,
+  .noria-water-current,
+  .noria-pouring-water {
+    animation: none !important;
   }
 }
