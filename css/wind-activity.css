@@ -1,0 +1,1281 @@
+/* نشاط ٢:١:١ — الدارة الكهربائية لتوليد الكهرباء باستخدام طاقة الرياح */
+
+html,
+body {
+  max-width: 100%;
+  overflow-x: hidden;
+  overflow-x: clip;
+}
+
+.lesson-shell,
+.lesson-shell > *,
+.wind-lab,
+.wind-lab > *,
+.experiment-layout,
+.experiment-layout > * {
+  min-width: 0;
+}
+
+.lesson-hero.activity-hero.wind-hero {
+  background:
+    radial-gradient(circle at 9% 17%, rgba(111, 236, 225, 0.3), transparent 31%),
+    radial-gradient(circle at 86% 24%, rgba(132, 213, 255, 0.2), transparent 24%),
+    linear-gradient(135deg, #07354e, #08768a 58%, #159b88);
+}
+
+.wind-hero .lesson-label {
+  color: #075363;
+  background: #c7f8f1;
+}
+
+.wind-hero .lesson-meta li::before {
+  background: #7ef1dc;
+}
+
+.toc-link {
+  min-height: 44px;
+}
+
+.section-intro {
+  max-width: 900px;
+  margin: 8px 0 18px;
+  color: var(--muted);
+}
+
+.principle-steps {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 13px;
+  margin: 18px 0 14px;
+  padding: 0;
+  list-style: none;
+}
+
+.principle-steps li {
+  display: flex;
+  min-height: 116px;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 18px;
+  border: 1px solid #c5e2e5;
+  border-radius: var(--radius-md);
+  background: #fff;
+  box-shadow: 0 10px 25px rgba(8, 54, 73, 0.06);
+}
+
+.principle-steps span {
+  display: grid;
+  width: 40px;
+  height: 40px;
+  flex: 0 0 40px;
+  place-items: center;
+  border-radius: 12px;
+  color: #fff;
+  background: linear-gradient(145deg, #087b91, #159b88);
+  box-shadow: 0 6px 14px rgba(8, 123, 145, 0.2);
+  font-weight: 900;
+}
+
+.principle-steps p {
+  margin: 0;
+}
+
+.energy-chain {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  max-width: 100%;
+  padding: 18px;
+  overflow-x: auto;
+  border: 1px solid #9edcdb;
+  border-radius: var(--radius-md);
+  color: #063f55;
+  background: linear-gradient(135deg, #e3faf7, #f2fbff);
+  overscroll-behavior-inline: contain;
+  scrollbar-width: thin;
+  white-space: nowrap;
+}
+
+.energy-chain span {
+  flex: 0 0 auto;
+  padding: 8px 12px;
+  border-radius: 10px;
+  background: #fff;
+  box-shadow: 0 5px 13px rgba(8, 75, 97, 0.08);
+  font-weight: 800;
+}
+
+.energy-chain b {
+  flex: 0 0 auto;
+  color: #119c91;
+  font-size: 1.35rem;
+}
+
+.principle-note {
+  margin-top: 14px;
+  border-inline-start: 5px solid #159b88;
+  background: linear-gradient(135deg, #f2fbfa, #fff);
+}
+
+.experiment-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 0.82fr) minmax(0, 1.18fr);
+  gap: 14px;
+  align-items: start;
+}
+
+.tools-card {
+  border-top: 4px solid #27aa9b;
+}
+
+.safety-note {
+  margin-top: 18px !important;
+  padding: 11px 13px;
+  border-inline-start: 4px solid var(--amber-500);
+  border-radius: 9px;
+  background: var(--amber-100);
+}
+
+.practical-results {
+  margin-top: 16px;
+}
+
+.practical-results > p {
+  color: var(--muted);
+}
+
+.wide-card[tabindex]:focus-visible {
+  outline: 3px solid rgba(17, 156, 145, 0.42);
+  outline-offset: 3px;
+}
+
+.practical-table {
+  min-width: 880px;
+}
+
+.practical-table td:first-child,
+.practical-table td:nth-child(2) {
+  min-width: 135px;
+  color: var(--navy-900);
+  font-weight: 800;
+}
+
+.activity-question {
+  margin-top: 16px;
+  padding: 22px;
+  border: 1px solid #c4e0e1;
+  border-radius: var(--radius-md);
+  background: #fff;
+  box-shadow: 0 10px 26px rgba(8, 54, 73, 0.05);
+}
+
+.activity-question h3 {
+  margin: 0 0 12px;
+  color: var(--navy-900);
+}
+
+.activity-question details {
+  border-radius: 11px;
+  background: #edf9f8;
+}
+
+.activity-question summary {
+  min-height: 44px;
+  padding: 10px 13px;
+  color: #075d69;
+  cursor: pointer;
+  font-weight: 800;
+}
+
+.activity-question details p {
+  margin: 0;
+  padding: 0 13px 13px;
+}
+
+.measure-table input {
+  min-height: 44px;
+}
+
+.source-note {
+  margin: 14px 0 0;
+  padding: 12px 14px;
+  border-inline-start: 4px solid #159b88;
+  border-radius: 10px;
+  color: var(--muted);
+  background: #edf8f8;
+  font-size: 0.85rem;
+}
+
+.report-card {
+  margin-top: 14px;
+}
+
+.report-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  margin-top: 16px;
+}
+
+.report-grid label {
+  display: grid;
+  gap: 6px;
+  color: var(--navy-900);
+  font-weight: 800;
+}
+
+.report-grid textarea {
+  width: 100%;
+  min-height: 92px;
+  resize: vertical;
+  padding: 10px 12px;
+  border: 1px solid #b9c8d4;
+  border-radius: 10px;
+  color: var(--ink);
+  background: #fff;
+  font: inherit;
+  font-weight: 400;
+}
+
+.prediction-card {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px 14px;
+  margin: 18px 0;
+  padding: 20px;
+  border: 1px solid #b6dfde;
+  border-radius: var(--radius-md);
+  background: linear-gradient(145deg, #f0fcfb, #f3faff);
+}
+
+.prediction-card legend {
+  max-width: 100%;
+  padding: 0 8px;
+  color: var(--navy-900);
+  font-size: 1.05rem;
+  font-weight: 800;
+}
+
+.prediction-card label {
+  display: flex;
+  min-height: 50px;
+  align-items: flex-start;
+  gap: 9px;
+  padding: 10px 12px;
+  border: 1px solid #c9e6e5;
+  border-radius: 10px;
+  background: #fff;
+  cursor: pointer;
+}
+
+.prediction-card label:hover {
+  border-color: #35aea3;
+  background: #f5fdfc;
+}
+
+.prediction-card input {
+  width: 18px;
+  height: 18px;
+  flex: 0 0 18px;
+  margin-top: 4px;
+  accent-color: #108c86;
+}
+
+.prediction-feedback {
+  grid-column: 1 / -1;
+  min-height: 30px;
+  margin: 2px 0 0;
+  color: #075d69;
+  font-weight: 700;
+}
+
+.wind-lab {
+  display: grid;
+  grid-template-columns: minmax(300px, 0.82fr) minmax(470px, 1.18fr);
+  gap: 16px;
+  align-items: stretch;
+}
+
+.simulator-controls,
+.simulator-stage {
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  background: #fff;
+  box-shadow: 0 14px 34px rgba(8, 36, 60, 0.08);
+}
+
+.simulator-controls {
+  padding: 22px;
+}
+
+.control-group + .control-group {
+  margin-top: 18px;
+}
+
+.control-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  margin-bottom: 5px;
+}
+
+.control-heading label {
+  color: var(--navy-900);
+  font-weight: 800;
+}
+
+.control-heading output {
+  min-width: 64px;
+  padding: 3px 8px;
+  border-radius: 8px;
+  color: #075d69;
+  background: #dff7f3;
+  text-align: center;
+  white-space: nowrap;
+  font-weight: 800;
+}
+
+.control-group input[type="range"] {
+  width: 100%;
+  min-height: 44px;
+  accent-color: #108c86;
+  cursor: pointer;
+}
+
+.control-group small {
+  display: block;
+  color: var(--muted);
+  font-size: 0.8rem;
+}
+
+.control-group select {
+  width: 100%;
+  min-height: 46px;
+  padding: 7px 11px;
+  border: 1px solid #b9c8d4;
+  border-radius: 10px;
+  color: var(--ink);
+  background: #fff;
+  font: inherit;
+}
+
+.control-group select:focus-visible,
+.control-group input:focus-visible,
+.report-grid textarea:focus-visible,
+.measure-table input:focus-visible,
+.prediction-card input:focus-visible {
+  outline: 3px solid rgba(230, 154, 18, 0.56);
+  outline-offset: 3px;
+}
+
+.preset-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+  margin-top: 22px;
+  padding-top: 18px;
+  border-top: 1px solid var(--line);
+}
+
+.preset-group p {
+  width: 100%;
+  margin: 0 0 3px;
+  color: var(--navy-900);
+  font-weight: 800;
+}
+
+.preset-button,
+.sim-button,
+.print-button {
+  min-height: 44px;
+  border: 1px solid #cbd7e1;
+  font-family: inherit;
+  cursor: pointer;
+  touch-action: manipulation;
+}
+
+.preset-button {
+  padding: 7px 10px;
+  border-radius: 9px;
+  color: var(--navy-900);
+  background: #f3f7fa;
+  font-size: 0.82rem;
+  font-weight: 700;
+}
+
+.preset-button:hover,
+.preset-button:focus-visible {
+  border-color: #159b88;
+  background: #e3f8f5;
+}
+
+.preset-button[aria-pressed="true"] {
+  border-color: #108c86;
+  color: #075d69;
+  background: #caf2eb;
+  box-shadow: inset 0 0 0 1px #108c86;
+}
+
+.simulation-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 22px;
+}
+
+.sim-button {
+  padding: 7px 13px;
+  border-radius: 10px;
+  color: var(--navy-900);
+  background: #edf3f7;
+  font-weight: 800;
+}
+
+.sim-button:hover:not(:disabled),
+.sim-button:focus-visible:not(:disabled) {
+  border-color: #159b88;
+  background: #e5f8f5;
+}
+
+.sim-button.primary {
+  border-color: #0a827c;
+  color: #fff;
+  background: linear-gradient(135deg, #087d8e, #129783);
+  box-shadow: 0 8px 18px rgba(8, 125, 142, 0.2);
+}
+
+.sim-button.primary:hover,
+.sim-button.primary:focus-visible {
+  color: #fff;
+  background: linear-gradient(135deg, #066d7d, #0e8373);
+}
+
+.sim-button.secondary {
+  color: var(--muted);
+  background: #fff;
+}
+
+.sim-button:disabled {
+  opacity: 0.48;
+  cursor: not-allowed;
+}
+
+/* مشهد المحاكاة */
+.simulator-stage {
+  --wind-opacity: 0.62;
+  --wind-duration: 1.35s;
+  position: relative;
+  isolation: isolate;
+  min-height: 560px;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 19% 17%, rgba(255, 255, 255, 0.9), transparent 21%),
+    linear-gradient(#bce9f5 0 68%, #b7dca9 68% 100%);
+}
+
+.simulator-stage::before {
+  content: "";
+  position: absolute;
+  z-index: -2;
+  inset: auto 0 0;
+  height: 32%;
+  background:
+    linear-gradient(168deg, transparent 0 40%, rgba(74, 132, 87, 0.2) 40% 42%, transparent 42%),
+    linear-gradient(12deg, rgba(74, 132, 87, 0.16), transparent 45%),
+    #b6d5a7;
+}
+
+.simulator-stage::after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  right: -7%;
+  bottom: 25%;
+  width: 56%;
+  height: 22%;
+  border-radius: 55% 45% 0 0;
+  background: rgba(93, 157, 107, 0.2);
+  transform: rotate(-3deg);
+}
+
+.cloud,
+.wind-cloud {
+  position: absolute;
+  z-index: 0;
+  width: 84px;
+  height: 25px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.78);
+  filter: drop-shadow(0 5px 7px rgba(35, 89, 106, 0.08));
+}
+
+.cloud::before,
+.cloud::after,
+.wind-cloud::before,
+.wind-cloud::after {
+  content: "";
+  position: absolute;
+  bottom: 6px;
+  border-radius: 50%;
+  background: inherit;
+}
+
+.cloud::before,
+.wind-cloud::before {
+  right: 12px;
+  width: 36px;
+  height: 36px;
+}
+
+.cloud::after,
+.wind-cloud::after {
+  right: 41px;
+  width: 28px;
+  height: 28px;
+}
+
+.cloud-one,
+.wind-cloud:nth-of-type(1) {
+  top: 72px;
+  right: 44px;
+}
+
+.cloud-two,
+.wind-cloud:nth-of-type(2) {
+  top: 130px;
+  left: 38%;
+  transform: scale(0.72);
+  opacity: 0.72;
+}
+
+.wind-field {
+  position: absolute;
+  z-index: 1;
+  inset: 76px 4% 145px;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.wind-field span,
+.wind-field i,
+.wind-line,
+.wind-streak {
+  position: absolute;
+  right: -24%;
+  width: clamp(95px, 22%, 180px);
+  height: 5px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.94) 42%, rgba(39, 164, 177, 0.68));
+  box-shadow: 0 0 7px rgba(255, 255, 255, 0.46);
+  opacity: var(--wind-opacity);
+  animation: wind-flow var(--wind-duration) linear infinite;
+  animation-play-state: paused;
+}
+
+.simulator-stage.is-running .wind-field span,
+.simulator-stage.is-running .wind-field i,
+.simulator-stage.is-running .wind-line,
+.simulator-stage.is-running .wind-streak {
+  animation-play-state: running;
+}
+
+.wind-field span:nth-child(1),
+.wind-field i:nth-child(1),
+.wind-streak:nth-child(1) {
+  top: 11%;
+  animation-delay: -0.15s;
+}
+
+.wind-field span:nth-child(2),
+.wind-field i:nth-child(2),
+.wind-streak:nth-child(2) {
+  top: 31%;
+  width: clamp(125px, 28%, 220px);
+  animation-delay: -0.7s;
+}
+
+.wind-field span:nth-child(3),
+.wind-field i:nth-child(3),
+.wind-streak:nth-child(3) {
+  top: 53%;
+  width: clamp(70px, 18%, 150px);
+  animation-delay: -1.05s;
+}
+
+.wind-field span:nth-child(4),
+.wind-field i:nth-child(4),
+.wind-streak:nth-child(4) {
+  top: 74%;
+  width: clamp(110px, 25%, 200px);
+  animation-delay: -0.42s;
+}
+
+.wind-field span:nth-child(5),
+.wind-field i:nth-child(5),
+.wind-streak:nth-child(5) {
+  top: 91%;
+  width: clamp(85px, 19%, 165px);
+  animation-delay: -0.9s;
+}
+
+.wind-turbine {
+  position: absolute;
+  right: clamp(52px, 12%, 108px);
+  bottom: 76px;
+  z-index: 4;
+  width: 220px;
+  height: 355px;
+}
+
+.turbine-tower,
+.wind-turbine .tower,
+.wind-turbine .turbine-mast {
+  position: absolute;
+  right: 96px;
+  bottom: 0;
+  width: 30px;
+  height: 246px;
+  clip-path: polygon(34% 0, 66% 0, 100% 100%, 0 100%);
+  background: linear-gradient(90deg, #d8e5ea, #fff 48%, #b7cbd3);
+  filter: drop-shadow(8px 8px 7px rgba(14, 58, 72, 0.12));
+}
+
+.turbine-tower::after,
+.wind-turbine .tower::after,
+.wind-turbine .turbine-mast::after {
+  content: "";
+  position: absolute;
+  inset: auto 0 0;
+  height: 9px;
+  border-radius: 50% 50% 0 0;
+  background: #7699a5;
+}
+
+.wind-turbine .turbine-base {
+  position: absolute;
+  right: 73px;
+  bottom: -3px;
+  width: 78px;
+  height: 14px;
+  border: 3px solid #557985;
+  border-radius: 50% 50% 7px 7px;
+  background: linear-gradient(#dce9ec, #8ba5ad);
+  box-shadow: 0 6px 9px rgba(14, 58, 72, 0.13);
+}
+
+.wind-nacelle,
+.wind-turbine .nacelle {
+  position: absolute;
+  top: 94px;
+  right: 95px;
+  width: 66px;
+  height: 35px;
+  border: 4px solid #315e70;
+  border-radius: 16px 21px 12px 13px;
+  background: linear-gradient(145deg, #fff, #d5e6eb);
+  box-shadow: 0 7px 15px rgba(8, 54, 73, 0.14);
+}
+
+.wind-nacelle::after,
+.wind-turbine .nacelle::after {
+  content: "";
+  position: absolute;
+  top: 8px;
+  left: -17px;
+  width: 18px;
+  height: 10px;
+  border-radius: 8px 0 0 8px;
+  background: #315e70;
+}
+
+.wind-rotor {
+  --rotor-duration: 1.25s;
+  position: absolute;
+  top: 19px;
+  right: 16px;
+  z-index: 6;
+  width: 184px;
+  height: 184px;
+  border-radius: 50%;
+  transform-origin: 50% 50%;
+  will-change: transform;
+}
+
+.wind-rotor.is-spinning {
+  animation: rotor-spin var(--rotor-duration) linear infinite;
+}
+
+.wind-rotor .blade,
+.wind-rotor .rotor-blade,
+.wind-rotor > span:not(.hub):not(.rotor-hub) {
+  position: absolute;
+  top: 3px;
+  left: 82px;
+  width: 23px;
+  height: 90px;
+  clip-path: polygon(48% 100%, 18% 37%, 23% 5%, 57% 0, 90% 23%, 72% 66%);
+  border-radius: 70% 23% 72% 30%;
+  background: linear-gradient(90deg, #eaf8fa, #fff 48%, #9bcfd2);
+  box-shadow: inset -3px 0 0 rgba(17, 117, 129, 0.2);
+  transform-origin: 50% 89px;
+}
+
+.wind-rotor .blade:nth-child(2),
+.wind-rotor .rotor-blade:nth-child(2),
+.wind-rotor > span:not(.hub):not(.rotor-hub):nth-child(2) {
+  transform: rotate(120deg);
+}
+
+.wind-rotor .blade:nth-child(3),
+.wind-rotor .rotor-blade:nth-child(3),
+.wind-rotor > span:not(.hub):not(.rotor-hub):nth-child(3) {
+  transform: rotate(240deg);
+}
+
+.wind-rotor .hub,
+.wind-rotor .rotor-hub,
+.wind-rotor > i {
+  position: absolute;
+  z-index: 8;
+  top: 73px;
+  left: 73px;
+  width: 39px;
+  height: 39px;
+  border: 6px solid #27586a;
+  border-radius: 50%;
+  background: radial-gradient(circle at 38% 32%, #fff, #90d1d0 48%, #168e94 72%);
+  box-shadow: 0 5px 12px rgba(7, 54, 74, 0.2);
+  font-size: 0;
+  font-style: normal;
+}
+
+.wind-turbine small,
+.generator-unit small,
+.lamp-unit small {
+  position: absolute;
+  color: #143e50;
+  font-size: 0.74rem;
+  font-weight: 900;
+  white-space: nowrap;
+}
+
+.wind-turbine > small {
+  right: 79px;
+  bottom: -29px;
+}
+
+.generator-unit {
+  position: absolute;
+  right: clamp(265px, 48%, 410px);
+  bottom: 87px;
+  z-index: 5;
+  display: grid;
+  width: 98px;
+  height: 92px;
+  place-items: center;
+  border: 6px solid #164d64;
+  border-radius: 22px;
+  color: #fff;
+  background: linear-gradient(145deg, #258ea5, #0b6777);
+  box-shadow: 0 10px 22px rgba(8, 61, 86, 0.18);
+}
+
+.generator-unit strong {
+  font-size: 1.7rem;
+  line-height: 1;
+}
+
+.generator-unit small {
+  left: 50%;
+  bottom: -30px;
+  transform: translateX(-50%);
+}
+
+.drive-shaft {
+  position: absolute;
+  right: calc(clamp(52px, 12%, 108px) + 151px);
+  bottom: 135px;
+  z-index: 3;
+  width: clamp(68px, 20%, 180px);
+  height: 9px;
+  border: 2px solid #315e70;
+  border-radius: 999px;
+  background: #8ba7af;
+}
+
+.power-wire {
+  position: absolute;
+  right: 56%;
+  bottom: 102px;
+  z-index: 3;
+  width: calc(44% - 175px);
+  min-width: 72px;
+  height: 54px;
+  border-bottom: 5px solid #e69a12;
+  border-radius: 0 0 50% 50%;
+}
+
+.lamp-unit {
+  --lamp-glow-size: 0px;
+  --lamp-opacity: 0.38;
+  position: absolute;
+  left: 38px;
+  bottom: 75px;
+  z-index: 5;
+  display: grid;
+  width: 116px;
+  min-height: 116px;
+  place-items: center;
+  border: 5px solid #315369;
+  border-radius: 22px;
+  background: rgba(255, 255, 255, 0.94);
+  box-shadow: 0 10px 22px rgba(8, 61, 86, 0.16);
+}
+
+.lamp-unit::before {
+  content: "";
+  position: absolute;
+  inset: 24px;
+  border-radius: 50%;
+  background: rgba(255, 197, 53, var(--lamp-opacity));
+  box-shadow: 0 0 var(--lamp-glow-size) rgba(255, 182, 22, 0.96);
+  transition: box-shadow 260ms ease, background 260ms ease;
+}
+
+.lamp-bulb {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  width: 55px;
+  height: 55px;
+  place-items: center;
+  border: 4px solid #6b651e;
+  border-radius: 50% 50% 44% 44%;
+  color: #765b00;
+  background: rgba(255, 221, 112, var(--lamp-opacity));
+  font-size: 2rem;
+  line-height: 1;
+  filter: drop-shadow(0 0 var(--lamp-glow-size) rgba(255, 185, 28, 0.98));
+  transition: filter 260ms ease, background 260ms ease;
+}
+
+.lamp-bulb::after {
+  content: "";
+  position: absolute;
+  right: 11px;
+  bottom: -17px;
+  width: 26px;
+  height: 18px;
+  border: 4px solid #526772;
+  border-radius: 0 0 7px 7px;
+  background: repeating-linear-gradient(#c8d5da 0 3px, #728994 3px 5px);
+}
+
+.lamp-bulb.is-lit {
+  animation: lamp-pulse 0.9s ease-in-out infinite alternate;
+}
+
+.lamp-unit small {
+  left: 50%;
+  bottom: -31px;
+  transform: translateX(-50%);
+}
+
+.output-panel {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  z-index: 10;
+  width: min(292px, calc(100% - 250px));
+  padding: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.82);
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.95);
+  box-shadow: 0 9px 24px rgba(8, 36, 60, 0.11);
+  backdrop-filter: blur(4px);
+}
+
+.output-panel > div:not(.output-meter) {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  color: var(--muted);
+  font-size: 0.79rem;
+}
+
+.output-panel > div + div {
+  margin-top: 2px;
+}
+
+.output-panel strong {
+  color: var(--navy-900);
+  white-space: nowrap;
+}
+
+.output-meter {
+  height: 12px;
+  margin-top: 10px !important;
+  overflow: hidden;
+  border-radius: 999px;
+  background: #dce6ed;
+}
+
+.output-meter span {
+  display: block;
+  width: 0%;
+  height: 100%;
+  border-radius: inherit;
+  background: linear-gradient(90deg, #159b88, #2bbac0, #e69a12);
+  transition: width 360ms ease;
+}
+
+#simulationSummary {
+  min-height: 44px;
+  margin: 9px 0 0;
+  padding-top: 7px;
+  border-top: 1px solid var(--line);
+  color: #315369;
+  font-size: 0.77rem;
+  line-height: 1.6;
+}
+
+.results-table {
+  min-width: 900px;
+}
+
+.results-table tbody td:first-child,
+#emptyResults td {
+  font-weight: 800;
+}
+
+#emptyResults td {
+  color: var(--muted);
+  text-align: center;
+}
+
+.results-actions {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 14px;
+}
+
+#recordMessage {
+  color: var(--muted);
+  font-size: 0.88rem;
+}
+
+.conclusion-card {
+  margin-top: 14px;
+  padding: 22px;
+  border: 1px solid #b4e0d9;
+  border-inline-start: 5px solid #159b88;
+  border-radius: var(--radius-md);
+  background: linear-gradient(135deg, #eefaf8, #f4fbff);
+}
+
+.conclusion-card h3 {
+  margin: 0 0 8px;
+  color: var(--navy-900);
+}
+
+.conclusion-card ul {
+  margin: 0;
+  padding-inline-start: 22px;
+}
+
+.wind-gallery img {
+  height: clamp(250px, 34vw, 410px);
+  aspect-ratio: auto;
+  object-fit: contain;
+  background: #fff;
+}
+
+.wind-resources {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.book-resource figure {
+  margin: 15px 0 0;
+}
+
+.book-resource img {
+  width: 100%;
+  height: 205px;
+  object-fit: contain;
+  border: 1px solid var(--line);
+  border-radius: 11px;
+  background: #fff;
+}
+
+.book-resource figcaption {
+  margin-top: 5px;
+  color: var(--muted);
+  font-size: 0.78rem;
+}
+
+@keyframes rotor-spin {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes wind-flow {
+  from { transform: translateX(0); opacity: 0; }
+  15% { opacity: var(--wind-opacity); }
+  82% { opacity: var(--wind-opacity); }
+  to { transform: translateX(calc(-100vw - 260px)); opacity: 0; }
+}
+
+@keyframes lamp-pulse {
+  from { transform: scale(0.96); }
+  to { transform: scale(1.06); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .wind-rotor.is-spinning,
+  .simulator-stage.is-running .wind-field span,
+  .simulator-stage.is-running .wind-field i,
+  .simulator-stage.is-running .wind-streak,
+  .lamp-bulb.is-lit {
+    animation: none;
+  }
+
+  .output-meter span,
+  .lamp-unit::before,
+  .lamp-bulb {
+    transition: none;
+  }
+}
+
+@media (max-width: 1000px) {
+  .wind-lab,
+  .experiment-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .wind-resources {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .simulator-stage {
+    min-height: 550px;
+  }
+}
+
+@media (max-width: 700px) {
+  .principle-steps {
+    grid-template-columns: 1fr;
+  }
+
+  .energy-chain {
+    justify-content: flex-start;
+  }
+
+  .prediction-card,
+  .report-grid,
+  .wind-resources {
+    grid-template-columns: 1fr;
+  }
+
+  .prediction-feedback {
+    grid-column: auto;
+  }
+
+  .simulator-controls {
+    padding: 17px;
+  }
+}
+
+@media (max-width: 620px) {
+  .simulator-stage {
+    min-height: 755px;
+  }
+
+  .output-panel {
+    top: 15px;
+    right: 15px;
+    left: 15px;
+    width: auto;
+  }
+
+  .cloud-one,
+  .wind-cloud:nth-of-type(1) {
+    top: 255px;
+  }
+
+  .wind-field {
+    inset: 262px 0 175px;
+  }
+
+  .wind-turbine {
+    right: 43px;
+    bottom: 124px;
+    transform: scale(0.9);
+    transform-origin: bottom right;
+  }
+
+  .drive-shaft {
+    display: none;
+  }
+
+  .generator-unit {
+    right: 43%;
+    bottom: 135px;
+  }
+
+  .power-wire {
+    display: none;
+  }
+
+  .lamp-unit {
+    left: 23px;
+    bottom: 74px;
+    transform: scale(0.88);
+    transform-origin: bottom left;
+  }
+}
+
+@media (max-width: 430px) {
+  .lesson-hero h1.activity-title-long {
+    font-size: clamp(1.55rem, 8vw, 2rem);
+  }
+
+  .simulator-stage {
+    min-height: 900px;
+  }
+
+  .wind-field {
+    inset: 280px 0 235px;
+  }
+
+  .cloud-one,
+  .wind-cloud:nth-of-type(1) {
+    top: 285px;
+    right: 12px;
+    transform: scale(0.8);
+  }
+
+  .cloud-two,
+  .wind-cloud:nth-of-type(2) {
+    top: 335px;
+    left: 8px;
+  }
+
+  .wind-turbine {
+    right: 50%;
+    bottom: 235px;
+    transform: translateX(50%) scale(0.86);
+    transform-origin: bottom center;
+  }
+
+  .generator-unit {
+    right: 50%;
+    bottom: 126px;
+    transform: translateX(50%) scale(0.88);
+  }
+
+  .lamp-unit {
+    left: 50%;
+    bottom: 19px;
+    transform: translateX(-50%) scale(0.82);
+    transform-origin: bottom center;
+  }
+
+  .simulation-actions > *,
+  .preset-button {
+    flex: 1 1 140px;
+  }
+}
+
+@media (max-width: 360px) {
+  .simulator-stage {
+    min-height: 910px;
+  }
+
+  .output-panel {
+    padding: 12px;
+  }
+
+  .output-panel > div:not(.output-meter) {
+    gap: 6px;
+    font-size: 0.73rem;
+  }
+
+  .wind-turbine {
+    bottom: 237px;
+    transform: translateX(50%) scale(0.76);
+  }
+
+  .generator-unit {
+    bottom: 130px;
+    transform: translateX(50%) scale(0.78);
+  }
+
+  .lamp-unit {
+    transform: translateX(-50%) scale(0.75);
+  }
+
+  .energy-chain {
+    padding: 14px;
+  }
+
+  .principle-steps li,
+  .prediction-card,
+  .conclusion-card {
+    padding: 16px;
+  }
+}
+
+@media print {
+  .prediction-card,
+  .simulator-controls,
+  .preset-group,
+  .simulation-actions,
+  .results-actions,
+  .print-button {
+    display: none !important;
+  }
+
+  .wind-lab {
+    display: block;
+  }
+
+  .simulator-stage {
+    min-height: 450px;
+    break-inside: avoid;
+    box-shadow: none;
+    print-color-adjust: exact;
+    -webkit-print-color-adjust: exact;
+  }
+
+  .practical-table,
+  .results-table {
+    width: 100%;
+    min-width: 0;
+    table-layout: fixed;
+    font-size: 9pt;
+  }
+
+  .practical-table th,
+  .practical-table td,
+  .results-table th,
+  .results-table td {
+    padding: 5px;
+    overflow-wrap: anywhere;
+  }
+
+  .practical-table input {
+    min-width: 0;
+    padding: 4px;
+  }
+
+  .wind-rotor.is-spinning,
+  .simulator-stage.is-running .wind-field span,
+  .simulator-stage.is-running .wind-field i,
+  .simulator-stage.is-running .wind-streak,
+  .lamp-bulb.is-lit {
+    animation: none;
+  }
+}

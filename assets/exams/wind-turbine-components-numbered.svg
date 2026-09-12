@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg"
+     viewBox="0 0 1600 1000"
+     width="100%"
+     height="auto"
+     preserveAspectRatio="xMidYMid meet"
+     role="img"
+     aria-labelledby="diagram-title diagram-description">
+  <title id="diagram-title">مخطط نشاط: مكونات عنفة رياح</title>
+  <desc id="diagram-description">رسم تخطيطي جانبي مقطعي لعنفة رياح أفقية المحور، مع ثمانية مؤشرات رقمية لاختبار تسمية الأجزاء.</desc>
+
+  <defs>
+    <marker id="arrowhead"
+            viewBox="0 0 12 12"
+            refX="10"
+            refY="6"
+            markerWidth="8"
+            markerHeight="8"
+            orient="auto-start-reverse"
+            markerUnits="strokeWidth">
+      <path d="M 0 0 L 12 6 L 0 12 Z" fill="#111827"/>
+    </marker>
+
+    <path id="part-shape-a"
+          d="M 437 376
+             C 419 318 401 184 423 88
+             C 458 151 472 293 460 376
+             Z"/>
+
+    <style>
+      .frame {
+        fill: #ffffff;
+        stroke: #cbd5e1;
+        stroke-width: 4;
+      }
+      .outline {
+        stroke: #0b2946;
+        stroke-width: 8;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+      }
+      .detail {
+        fill: none;
+        stroke: #0b2946;
+        stroke-width: 5;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+      }
+      .leader {
+        fill: none;
+        stroke: #111827;
+        stroke-width: 4;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        marker-end: url(#arrowhead);
+      }
+      .callout {
+        fill: #0b2946;
+        stroke: #ffffff;
+        stroke-width: 6;
+      }
+      .callout-number {
+        fill: #ffffff;
+        font-family: Arial, Tahoma, sans-serif;
+        font-size: 64px;
+        font-weight: 700;
+        text-anchor: middle;
+        dominant-baseline: central;
+      }
+      .target {
+        fill: #111827;
+        stroke: #ffffff;
+        stroke-width: 3;
+      }
+    </style>
+  </defs>
+
+  <rect class="frame" x="22" y="22" width="1556" height="956" rx="28"/>
+
+  <!-- Structural group. -->
+  <path d="M 909 540 L 1051 540 L 1142 928 L 818 928 Z"
+        fill="#eef2f6"
+        class="outline"/>
+  <path d="M 893 610 H 1067 M 872 700 H 1088 M 851 790 H 1109 M 830 880 H 1130"
+        class="detail"
+        stroke-width="4"/>
+  <path d="M 928 548 L 866 919 M 1032 548 L 1094 919"
+        class="detail"
+        stroke="#64748b"
+        stroke-width="3"/>
+  <line x1="770" y1="932" x2="1195" y2="932" class="outline"/>
+
+  <!-- Outer cutaway shell. -->
+  <path d="M 500 318
+           Q 500 296 524 296
+           H 1234
+           Q 1304 296 1304 366
+           V 496
+           Q 1304 558 1242 558
+           H 500
+           Z"
+        fill="#edf6fa"
+        fill-opacity="0.88"
+        class="outline"/>
+  <path d="M 535 525 H 1263" class="detail" stroke="#94a3b8" stroke-width="3"/>
+
+  <!-- Component 1. -->
+  <g fill="#bfeaf1" class="outline">
+    <path d="M 437 376 C 419 318 401 184 423 88 C 458 151 472 293 460 376 Z"/>
+    <path d="M 437 376 C 419 318 401 184 423 88 C 458 151 472 293 460 376 Z"
+          transform="rotate(120 445 420)"/>
+    <path d="M 437 376 C 419 318 401 184 423 88 C 458 151 472 293 460 376 Z"
+          transform="rotate(240 445 420)"/>
+  </g>
+
+  <!-- Component 3. -->
+  <rect x="487" y="400" width="278" height="40" rx="18"
+        fill="#d9e2ea"
+        class="outline"/>
+  <line x1="514" y1="420" x2="744" y2="420"
+        class="detail"
+        stroke="#64748b"/>
+
+  <!-- Component 2. -->
+  <circle cx="445" cy="420" r="68" fill="#f6bd60" class="outline"/>
+  <circle cx="445" cy="420" r="25" fill="#ffffff" class="outline" stroke-width="7"/>
+  <circle cx="445" cy="420" r="8" fill="#0b2946"/>
+
+  <!-- Component 4. -->
+  <rect x="752" y="340" width="165" height="160" rx="24"
+        fill="#ffd48a"
+        class="outline"/>
+  <circle cx="805" cy="408" r="38" fill="#fff8e8" class="outline" stroke-width="6"/>
+  <circle cx="862" cy="447" r="29" fill="#fff8e8" class="outline" stroke-width="6"/>
+  <g class="detail" stroke-width="4">
+    <path d="M 805 374 V 442 M 771 408 H 839 M 781 384 L 829 432 M 829 384 L 781 432"/>
+    <path d="M 862 421 V 473 M 836 447 H 888 M 844 429 L 880 465 M 880 429 L 844 465"/>
+  </g>
+  <circle cx="805" cy="408" r="8" fill="#0b2946"/>
+  <circle cx="862" cy="447" r="7" fill="#0b2946"/>
+
+  <!-- Component 5. -->
+  <rect x="916" y="408" width="125" height="24" rx="12"
+        fill="#d9e2ea"
+        class="outline"
+        stroke-width="6"/>
+
+  <!-- Component 6. -->
+  <circle cx="1057" cy="420" r="39" fill="#ffffff" class="outline" stroke-width="7"/>
+  <circle cx="1057" cy="420" r="15" fill="#cbd5e1" class="outline" stroke-width="5"/>
+  <path d="M 1028 377 H 1060 Q 1072 377 1072 389 V 410 H 1037 V 394 H 1028 Z"
+        fill="#ef8354"
+        class="outline"
+        stroke-width="6"/>
+
+  <!-- Component 7. -->
+  <path d="M 1096 356 H 1208
+           Q 1266 356 1266 420
+           Q 1266 484 1208 484
+           H 1096 Z"
+        fill="#a9d6c8"
+        class="outline"/>
+  <line x1="1074" y1="420" x2="1141" y2="420" class="outline" stroke-width="7"/>
+  <circle cx="1172" cy="420" r="43" fill="#ffffff" class="outline" stroke-width="6"/>
+  <path d="M 1149 420
+           C 1157 390 1168 390 1176 420
+           C 1184 450 1195 450 1203 420"
+        class="detail"
+        stroke="#14867d"
+        stroke-width="7"/>
+  <path d="M 1230 383 V 457" class="detail" stroke="#14867d" stroke-width="6"/>
+
+  <!-- Callout leaders; each arrow terminates directly on one component. -->
+  <path d="M 168 155 L 294 155 L 413 205" class="leader"/>
+  <circle cx="413" cy="205" r="7" class="target"/>
+
+  <path d="M 170 554 L 278 554 L 395 459" class="leader"/>
+  <circle cx="395" cy="459" r="7" class="target"/>
+
+  <path d="M 597 158 L 597 318 L 627 399" class="leader"/>
+  <circle cx="627" cy="399" r="7" class="target"/>
+
+  <path d="M 802 158 L 802 271 L 823 339" class="leader"/>
+  <circle cx="823" cy="339" r="7" class="target"/>
+
+  <path d="M 976 158 L 976 318 L 976 407" class="leader"/>
+  <circle cx="976" cy="407" r="7" class="target"/>
+
+  <path d="M 1156 158 L 1156 252 L 1070 379" class="leader"/>
+  <circle cx="1070" cy="379" r="7" class="target"/>
+
+  <path d="M 1416 365 L 1342 365 L 1258 397" class="leader"/>
+  <circle cx="1258" cy="397" r="7" class="target"/>
+
+  <path d="M 1416 802 L 1284 802 L 1091 762" class="leader"/>
+  <circle cx="1091" cy="762" r="7" class="target"/>
+
+  <!-- Numbered callouts intentionally contain no component names. -->
+  <g>
+    <circle cx="130" cy="135" r="72" class="callout"/>
+    <text x="130" y="135" class="callout-number">1</text>
+
+    <circle cx="132" cy="566" r="72" class="callout"/>
+    <text x="132" y="566" class="callout-number">2</text>
+
+    <circle cx="597" cy="116" r="72" class="callout"/>
+    <text x="597" y="116" class="callout-number">3</text>
+
+    <circle cx="802" cy="116" r="72" class="callout"/>
+    <text x="802" y="116" class="callout-number">4</text>
+
+    <circle cx="976" cy="116" r="72" class="callout"/>
+    <text x="976" y="116" class="callout-number">5</text>
+
+    <circle cx="1156" cy="116" r="72" class="callout"/>
+    <text x="1156" y="116" class="callout-number">6</text>
+
+    <circle cx="1456" cy="350" r="72" class="callout"/>
+    <text x="1456" y="350" class="callout-number">7</text>
+
+    <circle cx="1456" cy="814" r="72" class="callout"/>
+    <text x="1456" y="814" class="callout-number">8</text>
+  </g>
+</svg>
