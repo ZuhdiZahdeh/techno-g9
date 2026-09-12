@@ -1,0 +1,659 @@
+.lesson-hero.activity-hero.solar-hero {
+  background:
+    radial-gradient(circle at 10% 15%, rgba(255, 208, 94, 0.18), transparent 30%),
+    linear-gradient(135deg, #2d2107, #4f3608 58%, #634205);
+}
+
+.section-intro {
+  max-width: 850px;
+  margin: 8px 0 18px;
+  color: var(--muted);
+}
+
+.experiment-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+  gap: 14px;
+  align-items: start;
+}
+
+.safety-note {
+  margin-top: 18px !important;
+  padding: 11px 13px;
+  border-inline-start: 4px solid var(--amber-500);
+  border-radius: 9px;
+  background: var(--amber-100);
+}
+
+.practical-results {
+  margin-top: 16px;
+}
+
+.practical-results > p {
+  color: var(--muted);
+}
+
+.practical-table td:first-child {
+  min-width: 210px;
+  color: var(--navy-900);
+  font-weight: 800;
+}
+
+.source-note {
+  margin: 14px 0 0;
+  padding: 12px 14px;
+  border-radius: 10px;
+  color: var(--muted);
+  background: #edf3f7;
+  font-size: 0.85rem;
+}
+
+.report-card {
+  margin-top: 14px;
+}
+
+.report-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  margin-top: 16px;
+}
+
+.report-grid label {
+  display: grid;
+  gap: 6px;
+  color: var(--navy-900);
+  font-weight: 800;
+}
+
+.report-grid textarea {
+  width: 100%;
+  resize: vertical;
+  padding: 10px 12px;
+  border: 1px solid #b9c8d4;
+  border-radius: 10px;
+  color: var(--ink);
+  background: #fff;
+  font: inherit;
+  font-weight: 400;
+}
+
+.prediction-card {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px 14px;
+  margin: 18px 0;
+  padding: 20px;
+  border: 1px solid #ebd293;
+  border-radius: var(--radius-md);
+  background: #fffaf0;
+}
+
+.prediction-card legend {
+  padding: 0 8px;
+  color: var(--navy-900);
+  font-size: 1.05rem;
+  font-weight: 800;
+}
+
+.prediction-card label {
+  display: flex;
+  align-items: flex-start;
+  gap: 9px;
+  padding: 10px 12px;
+  border: 1px solid #ecdcae;
+  border-radius: 10px;
+  background: #fff;
+  cursor: pointer;
+}
+
+.prediction-card input {
+  margin-top: 7px;
+  accent-color: var(--teal-600);
+}
+
+.prediction-feedback {
+  grid-column: 1 / -1;
+  min-height: 30px;
+  margin: 2px 0 0;
+  color: #684400;
+  font-weight: 700;
+}
+
+.solar-lab {
+  display: grid;
+  grid-template-columns: minmax(300px, 0.88fr) minmax(420px, 1.12fr);
+  gap: 16px;
+  align-items: stretch;
+}
+
+.simulator-controls,
+.simulator-stage {
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  background: #fff;
+  box-shadow: 0 14px 34px rgba(8, 36, 60, 0.08);
+}
+
+.simulator-controls {
+  padding: 22px;
+}
+
+.control-group + .control-group {
+  margin-top: 18px;
+}
+
+.control-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  margin-bottom: 5px;
+}
+
+.control-heading label {
+  color: var(--navy-900);
+  font-weight: 800;
+}
+
+.control-heading output {
+  min-width: 56px;
+  padding: 2px 8px;
+  border-radius: 8px;
+  color: #684400;
+  background: var(--amber-100);
+  text-align: center;
+  font-weight: 800;
+}
+
+.control-group input[type="range"] {
+  width: 100%;
+  accent-color: var(--teal-600);
+  cursor: pointer;
+}
+
+.control-group small {
+  display: block;
+  color: var(--muted);
+  font-size: 0.8rem;
+}
+
+.preset-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+  margin-top: 22px;
+  padding-top: 18px;
+  border-top: 1px solid var(--line);
+}
+
+.preset-group p {
+  width: 100%;
+  margin: 0 0 3px;
+  color: var(--navy-900);
+  font-weight: 800;
+}
+
+.preset-button,
+.sim-button,
+.print-button {
+  border: 1px solid #cbd7e1;
+  cursor: pointer;
+}
+
+.preset-button {
+  min-height: 44px;
+  padding: 7px 10px;
+  border-radius: 9px;
+  color: var(--navy-900);
+  background: #f3f7fa;
+  font-size: 0.82rem;
+  font-weight: 700;
+}
+
+.preset-button:hover,
+.preset-button:focus-visible {
+  border-color: var(--teal-500);
+  background: var(--teal-100);
+}
+
+.simulation-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 22px;
+}
+
+.sim-button {
+  min-height: 44px;
+  padding: 7px 13px;
+  border-radius: 10px;
+  color: var(--navy-900);
+  background: #edf3f7;
+  font-weight: 800;
+}
+
+.sim-button.primary {
+  border-color: var(--teal-600);
+  color: #fff;
+  background: var(--teal-600);
+}
+
+.sim-button.secondary {
+  color: var(--muted);
+  background: #fff;
+}
+
+.sim-button:disabled {
+  opacity: 0.48;
+  cursor: not-allowed;
+}
+
+.simulator-stage {
+  --sun-opacity: 1;
+  --beam-opacity: 0.9;
+  --darkness: 0;
+  position: relative;
+  min-height: 470px;
+  overflow: hidden;
+  background:
+    linear-gradient(rgba(8, 36, 60, var(--darkness)), rgba(8, 36, 60, var(--darkness))),
+    linear-gradient(#cbeeff 0 66%, #d8ead1 66% 100%);
+}
+
+.sim-sun {
+  position: absolute;
+  inset-block-start: 34px;
+  inset-inline-start: 42px;
+  display: grid;
+  width: 86px;
+  height: 86px;
+  place-items: center;
+  border-radius: 50%;
+  color: #fff;
+  background: #ffb300;
+  box-shadow: 0 0 0 13px rgba(255, 193, 7, 0.18), 0 0 45px rgba(255, 171, 0, 0.72);
+  opacity: var(--sun-opacity);
+}
+
+.sim-sun span {
+  font-size: 2.5rem;
+  line-height: 1;
+}
+
+.light-beam {
+  position: absolute;
+  inset-block-start: 128px;
+  inset-inline-start: 104px;
+  width: 5px;
+  height: 180px;
+  border-radius: 999px;
+  background: rgba(255, 181, 32, 0.7);
+  box-shadow: 0 0 12px rgba(255, 181, 32, 0.55);
+  opacity: var(--beam-opacity);
+  transform: rotate(-31deg);
+  transform-origin: top;
+}
+
+.beam-two {
+  inset-inline-start: 130px;
+  transform: rotate(-37deg);
+}
+
+.beam-three {
+  inset-inline-start: 77px;
+  transform: rotate(-25deg);
+}
+
+.solar-rig {
+  position: absolute;
+  inset-block-end: 94px;
+  inset-inline-start: 42px;
+  width: 230px;
+  height: 150px;
+}
+
+.solar-panel {
+  --panel-angle: 0deg;
+  position: absolute;
+  inset-block-start: 8px;
+  inset-inline-start: 0;
+  width: 220px;
+  height: 112px;
+  overflow: hidden;
+  border: 7px solid #163d63;
+  border-radius: 8px;
+  background-color: #2878b7;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.62) 2px, transparent 2px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.62) 2px, transparent 2px),
+    linear-gradient(145deg, rgba(255, 255, 255, 0.22), transparent 58%);
+  background-size: 100% 28px, 44px 100%, 100% 100%;
+  box-shadow: 0 12px 25px rgba(8, 36, 60, 0.18);
+  transform: perspective(480px) rotateY(var(--panel-angle));
+  transform-origin: center;
+  transform-style: preserve-3d;
+  transition: transform 260ms ease;
+}
+
+.panel-cover {
+  position: absolute;
+  inset: 0 0 0 auto;
+  width: 0%;
+  background: repeating-linear-gradient(135deg, rgba(28, 35, 41, 0.88) 0 10px, rgba(48, 55, 61, 0.88) 10px 20px);
+  transition: width 260ms ease;
+}
+
+.panel-stand {
+  position: absolute;
+  inset-block-end: 0;
+  inset-inline-start: 102px;
+  width: 18px;
+  height: 48px;
+  border-radius: 7px 7px 0 0;
+  background: #667b8e;
+}
+
+.motor-unit {
+  position: absolute;
+  inset-block-end: 98px;
+  inset-inline-end: 48px;
+  width: 150px;
+  height: 145px;
+}
+
+.motor-body {
+  position: absolute;
+  inset-block-end: 0;
+  inset-inline-end: 0;
+  display: grid;
+  width: 104px;
+  height: 82px;
+  place-items: center;
+  border: 6px solid #204765;
+  border-radius: 22px;
+  color: #fff;
+  background: #4b708b;
+  font-weight: 900;
+}
+
+.fan {
+  --fan-duration: 1s;
+  position: absolute;
+  inset-block-start: 0;
+  inset-inline-start: 4px;
+  width: 94px;
+  height: 94px;
+  border-radius: 50%;
+}
+
+.fan::after {
+  content: "";
+  position: absolute;
+  inset: 36px;
+  z-index: 2;
+  border: 5px solid #173d5e;
+  border-radius: 50%;
+  background: #f5b126;
+}
+
+.fan span {
+  position: absolute;
+  inset-block-start: 2px;
+  inset-inline-start: 39px;
+  width: 17px;
+  height: 44px;
+  border-radius: 80% 20% 70% 30%;
+  background: #157f9a;
+  transform-origin: 50% 45px;
+}
+
+.fan span:nth-child(2) {
+  transform: rotate(120deg);
+}
+
+.fan span:nth-child(3) {
+  transform: rotate(240deg);
+}
+
+.fan.is-spinning {
+  animation: fan-spin var(--fan-duration) linear infinite;
+}
+
+.energy-wire {
+  position: absolute;
+  inset-block-end: 69px;
+  inset-inline: 146px 99px;
+  height: 52px;
+  border-bottom: 5px solid #e09913;
+  border-radius: 0 0 50% 50%;
+}
+
+.output-panel {
+  position: absolute;
+  inset-block-start: 24px;
+  inset-inline-end: 24px;
+  width: min(260px, calc(100% - 150px));
+  padding: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.68);
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.9);
+  box-shadow: 0 9px 24px rgba(8, 36, 60, 0.1);
+}
+
+.output-panel > div:not(.output-meter) {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  color: var(--muted);
+  font-size: 0.84rem;
+}
+
+.output-panel strong {
+  color: var(--navy-900);
+}
+
+.output-meter {
+  height: 12px;
+  margin-top: 10px;
+  overflow: hidden;
+  border-radius: 999px;
+  background: #dce6ed;
+}
+
+.output-meter span {
+  display: block;
+  width: 0%;
+  height: 100%;
+  border-radius: inherit;
+  background: linear-gradient(90deg, var(--amber-500), var(--teal-500));
+  transition: width 360ms ease;
+}
+
+.results-table tbody td:first-child,
+#emptyResults td {
+  font-weight: 800;
+}
+
+#emptyResults td {
+  color: var(--muted);
+  text-align: center;
+}
+
+.results-actions {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 14px;
+}
+
+#recordMessage {
+  color: var(--muted);
+  font-size: 0.88rem;
+}
+
+.conclusion-card {
+  margin-top: 14px;
+  padding: 22px;
+  border: 1px solid #b9e1dc;
+  border-inline-start: 5px solid var(--teal-500);
+  border-radius: var(--radius-md);
+  background: #eefaf8;
+}
+
+.conclusion-card h3 {
+  margin: 0 0 8px;
+  color: var(--navy-900);
+}
+
+.conclusion-card ul {
+  margin: 0;
+  padding-inline-start: 22px;
+}
+
+.solar-gallery img {
+  height: clamp(260px, 35vw, 420px);
+  aspect-ratio: auto;
+  object-fit: contain;
+  background: #fff;
+}
+
+.print-button {
+  font-family: inherit;
+}
+
+@keyframes fan-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fan.is-spinning {
+    animation: none;
+  }
+}
+
+@media (max-width: 900px) {
+  .solar-lab,
+  .experiment-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .simulator-stage {
+    min-height: 450px;
+  }
+}
+
+@media (max-width: 620px) {
+  .report-grid,
+  .prediction-card {
+    grid-template-columns: 1fr;
+  }
+
+  .prediction-feedback {
+    grid-column: auto;
+  }
+
+  .simulator-controls {
+    padding: 17px;
+  }
+
+  .simulator-stage {
+    min-height: 520px;
+  }
+
+  .sim-sun {
+    inset-inline-start: 28px;
+  }
+
+  .output-panel {
+    inset-inline-end: 14px;
+    width: calc(100% - 135px);
+  }
+
+  .solar-rig {
+    inset-block-end: 174px;
+    inset-inline-start: 26px;
+    transform: scale(0.8);
+    transform-origin: bottom right;
+  }
+
+  .motor-unit {
+    inset-block-end: 60px;
+    inset-inline-end: 30px;
+  }
+
+  .energy-wire {
+    display: none;
+  }
+}
+
+@media (max-width: 420px) {
+  .simulator-stage {
+    min-height: 650px;
+  }
+
+  .output-panel {
+    inset-block-start: 14px;
+    inset-inline: 14px;
+    width: auto;
+  }
+
+  .sim-sun {
+    inset-block-start: 125px;
+    inset-inline-start: 20px;
+    transform: scale(0.78);
+  }
+
+  .light-beam {
+    inset-block-start: 208px;
+    inset-inline-start: 77px;
+    height: 135px;
+  }
+
+  .beam-two {
+    inset-inline-start: 96px;
+  }
+
+  .beam-three {
+    inset-inline-start: 58px;
+  }
+
+  .solar-rig {
+    inset-block-end: 235px;
+    inset-inline-start: 10px;
+    transform: scale(0.62);
+  }
+
+  .motor-unit {
+    inset-block-end: 48px;
+    inset-inline-end: 20px;
+    transform: scale(0.78);
+    transform-origin: bottom right;
+  }
+}
+
+@media print {
+  .prediction-card,
+  .simulator-controls,
+  .preset-group,
+  .simulation-actions,
+  .results-actions,
+  .print-button {
+    display: none !important;
+  }
+
+  .solar-lab {
+    display: block;
+  }
+
+  .simulator-stage {
+    min-height: 330px;
+    break-inside: avoid;
+    box-shadow: none;
+    print-color-adjust: exact;
+    -webkit-print-color-adjust: exact;
+  }
+}
