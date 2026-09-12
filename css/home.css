@@ -1,3 +1,36 @@
+.header-row {
+  flex-wrap: wrap;
+  padding-block: 12px;
+}
+
+.classroom-links,
+.classroom-buttons {
+  display: flex;
+  align-items: center;
+}
+
+.classroom-links {
+  flex-wrap: wrap;
+  gap: 10px;
+  color: var(--navy-900);
+}
+
+.classroom-label {
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.classroom-buttons {
+  gap: 8px;
+}
+
+.classroom-button {
+  justify-content: center;
+  min-width: 44px;
+  min-height: 44px;
+  padding: 7px 10px;
+}
+
 .welcome {
   position: relative;
   display: grid;
