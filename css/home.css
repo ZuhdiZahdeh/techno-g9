@@ -29,6 +29,32 @@
   min-width: 44px;
   min-height: 44px;
   padding: 7px 10px;
+  border-color: var(--classroom-color);
+  color: var(--classroom-text, #fff);
+  background: var(--classroom-color);
+}
+
+.classroom-button:nth-child(1) {
+  --classroom-color: #dc2626;
+  --classroom-hover: #b91c1c;
+}
+
+.classroom-button:nth-child(2) {
+  --classroom-color: #fb923c;
+  --classroom-hover: #f97316;
+  --classroom-text: #431407;
+}
+
+.classroom-button:nth-child(3) {
+  --classroom-color: #15803d;
+  --classroom-hover: #166534;
+}
+
+.classroom-button:hover,
+.classroom-button:focus-visible {
+  border-color: var(--classroom-hover);
+  color: var(--classroom-text, #fff);
+  background: var(--classroom-hover);
 }
 
 .welcome {
