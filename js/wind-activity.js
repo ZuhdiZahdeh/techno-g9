@@ -2,9 +2,7 @@
   "use strict";
 
   var windSpeedRange = document.getElementById("windSpeedRange");
-  var brakeRange = document.getElementById("brakeRange");
   var windSpeedValue = document.getElementById("windSpeedValue");
-  var brakeValue = document.getElementById("brakeValue");
   var stage = document.getElementById("simulatorStage");
   var windField = document.getElementById("windField");
   var windTurbine = document.getElementById("windTurbine");
@@ -35,7 +33,7 @@
   var animationFrameId = null;
 
   var requiredElements = [
-    windSpeedRange, brakeRange, windSpeedValue, brakeValue, stage, windField,
+    windSpeedRange, windSpeedValue, stage, windField,
     windTurbine, windRotor, lampUnit, lampBulb, relativeOutput,
     turbineSpeedOutput, rpmOutput, voltageOutput, currentAmpOutput,
     lampStateOutput, outputMeter, outputFill, simulationSummary, runButton,
@@ -55,12 +53,8 @@
     windSpeedRange.min = "0";
     windSpeedRange.max = "15";
     windSpeedRange.step = "1";
-    brakeRange.min = "0";
-    brakeRange.max = "100";
-    brakeRange.step = "25";
 
     if (!windSpeedRange.hasAttribute("value")) windSpeedRange.value = "8";
-    if (!brakeRange.hasAttribute("value")) brakeRange.value = "0";
   }
 
   function numberValue(input) {
@@ -121,7 +115,7 @@
     outputFill.style.width = "0%";
     outputMeter.setAttribute("aria-valuenow", "0");
     outputMeter.setAttribute("aria-valuetext", "الإنتاج النسبي صفر بالمئة");
-    simulationSummary.textContent = "اضبط سرعة الرياح ومقدار الفرملة، ثم شغّل التجربة.";
+    simulationSummary.textContent = "اضبط سرعة الرياح، ثم شغّل التجربة.";
     stage.setAttribute("aria-label", "محاكاة عنفة رياح جاهزة للتشغيل");
     recordButton.disabled = true;
     lastResult = null;
@@ -130,13 +124,10 @@
 
   function updateControls() {
     var wind = numberValue(windSpeedRange);
-    var brake = numberValue(brakeRange);
     var windRatio = wind / 15;
 
     windSpeedValue.textContent = wind + " م/ث";
-    brakeValue.textContent = brake + "%";
     windSpeedRange.setAttribute("aria-valuetext", wind + " مترًا في الثانية");
-    brakeRange.setAttribute("aria-valuetext", brake + " بالمئة");
     stage.style.setProperty("--wind-strength", windRatio.toFixed(2));
     stage.style.setProperty("--wind-opacity", wind === 0 ? "0" : String(0.12 + windRatio * 0.78));
     stage.style.setProperty("--wind-duration", Math.max(0.34, 2.15 - windRatio * 1.62).toFixed(2) + "s");
@@ -151,38 +142,32 @@
     var selected = document.querySelector('input[name="prediction"]:checked');
 
     if (!selected) {
-      predictionFeedback.textContent = "اختر توقّعًا، ثم قارن بين حالات الرياح والفرملة.";
+      predictionFeedback.textContent = "اختر توقّعًا، ثم قارن بين سرعات الرياح.";
       return;
     }
 
     if (selected.value === "best") {
-      predictionFeedback.textContent = "توقّع صحيح: يكون الإنتاج النسبي أعلى عند رياح قوية ومن دون فرملة، ضمن حدود هذه المحاكاة.";
+      predictionFeedback.textContent = "توقّع صحيح: يكون الإنتاج النسبي أعلى عند رياح قوية، ضمن حدود هذه المحاكاة.";
     } else if (selected.value === "medium") {
-      predictionFeedback.textContent = "الرياح المتوسطة تولّد طاقة، لكنها أقل من حالة الرياح العالية دون فرملة.";
-    } else if (selected.value === "braked") {
-      predictionFeedback.textContent = "زيادة الفرملة تبطئ العنفة وتقلّل الكهرباء حتى مع وجود الرياح.";
+      predictionFeedback.textContent = "الرياح المتوسطة تولّد طاقة، لكنها أقل من حالة الرياح العالية.";
     } else {
-      predictionFeedback.textContent = "عند توقف الرياح أو اكتمال الفرملة تتوقف العنفة ويصبح الخرج صفرًا.";
+      predictionFeedback.textContent = "عند توقف الرياح تتوقف العنفة ويصبح الخرج صفرًا.";
     }
   }
 
-  function buildSummary(wind, brake, output, rpm, speed, lampState) {
+  function buildSummary(wind, output, rpm, speed, lampState) {
     if (wind === 0) {
       return "لا توجد رياح؛ لذلك توقفت العنفة ولم يُنتج المولد كهرباء.";
-    }
-    if (brake >= 100) {
-      return "الفرملة كاملة؛ لذلك توقفت العنفة وأصبح الإنتاج صفرًا رغم وجود الرياح.";
     }
     if (output < 12) {
       return "دارت العنفة بسرعة " + rpm + " دورة/د، لكن الخرج " + output + "% غير كافٍ لإضاءة المصباح.";
     }
-    return "عند سرعة رياح " + wind + " م/ث وفرملة " + brake + "%، كان الإنتاج " + output + "%، وكانت سرعة دوران العنفة " + speed + "، وكان المصباح " + lampState + ".";
+    return "عند سرعة رياح " + wind + " م/ث، كان الإنتاج " + output + "%، وكانت سرعة دوران العنفة " + speed + "، وكان المصباح " + lampState + ".";
   }
 
   function runSimulation() {
     var wind = numberValue(windSpeedRange);
-    var brake = numberValue(brakeRange);
-    var effectiveRatio = clamp((wind / 15) * (1 - brake / 100), 0, 1);
+    var effectiveRatio = clamp(wind / 15, 0, 1);
     var outputRatio = clamp(Math.pow(effectiveRatio, 3), 0, 1);
     var exactOutput = outputRatio * 100;
     var output = exactOutput > 0 && exactOutput < 1
@@ -196,7 +181,6 @@
 
     lastResult = {
       wind: wind,
-      brake: brake,
       output: output,
       speed: speed,
       rpm: rpm,
@@ -214,7 +198,7 @@
     outputFill.style.width = output + "%";
     outputMeter.setAttribute("aria-valuenow", String(output));
     outputMeter.setAttribute("aria-valuetext", "الإنتاج النسبي " + output + " بالمئة");
-    simulationSummary.textContent = buildSummary(wind, brake, output, rpm, speed, lampState);
+    simulationSummary.textContent = buildSummary(wind, output, rpm, speed, lampState);
     stage.setAttribute("aria-label", "نموذج عنفة رياح يدور بسرعة تقريبية " + rpm + " دورة في الدقيقة، والإنتاج النسبي " + output + " بالمئة");
     recordButton.disabled = recordedCount >= 6;
     stopAnimation();
@@ -256,11 +240,10 @@
     if (emptyRow) emptyRow.remove();
 
     recordedCount += 1;
-    recordedConditions[lastResult.wind + "-" + lastResult.brake] = true;
+    recordedConditions[lastResult.wind] = true;
     var row = document.createElement("tr");
     appendCell(row, String(recordedCount));
     appendCell(row, lastResult.wind + " م/ث");
-    appendCell(row, lastResult.brake + "%");
     appendCell(row, lastResult.output + "%");
     appendCell(row, lastResult.speed + " (" + lastResult.rpm + " دورة/د)");
     appendCell(row, lastResult.voltage);
@@ -284,7 +267,7 @@
     var row = document.createElement("tr");
     row.id = "emptyResults";
     var cell = document.createElement("td");
-    cell.colSpan = 8;
+    cell.colSpan = 7;
     cell.textContent = "لم تُسجَّل نتائج بعد.";
     row.appendChild(cell);
     resultsBody.appendChild(row);
@@ -297,16 +280,15 @@
 
   function setPreset(button) {
     windSpeedRange.value = button.getAttribute("data-wind");
-    brakeRange.value = button.getAttribute("data-brake");
     updateControls();
     runSimulation();
   }
 
-  [windSpeedRange, brakeRange].forEach(function (input) {
+  [windSpeedRange].forEach(function (input) {
     input.addEventListener("input", updateControls);
   });
 
-  document.querySelectorAll(".preset-button[data-wind][data-brake]").forEach(function (button) {
+  document.querySelectorAll(".preset-button[data-wind]").forEach(function (button) {
     button.addEventListener("click", function () {
       setPreset(button);
     });
@@ -323,7 +305,6 @@
   clearButton.addEventListener("click", clearResults);
   resetButton.addEventListener("click", function () {
     windSpeedRange.value = "8";
-    brakeRange.value = "0";
     updateControls();
     recordMessage.textContent = "تمت إعادة قيم المحاكاة، وبقيت النتائج المسجّلة محفوظة.";
   });

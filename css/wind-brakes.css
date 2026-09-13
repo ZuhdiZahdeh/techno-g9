@@ -1,0 +1,15 @@
+.brake-demo-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; align-items: center; }
+.brake-demo label { display: block; font-weight: bold; margin-block: 1rem .5rem; }
+.brake-demo input[type="range"] { width: 100%; min-height: 44px; accent-color: #0f7c78; }
+.brake-actions { display: flex; gap: .6rem; flex-wrap: wrap; margin-block: 1rem; }
+.brake-actions button { font: inherit; background: #0b706c; color: white; border: 0; border-radius: 9px; padding: .6rem 1rem; min-height: 44px; cursor: pointer; }
+.brake-actions button:focus-visible, .brake-demo input:focus-visible { outline: 3px solid #123c63; outline-offset: 3px; }
+.brake-actions button:disabled { opacity: .55; cursor: default; }
+.brake-visual { background: #eef7f7; padding: 1rem; border-radius: 16px; text-align: center; }
+.brake-visual svg { display: block; width: 100%; max-width: 260px; margin-inline: auto; }
+#app-rotor { transform-origin: 120px 90px; animation: application-rotor 2s linear infinite; }
+#app-brake-status { min-height: 3.5em; }
+@keyframes application-rotor { to { transform: rotate(360deg); } }
+@media (max-width: 700px) { .brake-demo-layout { grid-template-columns: 1fr; } }
+@media (prefers-reduced-motion: reduce) { #app-rotor { animation: none; } }
+@media print { #app-rotor { animation: none; } .brake-actions { display: none; } }
