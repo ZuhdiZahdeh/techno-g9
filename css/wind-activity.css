@@ -1279,3 +1279,11 @@ body {
     animation: none;
   }
 }
+
+/* The activity photos show the concept, components and working model. */
+.wind-bulb-gallery { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.wind-bulb-gallery img { width: 100%; height: 320px; object-fit: contain; }
+@media (max-width: 760px) {
+  .wind-bulb-gallery { grid-template-columns: 1fr; }
+  .wind-bulb-gallery img { height: auto; max-height: 480px; }
+}
