@@ -1,0 +1,25 @@
+/* Shared self-study cards. Answers remain readable without JavaScript. */
+.review-section .review-instruction { color: #52657a; line-height: 1.9; margin: 0 0 1.25rem; }
+.review-cards { display: grid; gap: 1rem; }
+.review-card { background: #fff; border: 1px solid #d2e0eb; border-inline-start: 5px solid #ed9c08; border-radius: 18px; padding: 1.25rem 1.5rem; box-shadow: 0 5px 18px rgb(18 60 99 / 4%); }
+.review-card h3 { color: #123c63; font-size: 1.12rem; line-height: 1.9; margin: 0 0 .8rem; }
+.review-number { display: inline-flex; align-items: center; justify-content: center; background: #eaf4f4; color: #0b6865; border-radius: 50%; min-width: 2rem; height: 2rem; margin-inline-end: .6rem; font-size: .95rem; }
+.review-card .review-toggle { font: inherit; font-weight: 700; font-size: .95rem; color: #fff; background: #0b706c; border: 2px solid #0b706c; border-radius: 10px; min-height: 44px; padding: .5rem 1rem; cursor: pointer; }
+.review-card .review-toggle:hover { background: #085753; border-color: #085753; }
+.review-card .review-toggle:focus-visible { outline: 3px solid #123c63; outline-offset: 4px; }
+.review-card .review-toggle[aria-expanded="true"] { background: #edf7f5; color: #095a56; }
+.review-answer { margin-top: 1rem; padding: 1rem 1.2rem; border-radius: 12px; background: #f0f8f6; border: 1px solid #cce4df; color: #203d49; line-height: 1.95; }
+.review-answer p { margin: 0; }
+.review-answer .review-answer-label { color: #0b6865; font-weight: 700; font-size: .92rem; margin-bottom: .4rem; }
+.review-card [hidden] { display: none !important; }
+@media (max-width: 600px) {
+ .review-card { padding: 1rem; border-radius: 14px; }
+ .review-card h3 { font-size: 1.05rem; }
+ .review-answer { padding: .85rem; }
+}
+@media print {
+ .review-card { box-shadow: none; break-inside: avoid; border-color: #777; margin-bottom: .6rem; }
+ .review-card .review-toggle { display: none !important; }
+ .review-card .review-answer[hidden], .review-card .review-answer { display: block !important; background: #fff; }
+ .review-instruction { display: none; }
+}

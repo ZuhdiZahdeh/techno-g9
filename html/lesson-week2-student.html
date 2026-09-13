@@ -9,6 +9,7 @@
   <link rel="icon" href="../assets/tech-g9-favicon.ico" sizes="any">
   <link rel="stylesheet" href="../css/student-site.css">
   <link rel="stylesheet" href="../css/student-clean-energy.css">
+<link rel="stylesheet" href="../css/review-cards.css?v=1"/>
 </head>
 <body>
   <a class="skip-link" href="#lesson-content">انتقل إلى محتوى الدرس</a>
@@ -233,18 +234,27 @@
       </article>
     </section>
 
-    <section class="content-section" id="review" aria-labelledby="review-title">
-      <p class="eyebrow">راجع فهمك</p>
-      <h2 class="section-title" id="review-title">أسئلة بحث وتفكير</h2>
-      <article class="question-card">
-        <ol>
-          <li>ما الصعوبات التي تواجه استغلال طاقة الرياح في توليد الكهرباء؟</li>
-          <li>كيف تتأثر الخلايا الشمسية بزاوية سقوط الضوء والتظليل؟</li>
-          <li>كيف يمكن استغلال المد والجزر في توليد الكهرباء؟</li>
-          <li>اقترح استخدامًا جديدًا لطاقة حرارة باطن الأرض.</li>
-        </ol>
-      </article>
-    </section>
+    <section class="content-section review-section" id="review" aria-labelledby="review-title">
+<p class="eyebrow">أفكّر ثم أتحقّق</p><h2 class="section-title" id="review-title">راجع فهمك — أسئلة قصيرة</h2>
+<p class="review-instruction">فكّر في الإجابة أولًا، ثم اضغط «إظهار الإجابة» وقارنها بإجابتك. عبّر بكلماتك مع الحفاظ على المعنى العلمي.</p>
+<div class="review-cards">
+<article class="review-card">
+<h3 id="review-1-question"><span class="review-number" aria-hidden="true">١</span>كيف ترفع الناعورة الماء إلى قناة الري؟</h3>
+<button class="review-toggle" type="button" aria-expanded="true" aria-controls="review-1-answer" aria-describedby="review-1-question" hidden>إخفاء الإجابة</button>
+<div class="review-answer" id="review-1-answer"><p class="review-answer-label">إجابة نموذجية</p><p>يدفع جريان النهر ألواح الناعورة فتدور. تمتلئ الأوعية عند أسفلها، ثم ترتفع مع دوران العجلة وتفرغ الماء في قناة أعلى تنقله إلى المزروعات.</p></div>
+</article>
+<article class="review-card">
+<h3 id="review-2-question"><span class="review-number" aria-hidden="true">٢</span>ما الفرق بين استخدام الشمس لتجفيف الحبوب واستخدامها لتشغيل جهاز كهربائي؟</h3>
+<button class="review-toggle" type="button" aria-expanded="true" aria-controls="review-2-answer" aria-describedby="review-2-question" hidden>إخفاء الإجابة</button>
+<div class="review-answer" id="review-2-answer"><p class="review-answer-label">إجابة مقترحة مع التفسير</p><p>في تجفيف الحبوب نستفيد من حرارة الشمس لتبخير الرطوبة. أما تشغيل جهاز كهربائي فيمكن أن يتم بخلايا شمسية تحوّل طاقة الضوء إلى كهرباء.</p></div>
+</article>
+<article class="review-card">
+<h3 id="review-3-question"><span class="review-number" aria-hidden="true">٣</span>كيف تساعد حركة مياه المدّ والجزر في توليد الكهرباء؟</h3>
+<button class="review-toggle" type="button" aria-expanded="true" aria-controls="review-3-answer" aria-describedby="review-3-question" hidden>إخفاء الإجابة</button>
+<div class="review-answer" id="review-3-answer"><p class="review-answer-label">إجابة نموذجية</p><p>تدير المياه المتدفقة توربينًا متصلًا بمولّد يحوّل الحركة إلى كهرباء. تُختار مناطق ذات تيارات مدّ مناسبة أو فرق منسوب يمكن استغلاله لتمرير الماء عبر التوربين.</p></div>
+</article>
+</div>
+</section>
 
     <section class="content-section" id="resources" aria-labelledby="resources-title">
       <p class="eyebrow">المواد المساندة</p>
@@ -270,5 +280,6 @@
   </main>
 
   <footer class="site-footer"><div class="shell footer-row"><p>مبحث التكنولوجيا - الصف التاسع</p><p>إعداد المعلم زهدي زاهدة</p></div></footer>
+<script src="../js/review-cards.js?v=1" defer></script>
 </body>
 </html>
