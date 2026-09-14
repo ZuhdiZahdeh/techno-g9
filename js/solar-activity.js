@@ -19,7 +19,6 @@
   var recordButton = document.getElementById("recordResult");
   var resetButton = document.getElementById("resetSimulation");
   var clearButton = document.getElementById("clearResults");
-  var printButton = document.getElementById("printActivity");
   var resultsBody = document.getElementById("resultsBody");
   var recordMessage = document.getElementById("recordMessage");
   var conclusionCard = document.getElementById("conclusionCard");
@@ -31,7 +30,7 @@
   var requiredElements = [
     lightRange, angleRange, coverRange, lightValue, angleValue, coverValue,
     stage, panel, panelCover, fan, currentOutput, speedOutput, outputMeter,
-    outputFill, runButton, recordButton, resetButton, clearButton, printButton,
+    outputFill, runButton, recordButton, resetButton, clearButton,
     resultsBody, recordMessage, conclusionCard, predictionFeedback
   ];
 
@@ -214,9 +213,6 @@
     angleRange.value = "0";
     coverRange.value = "0";
     updateControls();
-  });
-  printButton.addEventListener("click", function () {
-    window.print();
   });
 
   updateControls();
