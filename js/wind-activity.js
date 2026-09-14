@@ -22,7 +22,6 @@
   var recordButton = document.getElementById("recordResult");
   var resetButton = document.getElementById("resetSimulation");
   var clearButton = document.getElementById("clearResults");
-  var printButton = document.getElementById("printActivity");
   var resultsBody = document.getElementById("resultsBody");
   var recordMessage = document.getElementById("recordMessage");
   var conclusionCard = document.getElementById("conclusionCard");
@@ -37,7 +36,7 @@
     windTurbine, windRotor, lampUnit, lampBulb, relativeOutput,
     turbineSpeedOutput, rpmOutput, voltageOutput, currentAmpOutput,
     lampStateOutput, outputMeter, outputFill, simulationSummary, runButton,
-    recordButton, resetButton, clearButton, printButton, resultsBody,
+    recordButton, resetButton, clearButton, resultsBody,
     recordMessage, conclusionCard, predictionFeedback
   ];
 
@@ -307,9 +306,6 @@
     windSpeedRange.value = "8";
     updateControls();
     recordMessage.textContent = "تمت إعادة قيم المحاكاة، وبقيت النتائج المسجّلة محفوظة.";
-  });
-  printButton.addEventListener("click", function () {
-    window.print();
   });
 
   simulationSummary.setAttribute("aria-live", "polite");
