@@ -15,3 +15,18 @@
 @media(max-width:900px){.l2-wind-page .wind-blade-summary{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:540px){.l2-wind-page .wind-lesson-image{padding:10px}.l2-wind-page .wind-blade-summary{grid-template-columns:1fr}.l2-wind-page .wind-lesson-image figcaption{font-size:.9rem}}
 @media print{.l2-wind-page .wind-lesson-image{break-inside:avoid;padding:8px;box-shadow:none}.l2-wind-page .wind-lesson-image img{max-height:230px}.l2-wind-page .wind-horizontal-image img{max-height:none}.l2-wind-page .image-zoom-hint{display:none}.l2-wind-page .wind-blade-summary{display:grid;grid-template-columns:repeat(2,1fr)}}
+
+/* Keep the answer image and key closed until the learner requests them. */
+.l2-wind-page details.components-reveal { max-width: 800px; margin: 16px auto 24px; padding: 0; border: 1px solid #bdd7d4; border-radius: 14px; background: #fff; overflow: hidden; }
+.l2-wind-page .components-reveal > summary { padding: 16px 20px; background: #0f7c78; color: #fff; font-weight: 800; cursor: pointer; }
+.components-reveal:not([open]) > .components-answer-content { display: none; }
+.components-reveal .reveal-hide, .components-reveal[open] .reveal-show { display: none; }
+.components-reveal[open] .reveal-hide { display: inline; }
+.components-answer-content { padding: 18px; }
+.l2-wind-page .components-labeled-image { margin-top: 0; }
+.l2-wind-page .components-labeled-image img { max-height: none; }
+.l2-wind-page .components-answer-table { width: 100%; min-width: 0; }
+.l2-wind-page .components-answer-table th[scope="row"] { min-width: 0; width: 70px; text-align: center; }
+.l2-wind-page .components-reveal > summary:focus-visible { outline: 3px solid #ed9c08; outline-offset: -4px; }
+@media(max-width:540px) { .components-answer-content { padding: 10px; } .components-answer-table { font-size: .9rem; } }
+@media print { .components-reveal > summary { display: none; } .components-reveal:not([open]) { display: none; } .components-reveal[open] { border: 0; } }
