@@ -90,3 +90,11 @@
  .enrichment-page .practical-table input { min-width: 0; padding: 4px; }
  .enrichment-page .wide-card.practical-results { overflow: visible; }
 }
+
+.enrichment-page #water-experiment { padding-top: 24px; border-top: 2px solid #bdd7d4; }
+.enrichment-page .report-card { margin-top: 16px; }
+.enrichment-page .report-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; margin-top: 16px; }
+.enrichment-page .report-grid label { display: grid; gap: 6px; color: var(--navy-900); font-weight: 800; }
+.enrichment-page .report-grid textarea { box-sizing: border-box; width: 100%; resize: vertical; padding: 10px 12px; border: 1px solid #b9c8d4; border-radius: 10px; color: var(--ink); background: #fff; font: inherit; font-weight: 400; }
+.enrichment-page .report-grid textarea:focus-visible { outline: 3px solid rgba(17, 156, 145, 0.42); outline-offset: 3px; }
+@media (max-width: 700px) { .enrichment-page .report-grid { grid-template-columns: 1fr; } }
