@@ -61,14 +61,15 @@
 <p class="eyebrow">أفهم أجزاء العنفة</p><h2 class="section-title" id="brakes-title">المكابح وحماية العنفة</h2>
 <p class="science-note"><strong>ألاحظ الرسم:</strong> حدّد موضعي المكابح المشار إليهما بالرقمين <strong>٦ و٧</strong> في صورة مكوّنات العنفة أعلاه.</p>
 <div class="study-grid">
-<article class="study-card"><h3>ما وظيفة المكابح؟</h3><p>تساعد المكابح، ضمن نظام التحكم والحماية، على التحكم في حركة العنفة وتثبيتها عند التوقف. عند إبطاء الدوران يقل خرج المولّد في النموذج التعليمي، وعند التوقف ينعدم التوليد.</p></article>
-<article class="study-card"><h3>وقت الصيانة</h3><p>تُوقف العنفة وتُثبَّت أجزاؤها الدوّارة لمنع حركتها أثناء عمل الفنيين. يساعد ذلك على حماية العاملين والمعدات.</p></article>
-<article class="study-card"><h3>وقت العواصف والرياح الشديدة</h3><p>قد تؤدي السرعة الزائدة إلى تلف الشفرات والأجزاء الميكانيكية. لذلك يتدخل نظام التحكم لإبطاء العنفة أو إيقافها وفق حدود تشغيلها، فتكون حماية العنفة مقدّمة على الاستمرار في توليد الكهرباء.</p></article>
-<article class="study-card"><h3>كيف تعمل الحماية معًا؟</h3><p>في كثير من العنفات الكبيرة يُغيّر النظام زاوية الشفرات لتقليل تأثير الرياح وإبطاء الدوران، ثم تُستخدم المكابح لتثبيت الدوّار بعد توقفه. تختلف التفاصيل حسب التصميم؛ فلا نعتمد على المكابح وحدها لمقاومة العاصفة.</p></article>
+<article class="study-card"><h3>ما وظيفة المكابح؟</h3><ol>
+<li><strong>وقت الصيانة:</strong> لمنع حركتها أثناء عمل الفنيين.</li>
+<li><strong>وقت العواصف والرياح الشديدة:</strong> لحماية العنفة من التلف أو التدمير.</li>
+</ol></article>
+<article class="study-card"><h3>كيف تعمل الحماية معًا؟</h3><p>في العنفات الكبيرة يُغيّر النظام زاوية الشفرات لتقليل تأثير الرياح وإبطاء الدوران، ثم تُستخدم المكابح لتثبيت محور الدوران بعد توقفه.</p></article>
 </div>
 <article class="wide-card brake-demo" id="brake-demo">
 <h3>أستقصي: أثر الإبطاء في دوران العنفة</h3>
-<p>ثبّت سرعة الرياح وغيّر درجة الإبطاء، ثم قارن النتائج. هذا نموذج نوعي مبسّط لمنظومة الكبح والتحكم، وليست النسب إعدادات تشغيل لعنفة حقيقية.</p>
+<p>ثبّت سرعة الرياح وغيّر درجة الإبطاء، ولاحظ التغيّر في دوران العنفة. هذا نموذج نوعي مبسّط لمنظومة الكبح والتحكم، وليست النسب إعدادات تشغيل لعنفة حقيقية.</p>
 <div class="brake-demo-layout"><div>
 <label for="app-wind">سرعة الرياح في النموذج: <output id="app-wind-value" for="app-wind">٨ م/ث</output></label>
 <input id="app-wind" type="range" min="0" max="15" step="1" value="8">
@@ -80,9 +81,7 @@
 <svg viewBox="0 0 240 230" role="img" aria-label="عنفة يتغير دوران شفراتها بحسب الرياح والإبطاء"><path d="M120 90 L108 214 H132 Z" fill="#aac4d7"/><g id="app-rotor" fill="#0f7c78"><path d="M115 87 L116 12 Q135 9 125 90 Z"/><path d="M115 87 L116 12 Q135 9 125 90 Z" transform="rotate(120 120 90)"/><path d="M115 87 L116 12 Q135 9 125 90 Z" transform="rotate(240 120 90)"/></g><circle cx="120" cy="90" r="9" fill="#ed9c08"/></svg>
 <p id="app-brake-status" role="status">فعّل JavaScript لتجربة تغيير الرياح والإبطاء.</p>
 </div></div>
-<div class="brake-actions"><button id="app-brake-record" type="button">سجّل النتيجة</button><button id="app-brake-clear" type="button">مسح النتائج</button><button id="app-brake-reset" type="button">إعادة الضبط</button></div>
-<div class="table-scroll"><table class="comparison-table"><caption>مقارنة حالات النموذج</caption><thead><tr><th>الرياح</th><th>الإبطاء</th><th>الدوران النسبي</th><th>الإنتاج النسبي</th></tr></thead><tbody id="app-brake-results"><tr><td colspan="4">لم تُسجَّل نتائج بعد.</td></tr></tbody></table></div>
-<p><strong>أستنتج:</strong> مع ثبات الرياح، يقل الدوران والإنتاج في النموذج كلما زادت درجة الإبطاء، وينعدمان عند التوقف الكامل. أغيّر عاملًا واحدًا لتكون المقارنة عادلة.</p>
+<div class="brake-actions"><button id="app-brake-reset" type="button">إعادة الضبط</button></div>
 </article></section>
 <section class="content-section" id="applications">
 <p class="eyebrow">تطبيقات من الحياة</p>
@@ -204,5 +203,5 @@
 <nav class="page-nav lesson-pagination" aria-label="التنقل بين صفحات الدرس الثاني"><a rel="prev" href="lesson-clean-energy-applications-student.html">السابق: توجهات العالم والطاقة النظيفة</a><a href="../index.html">جميع الدروس</a><a href="activity-l2-wind-crane.html">نشاط الرافعة بطاقة الرياح</a><a rel="next" href="lesson-l2-solar-applications-student.html">التالي: تطبيقات الطاقة الشمسية ←</a></nav>
 <p class="source-note">إعداد تعليمي متدرّج للصف التاسع، يستند إلى نص الكتاب مع توضيحات وأمثلة إضافية. الرسوم تبسيط للمفاهيم.</p>
 </main><footer class="site-footer"><div class="shell footer-row"><p>مبحث التكنولوجيا - الصف التاسع</p><p>إعداد المعلم زهدي زاهدة</p></div></footer><script defer="" src="../js/lesson2-sequence.js?v=1"></script><script src="../js/review-cards.js?v=1" defer></script>
-<script src="../js/wind-brakes.js?v=1" defer></script><script src="../js/lesson-navigation.js?v=1" defer></script>
+<script src="../js/wind-brakes.js?v=2" defer></script><script src="../js/lesson-navigation.js?v=1" defer></script>
 </body></html>
