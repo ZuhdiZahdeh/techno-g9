@@ -17,6 +17,8 @@
       .trim();
   }
 
+  var savedOpenState = new Map();
+
   function filterLessons() {
     var query = normalize(search.value);
     var visibleCount = 0;
@@ -26,8 +28,18 @@
       var matches = !query || haystack.indexOf(query) !== -1;
       card.hidden = !matches;
       if (matches) visibleCount += 1;
+      var pages = card.querySelector(".lesson-pages");
+      if (pages && query) {
+        if (!savedOpenState.has(pages)) savedOpenState.set(pages, pages.open);
+        pages.open = matches;
+      } else if (pages && savedOpenState.has(pages)) {
+        pages.open = savedOpenState.get(pages);
+        savedOpenState.delete(pages);
+      }
     });
 
+    var practice = document.getElementById("practice-section");
+    practice.hidden = !Array.from(practice.querySelectorAll(".lesson-card")).some(function (card) { return !card.hidden; });
     clear.hidden = !query;
     empty.hidden = visibleCount !== 0;
   }

@@ -428,3 +428,18 @@
     margin-top: 38px;
   }
 }
+
+/* Lesson overviews keep the home page compact while exposing every page. */
+.lesson-card-overview { min-height: 0; }
+.lesson-grid { align-items: start; }
+.lesson-card-overview .lesson-open { margin-top: 22px; padding-bottom: 16px; }
+.lesson-pages { border: 1px solid var(--line); border-radius: 12px; background: #f5f9fb; }
+.lesson-pages summary { padding: 14px; color: var(--navy-900); font-weight: 800; cursor: pointer; }
+.pages-count { display: block; margin-top: 4px; padding-inline-start: 18px; color: var(--muted); font-size: .8rem; font-weight: 400; }
+.lesson-pages nav { display: grid; padding: 0 12px 12px; gap: 6px; }
+.lesson-pages nav a { padding: 11px 12px; border: 1px solid var(--line); border-radius: 8px; color: var(--navy-900); background: #fff; font-size: .9rem; }
+.lesson-pages nav a:hover { background: var(--teal-100); }
+.lesson-pages summary:focus-visible, .lesson-pages a:focus-visible { outline: 3px solid #d58b0a; outline-offset: 3px; }
+#practice-section .lesson-card { min-height: 0; }
+#practice-section .lesson-open { margin-top: 16px; }
+.lesson-card[hidden], #practice-section[hidden] { display: none; }
