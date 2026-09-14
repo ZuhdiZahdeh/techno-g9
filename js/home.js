@@ -38,8 +38,9 @@
       }
     });
 
-    var practice = document.getElementById("practice-section");
-    practice.hidden = !Array.from(practice.querySelectorAll(".lesson-card")).some(function (card) { return !card.hidden; });
+    document.querySelectorAll("[data-card-section]").forEach(function (section) {
+      section.hidden = !Array.from(section.querySelectorAll(".lesson-card")).some(function (card) { return !card.hidden; });
+    });
     clear.hidden = !query;
     empty.hidden = visibleCount !== 0;
   }
@@ -56,6 +57,7 @@
 
   try {
     var lastLesson = localStorage.getItem(storageKey);
+    if (lastLesson === "html/lesson-l2-enrichment-student.html") lastLesson = "html/enrichment-activities.html";
     var validLesson = document.querySelector('[data-lesson-link][href="' + lastLesson + '"]');
     if (lastLesson && validLesson) continueLink.setAttribute("href", lastLesson);
   } catch (error) {

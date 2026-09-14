@@ -1,0 +1,92 @@
+/* Practical activity layout on the independent enrichment page. */
+.enrichment-page .experiment-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 0.82fr) minmax(0, 1.18fr);
+  gap: 14px;
+  align-items: start;
+}
+
+.enrichment-page .tools-card {
+  border-top: 4px solid #27aa9b;
+}
+
+.enrichment-page .safety-note {
+  margin-top: 18px !important;
+  padding: 11px 13px;
+  border-inline-start: 4px solid var(--amber-500);
+  border-radius: 9px;
+  background: var(--amber-100);
+}
+
+.enrichment-page .practical-results {
+  margin-top: 16px;
+}
+
+.enrichment-page .practical-results > p {
+  color: var(--muted);
+}
+
+.enrichment-page .wide-card[tabindex]:focus-visible {
+  outline: 3px solid rgba(17, 156, 145, 0.42);
+  outline-offset: 3px;
+}
+
+.enrichment-page .practical-table {
+  min-width: 880px;
+}
+
+.enrichment-page .practical-table td:first-child,
+.enrichment-page .practical-table td:nth-child(2) {
+  min-width: 135px;
+  color: var(--navy-900);
+  font-weight: 800;
+}
+
+.enrichment-page .activity-question {
+  margin-top: 16px;
+  padding: 22px;
+  border: 1px solid #c4e0e1;
+  border-radius: var(--radius-md);
+  background: #fff;
+  box-shadow: 0 10px 26px rgba(8, 54, 73, 0.05);
+}
+
+.enrichment-page .activity-question h3 {
+  margin: 0 0 12px;
+  color: var(--navy-900);
+}
+
+.enrichment-page .activity-question details {
+  border-radius: 11px;
+  background: #edf9f8;
+}
+
+.enrichment-page .activity-question summary {
+  min-height: 44px;
+  padding: 10px 13px;
+  color: #075d69;
+  cursor: pointer;
+  font-weight: 800;
+}
+
+.enrichment-page .activity-question details p {
+  margin: 0;
+  padding: 0 13px 13px;
+}
+
+.enrichment-page .measure-table input {
+  min-height: 44px;
+}
+
+
+.enrichment-page .wide-card.practical-results { overflow-x: auto; }
+.enrichment-page .practical-table { min-width: 880px; }
+.enrichment-page .content-section { margin-top: 36px; }
+.enrichment-page #activity1 { padding-top: 24px; border-top: 2px solid #bdd7d4; }
+@media(max-width:800px) { .enrichment-page .experiment-layout { grid-template-columns: 1fr; } }
+@media print {
+ .enrichment-page .practical-table { min-width: 0; width: 100%; table-layout: fixed; font-size: 9pt; }
+ .enrichment-page .practical-table th, .enrichment-page .practical-table td { min-width: 0; padding: 5px; overflow-wrap: anywhere; }
+ .enrichment-page .practical-table input { min-width: 0; padding: 4px; }
+ .enrichment-page .wide-card.practical-results { overflow: visible; }
+}
