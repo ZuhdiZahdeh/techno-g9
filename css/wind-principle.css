@@ -1,0 +1,82 @@
+/* Detailed turbine operation, taught in lesson two. */
+#working-principle .principle-steps {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 13px;
+  margin: 18px 0 14px;
+  padding: 0;
+  list-style: none;
+}
+
+#working-principle .principle-steps li {
+  display: flex;
+  min-height: 116px;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 18px;
+  border: 1px solid #c5e2e5;
+  border-radius: var(--radius-md);
+  background: #fff;
+  box-shadow: 0 10px 25px rgba(8, 54, 73, 0.06);
+}
+
+#working-principle .principle-steps span {
+  display: grid;
+  width: 40px;
+  height: 40px;
+  flex: 0 0 40px;
+  place-items: center;
+  border-radius: 12px;
+  color: #fff;
+  background: linear-gradient(145deg, #087b91, #159b88);
+  box-shadow: 0 6px 14px rgba(8, 123, 145, 0.2);
+  font-weight: 900;
+}
+
+#working-principle .principle-steps p {
+  margin: 0;
+}
+
+#working-principle .energy-chain {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  max-width: 100%;
+  padding: 18px;
+  overflow-x: auto;
+  border: 1px solid #9edcdb;
+  border-radius: var(--radius-md);
+  color: #063f55;
+  background: linear-gradient(135deg, #e3faf7, #f2fbff);
+  overscroll-behavior-inline: contain;
+  scrollbar-width: thin;
+  white-space: nowrap;
+}
+
+#working-principle .energy-chain span {
+  flex: 0 0 auto;
+  padding: 8px 12px;
+  border-radius: 10px;
+  background: #fff;
+  box-shadow: 0 5px 13px rgba(8, 75, 97, 0.08);
+  font-weight: 800;
+}
+
+#working-principle .energy-chain b {
+  flex: 0 0 auto;
+  color: #119c91;
+  font-size: 1.35rem;
+}
+
+
+@media (max-width: 900px) {
+  #working-principle .principle-steps { grid-template-columns: 1fr; }
+  #working-principle .principle-steps li { min-height: 0; }
+  #working-principle .energy-chain { flex-direction: column; white-space: normal; }
+  #working-principle .energy-chain b { transform: rotate(-90deg); }
+}
+@media print {
+  #working-principle .principle-steps li { break-inside: avoid; box-shadow: none; }
+  #working-principle .energy-chain { overflow: visible; flex-wrap: wrap; white-space: normal; }
+}
