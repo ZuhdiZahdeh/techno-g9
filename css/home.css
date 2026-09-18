@@ -443,3 +443,11 @@
 #practice-section .lesson-card { min-height: 0; }
 #practice-section .lesson-open { margin-top: 16px; }
 .lesson-card[hidden], #practice-section[hidden] { display: none; }
+
+/* Independent design activity alongside the existing enrichment activities. */
+.activity-grid { align-items: stretch; }
+.activity-grid .lesson-open { margin-top: auto; }
+.activity-grid .lesson-points { margin-bottom: 22px; }
+.lesson-card-mycube { border-top-color: #19517f; }
+.mycube-card-image { width: 100%; height: 185px; object-fit: contain; margin-top: 18px; border-radius: 12px; background: #f2f8fa; }
+.lesson-card-mycube h3 { margin-top: 16px; }
