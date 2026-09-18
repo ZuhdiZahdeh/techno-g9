@@ -64,3 +64,11 @@
 @media(max-width:900px) { .cube-hero { padding: 28px; gap: 24px; } .cube-steps { grid-template-columns: 1fr; } .cube-specs article { padding: 18px; } }
 @media(max-width:680px) { .cube-hero { grid-template-columns: 1fr; padding: 24px 20px; } .cube-showcase { max-width: 430px; margin-inline: auto; } .cube-specs,.identity-strip,.ruler-legend,.cube-checklist { grid-template-columns: 1fr; } .cube-step { padding: 18px; gap: 12px; } .cube-actions .button,.cube-bottom .button { width: 100%; } .cube-nav { gap: 8px; } .cube-nav a { font-size: .83rem; padding: 7px 10px; } .cube-progress { gap: 12px; font-size: .9rem; } }
 @media(prefers-reduced-motion:reduce) { html { scroll-behavior: auto; } .button,.lesson-card { transition: none; } }
+
+/* One video per stage; the player uses the full card width on every screen. */
+.cube-step { display: grid; grid-template-columns: 44px minmax(0,1fr); }
+.cube-step > div { min-width: 0; }
+.cube-video { grid-column: 1 / -1; width: 100%; aspect-ratio: 16 / 9; overflow: hidden; border-radius: 12px; background: #08243c; }
+.cube-video iframe { display: block; width: 100%; height: 100%; border: 0; }
+.cube-video-link { grid-column: 1 / -1; display: flex; justify-content: space-between; align-items: center; gap: 12px; min-height: 44px; padding: 8px 12px; border: 1px solid var(--line); border-radius: 10px; color: var(--navy-900); background: #f4f9fc; font-weight: 700; font-size: .9rem; }
+.cube-video-link:hover { background: var(--teal-100); }
