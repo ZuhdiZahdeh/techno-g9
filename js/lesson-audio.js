@@ -1,115 +1,80 @@
-/* Read only explicitly selected lesson blocks. No autoplay or microphone. */
+/* Play pre-generated lesson MP3s. No API credentials or speech synthesis. */
 (() => {
   'use strict';
-  const buttons = Array.from(document.querySelectorAll('[data-read-aloud]'));
-  if (!buttons.length) return;
-  const synth = window.speechSynthesis;
   let active = null;
-  let utterance = null; // Keep the current utterance alive until its callback.
   let generation = 0;
-  let startupTimer;
+  let loadingTimer;
 
-  function status(button, message) {
-    document.getElementById(button.dataset.audioStatus).textContent = message;
+  function message(entry, text) {
+    entry.status.textContent = text;
   }
 
-  function reset(message = '') {
-    generation += 1; // Ignore callbacks from a cancelled or previous reading.
-    clearTimeout(startupTimer);
-    if (active) {
-      active.dataset.playing = 'false';
-      active.querySelector('[data-audio-label]').textContent = 'استمع للفقرة';
-      active.closest('.study-card').classList.remove('is-reading');
-      status(active, message);
-    }
+  function reset(text = '') {
+    generation += 1;
+    clearTimeout(loadingTimer);
+    if (!active) return;
+    const entry = active;
     active = null;
-    utterance = null;
+    entry.audio.pause();
+    try { entry.audio.currentTime = 0; } catch (_) { /* Media not loaded yet. */ }
+    entry.button.dataset.playing = 'false';
+    entry.label.textContent = 'استمع للفقرة';
+    entry.card.classList.remove('is-reading');
+    message(entry, text);
   }
 
-  function stop(message = '') {
-    reset(message);
-    if (synth) synth.cancel();
-  }
+  document.querySelectorAll('[data-lesson-audio]').forEach(button => {
+    const audio = document.getElementById(button.dataset.lessonAudio);
+    const status = document.getElementById(button.dataset.audioStatus);
+    if (!audio || !status) return;
+    const entry = {button, audio, status, label:button.querySelector('[data-audio-label]'), card:button.closest('.study-card')};
 
-  function arabicVoice() {
-    const voices = synth.getVoices().filter(voice => /^ar(?:[-_]|$)/i.test(voice.lang));
-    return voices.find(voice => voice.default) || voices[0];
-  }
-
-  buttons.forEach(button => {
-    button.hidden = false;
     button.addEventListener('click', () => {
-      if (!synth || !window.SpeechSynthesisUtterance) {
-        status(button, 'القراءة الصوتية غير متاحة في هذا المتصفح. جرّب متصفحًا آخر يدعم الصوت العربي.');
+      if (active === entry) {
+        reset('تم إيقاف التسجيل. اضغط للاستماع من البداية.');
         return;
       }
-      if (active === button) {
-        stop('تم إيقاف القراءة. اضغط للاستماع من البداية.');
-        return;
-      }
-      stop();
-      const voice = arabicVoice();
-      if (!voice) {
-        status(button, 'لم يتوفر صوت عربي بعد. جرّب الضغط مرة أخرى، أو استخدم جهازًا تتوفر فيه أصوات قراءة عربية.');
-        return;
-      }
-      // Read the visible source so future wording changes stay synchronized.
-      const parts = button.dataset.readAloud.split(/\s+/).flatMap(id => {
-        const element = document.getElementById(id);
-        return element ? (element.textContent.trim().match(/[^.؟!]+[.؟!]?/g) || []) : [];
-      }).map(text => text.replace(/\s+/g, ' ').trim()).filter(Boolean);
-      if (!parts.length) return;
-      active = button;
-      button.dataset.playing = 'true';
-      button.querySelector('[data-audio-label]').textContent = 'إيقاف القراءة';
-      button.closest('.study-card').classList.add('is-reading');
-      status(button, 'جارٍ تجهيز الصوت…');
+      reset();
+      active = entry;
       const session = generation;
-
-      function next(index) {
-        if (session !== generation) return;
-        if (index === parts.length) {
-          reset('انتهت القراءة. يمكنك الاستماع مرة أخرى.');
-          return;
-        }
-        utterance = new SpeechSynthesisUtterance(parts[index]);
-        utterance.voice = voice;
-        utterance.lang = voice.lang;
-        utterance.rate = 0.9;
-        utterance.onstart = () => {
-          if (session !== generation) return;
-          clearTimeout(startupTimer);
-          status(button, 'جارٍ قراءة الفقرة وسؤال البداية…');
-        };
-        utterance.onend = () => {
-          if (session !== generation) return;
-          clearTimeout(startupTimer);
-          next(index + 1);
-        };
-        utterance.onerror = () => {
-          if (session === generation) stop('تعذّر تشغيل الصوت. حاول مرة أخرى وتحقّق من اتصال الإنترنت إذا كان الصوت يتطلبه.');
-        };
-        startupTimer = setTimeout(() => {
-          if (session === generation) stop('لم يبدأ الصوت. حاول مرة أخرى أو استخدم متصفحًا آخر يدعم الصوت العربي.');
-        }, 12000);
-        try {
-          synth.speak(utterance);
-        } catch (_) {
-          stop('تعذّر تشغيل الصوت. حاول مرة أخرى.');
-        }
+      button.dataset.playing = 'true';
+      entry.label.textContent = 'إيقاف الصوت';
+      entry.card.classList.add('is-reading');
+      message(entry, 'جارٍ تحميل التسجيل…');
+      loadingTimer = setTimeout(() => {
+        if (active === entry && session === generation) message(entry, 'يستغرق تحميل الصوت وقتًا أطول. يمكنك فتح ملف الصوت من الرابط أدناه.');
+      }, 15000);
+      // Retry a failed network request when the student clicks again.
+      if (audio.error) audio.load();
+      try {
+        const play = audio.play();
+        if (play) play.catch(() => {
+          if (active === entry && session === generation) reset('تعذّر تشغيل التسجيل. حاول مرة أخرى أو افتح ملف الصوت من الرابط أدناه.');
+        });
+      } catch (_) {
+        reset('تعذّر تشغيل التسجيل. يمكنك فتح ملف الصوت من الرابط أدناه.');
       }
-      next(0);
     });
+    audio.addEventListener('playing', () => {
+      if (active !== entry) return;
+      clearTimeout(loadingTimer);
+      message(entry, 'جارٍ الاستماع بصوت أنس…');
+    });
+    audio.addEventListener('waiting', () => {
+      if (active === entry) message(entry, 'جارٍ تحميل بقية التسجيل…');
+    });
+    audio.addEventListener('ended', () => {
+      if (active === entry) reset('انتهى التسجيل. يمكنك الاستماع مرة أخرى.');
+    });
+    audio.addEventListener('error', () => {
+      if (active === entry) reset('تعذّر تحميل التسجيل. تحقّق من الاتصال أو افتح ملف الصوت من الرابط أدناه.');
+    });
+    audio.controls = false;
+    audio.hidden = true;
+    button.hidden = false;
   });
-
-  if (synth) {
-    synth.getVoices(); // Some browsers load their voices asynchronously.
-    synth.addEventListener('voiceschanged', () => {
-      if (!active && arabicVoice()) buttons.forEach(button => status(button, ''));
-    });
-  }
-  window.addEventListener('pagehide', () => stop());
+  window.addEventListener('pagehide', () => reset());
   document.addEventListener('visibilitychange', () => {
-    if (document.hidden && active) stop('توقفت القراءة عند مغادرة الصفحة. اضغط للاستماع من البداية.');
+    if (document.hidden && active) reset('توقف التسجيل عند مغادرة الصفحة. اضغط للاستماع من البداية.');
   });
 })();

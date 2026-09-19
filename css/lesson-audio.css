@@ -10,3 +10,7 @@
 .lesson-audio-status:empty{display:none}
 .l2-page .study-card.is-reading{outline:2px solid #15958f;outline-offset:2px}
 @media print{.lesson-audio-button,.lesson-audio-status{display:none!important}.l2-page .study-card.is-reading{outline:none}}
+
+.lesson-audio-native{display:block;width:100%;margin-bottom:12px}
+.l2-page .study-card .lesson-audio-credit{margin:0 0 10px;font-size:.8rem;color:#5e6b78}
+.lesson-audio-credit a{color:#0b625e;text-decoration:underline;text-underline-offset:3px}
