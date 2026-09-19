@@ -27,7 +27,7 @@
     const audio = document.getElementById(button.dataset.lessonAudio);
     const status = document.getElementById(button.dataset.audioStatus);
     if (!audio || !status) return;
-    const entry = {button, audio, status, label:button.querySelector('[data-audio-label]'), card:button.closest('.study-card')};
+    const entry = {button, audio, status, label:button.querySelector('[data-audio-label]'), card:button.closest('.study-card, .wide-card')};
 
     button.addEventListener('click', () => {
       if (active === entry) {
