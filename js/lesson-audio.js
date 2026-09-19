@@ -42,17 +42,17 @@
       entry.card.classList.add('is-reading');
       message(entry, 'جارٍ تحميل التسجيل…');
       loadingTimer = setTimeout(() => {
-        if (active === entry && session === generation) message(entry, 'يستغرق تحميل الصوت وقتًا أطول. يمكنك فتح ملف الصوت من الرابط أدناه.');
+        if (active === entry && session === generation) message(entry, 'يستغرق تحميل الصوت وقتًا أطول. تحقّق من اتصال الإنترنت أو حاول مرة أخرى.');
       }, 15000);
       // Retry a failed network request when the student clicks again.
       if (audio.error) audio.load();
       try {
         const play = audio.play();
         if (play) play.catch(() => {
-          if (active === entry && session === generation) reset('تعذّر تشغيل التسجيل. حاول مرة أخرى أو افتح ملف الصوت من الرابط أدناه.');
+          if (active === entry && session === generation) reset('تعذّر تشغيل التسجيل. تحقّق من اتصال الإنترنت وحاول مرة أخرى.');
         });
       } catch (_) {
-        reset('تعذّر تشغيل التسجيل. يمكنك فتح ملف الصوت من الرابط أدناه.');
+        reset('تعذّر تشغيل التسجيل. حاول مرة أخرى.');
       }
     });
     audio.addEventListener('playing', () => {
@@ -67,7 +67,7 @@
       if (active === entry) reset('انتهى التسجيل. يمكنك الاستماع مرة أخرى.');
     });
     audio.addEventListener('error', () => {
-      if (active === entry) reset('تعذّر تحميل التسجيل. تحقّق من الاتصال أو افتح ملف الصوت من الرابط أدناه.');
+      if (active === entry) reset('تعذّر تحميل التسجيل. تحقّق من اتصال الإنترنت وحاول مرة أخرى.');
     });
     audio.controls = false;
     audio.hidden = true;
