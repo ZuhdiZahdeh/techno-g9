@@ -18,7 +18,7 @@
     entry.audio.pause();
     try { entry.audio.currentTime = 0; } catch (_) { /* Media not loaded yet. */ }
     entry.button.dataset.playing = 'false';
-    entry.label.textContent = 'استمع للفقرة';
+    entry.label.textContent = entry.idleLabel;
     entry.card.classList.remove('is-reading');
     message(entry, text);
   }
@@ -27,7 +27,7 @@
     const audio = document.getElementById(button.dataset.lessonAudio);
     const status = document.getElementById(button.dataset.audioStatus);
     if (!audio || !status) return;
-    const entry = {button, audio, status, label:button.querySelector('[data-audio-label]'), card:button.closest('.study-card, .wide-card')};
+    const entry = {button, audio, status, label:button.querySelector('[data-audio-label]'), idleLabel:button.querySelector('[data-audio-label]').textContent, card:button.closest('.study-card, .wide-card, [data-lesson-audio-container]')};
 
     button.addEventListener('click', () => {
       if (active === entry) {
