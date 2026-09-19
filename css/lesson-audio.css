@@ -23,3 +23,6 @@
 .l2-page .lesson-audio-restart{display:inline-flex;align-items:center;gap:6px;min-height:44px;font-size:.85rem;padding:8px 12px}
 .lesson-audio-restart span{font-size:1.35rem;line-height:1}
 @media print{.lesson-audio-controls{display:none!important}}
+
+.takeaway .lesson-audio-heading h3{margin:0}
+.l2-page .takeaway .lesson-audio-status{color:#d6ebe9}
