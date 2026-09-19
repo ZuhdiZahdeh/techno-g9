@@ -2,9 +2,10 @@
 .study-card .lesson-audio-heading h3{margin:0}
 .l2-page .lesson-audio-button{display:inline-flex;align-items:center;justify-content:center;gap:8px;flex-shrink:0;min-height:44px;color:#0b625e;background:#e9f6f4;border-color:#9bcac5;font-size:.9rem}
 .lesson-audio-button svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
-.lesson-audio-button .audio-stop-icon{display:none}
-.lesson-audio-button[data-playing=true] .audio-stop-icon{display:block}
-.lesson-audio-button[data-playing=true] .audio-speaker-icon{display:none}
+.lesson-audio-button .audio-pause-icon,.lesson-audio-button .audio-play-icon{display:none}
+.lesson-audio-button[data-playing=true] .audio-pause-icon{display:block}
+.lesson-audio-button[data-state=paused] .audio-play-icon{display:block}
+.lesson-audio-button[data-playing=true] .audio-speaker-icon,.lesson-audio-button[data-state=paused] .audio-speaker-icon{display:none}
 .l2-page .lesson-audio-button[data-playing=true]{color:#fff;background:#0f7c78;border-color:#0f7c78}
 .l2-page :is(.study-card,.wide-card,[data-lesson-audio-container]) .lesson-audio-status{margin:0 0 12px;font-size:.85rem;color:#5e6b78}
 .lesson-audio-status:empty{display:none}
@@ -17,3 +18,8 @@
 @media print{.lesson-audio-toolbar{display:none!important}}
 
 .lesson-audio-table{border-radius:12px}
+
+.lesson-audio-controls{display:flex;align-items:center;gap:8px;flex-wrap:wrap;max-width:100%}
+.l2-page .lesson-audio-restart{display:inline-flex;align-items:center;gap:6px;min-height:44px;font-size:.85rem;padding:8px 12px}
+.lesson-audio-restart span{font-size:1.35rem;line-height:1}
+@media print{.lesson-audio-controls{display:none!important}}
