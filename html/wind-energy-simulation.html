@@ -1,0 +1,433 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#102c40">
+  <title>من الرياح إلى شبكة الكهرباء | محاكاة تفاعلية</title>
+  <link rel="icon" href="../assets/tech-g9-favicon.ico">
+  <style>
+    :root {
+      font-family: Tahoma, Arial, sans-serif;
+      color: #193343;
+      background: #eff6f6;
+      --navy: #102c40;
+      --teal: #007f83;
+      --gold: #eea53e;
+      --blade-duration: 6s;
+      --gear-duration: 1.7s;
+      --fast-duration: .7s;
+      --wind-duration: 1.3s;
+    }
+    * { box-sizing: border-box; }
+    body { margin: 0; }
+    button, input { font: inherit; }
+    button { cursor: pointer; }
+    button:focus-visible, input:focus-visible, a:focus-visible, [data-svg-stage]:focus-visible {
+      outline: 3px solid #e88c21; outline-offset: 3px;
+    }
+    .top { background: linear-gradient(120deg, #102c40, #174f59); color: #fff; padding: 28px 24px 31px; }
+    .top-inner, main, .foot-inner { max-width: 1280px; margin: auto; }
+    .eyebrow { display: inline-block; color: #b9efe1; font-size: .88rem; font-weight: 700; letter-spacing: .01em; }
+    h1 { margin: 9px 0 9px; font-size: clamp(1.55rem, 3vw, 2.45rem); line-height: 1.35; }
+    .top p { margin: 0; color: #d6e9e8; line-height: 1.8; max-width: 780px; }
+    .back-link { display: block; width: fit-content; max-width: 100%; margin-bottom: 16px; padding: 7px 12px; border: 1px solid #81b7b7; border-radius: 9px; color: #e8fffa; text-underline-offset: 4px; }
+    .back-link:hover { background: rgba(255,255,255,.12); }
+    main { padding: 23px 22px 38px; }
+    .layout { display: grid; grid-template-columns: minmax(0, 1.8fr) minmax(280px, .8fr); gap: 16px; align-items: stretch; }
+    .card { background: #fff; border: 1px solid #cfe0e1; border-radius: 19px; box-shadow: 0 8px 26px rgba(18, 57, 66, .07); }
+    .figure { overflow: hidden; }
+    .figure-head { padding: 16px 19px 6px; display: flex; justify-content: space-between; gap: 10px; align-items: baseline; }
+    h2 { margin: 0; font-size: 1.17rem; }
+    .figure-head small { color: #55727d; }
+    .diagram-wrap { overflow-x: auto; direction: ltr; scrollbar-color: #93b7b7 #edf4f4; }
+    .diagram { display: block; width: 100%; min-width: 820px; height: auto; }
+    .diagram [data-svg-stage] { cursor: pointer; transition: opacity .18s, filter .18s; }
+    .diagram.has-focus [data-svg-stage]:not(.is-selected) { opacity: .47; }
+    .diagram [data-svg-stage].is-selected { filter: drop-shadow(0 0 9px #f5b952); }
+    .diagram text { font: 700 16px Tahoma, Arial, sans-serif; fill: #183c48; }
+    .diagram .minor-label { font-size: 13px; fill: #4e6872; font-weight: 600; }
+    .diagram .badge { fill: #fff1d8; stroke: #e8ac59; }
+    .diagram .badge-text { font-size: 15px; fill: #85500a; }
+    .figure-note { margin: 0; border-top: 1px solid #e5eeee; padding: 10px 19px 13px; color: #55727d; font-size: .83rem; line-height: 1.7; }
+    .panel { padding: 18px; display: flex; flex-direction: column; gap: 15px; }
+    .panel h2 { margin-bottom: 2px; }
+    .control-label { display: flex; align-items: center; justify-content: space-between; gap: 9px; font-weight: 700; }
+    .control-label output { background: #e7f6f3; color: #005e66; border-radius: 9px; padding: 4px 9px; white-space: nowrap; direction: ltr; }
+    input[type=range] { width: 100%; accent-color: var(--teal); margin: 13px 0 5px; }
+    .scale { display: flex; justify-content: space-between; color: #66818a; font-size: .76rem; direction: ltr; }
+    .controls { display: flex; gap: 8px; flex-wrap: wrap; }
+    .primary, .secondary { border-radius: 11px; min-height: 42px; padding: 8px 12px; font-weight: 700; }
+    .primary { border: 1px solid #00777c; background: var(--teal); color: #fff; }
+    .primary:hover { background: #00676b; }
+    .secondary { border: 1px solid #bdd6d9; color: #204a58; background: #f5fbfb; }
+    .secondary:hover { background: #e8f4f4; }
+    .status { border-radius: 11px; background: #eaf7f0; color: #17563d; padding: 10px 12px; line-height: 1.6; font-weight: 700; }
+    .status.off { background: #f2f4f5; color: #52616a; }
+    .metrics { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 9px; }
+    .metric { border: 1px solid #d8e8e8; border-radius: 12px; padding: 10px; background: #fbfdfd; min-height: 86px; }
+    .metric span { display: block; font-size: .78rem; color: #526f78; line-height: 1.45; }
+    .metric strong { display: block; margin-top: 8px; color: var(--navy); font-size: 1.15rem; direction: ltr; text-align: right; }
+    .metric.ratio { border-color: #efd2a4; background: #fff9ef; }
+    .aside-note { font-size: .8rem; color: #5b727b; line-height: 1.7; margin: 0; }
+    .steps, .explain, .quiz { margin-top: 17px; padding: 20px; }
+    .section-lead { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; flex-wrap: wrap; margin-bottom: 13px; }
+    .section-lead p { margin: 0; color: #5e7882; font-size: .88rem; }
+    .step-scroll { overflow-x: auto; padding: 3px 1px 11px; }
+    .step-rail { display: flex; align-items: center; min-width: max-content; direction: ltr; gap: 7px; }
+    .step-btn { direction: rtl; text-align: right; display: flex; gap: 9px; align-items: center; width: 134px; min-height: 59px; background: #f5f9f9; border: 1px solid #d1e2e2; color: #264b56; border-radius: 12px; padding: 8px; font-size: .83rem; font-weight: 700; line-height: 1.35; }
+    .step-btn[aria-pressed=true] { border: 2px solid #dc8824; background: #fff3dd; color: #733f08; }
+    .step-number { flex: none; width: 26px; height: 26px; border-radius: 50%; display: grid; place-items: center; color: white; background: #2e7780; direction: ltr; }
+    .step-btn[aria-pressed=true] .step-number { background: #c36a0e; }
+    .arrow { color: #85a4a7; font-size: 1.2rem; font-weight: 700; }
+    .stage-detail { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 12px; align-items: start; background: #f4f9f8; border: 1px solid #d7e7e6; border-radius: 13px; padding: 16px; min-height: 111px; }
+    .stage-detail h3 { margin: 0 0 7px; font-size: 1.12rem; color: #123c47; }
+    .stage-detail p { margin: 0; line-height: 1.8; }
+    .energy-tag { border-radius: 999px; padding: 6px 10px; background: #d8efeb; color: #075d60; white-space: nowrap; font-size: .8rem; font-weight: 700; }
+    .explain p { line-height: 1.9; margin: 12px 0 0; }
+    .answer { border-right: 4px solid var(--teal); background: #f2faf9; padding: 10px 15px 15px; border-radius: 8px; }
+    .answer[hidden] { display: none; }
+    .answer strong { color: #005d61; }
+    .quiz fieldset { border: 1px solid #d5e4e5; border-radius: 12px; margin: 13px 0; padding: 10px 14px 13px; }
+    .quiz legend { font-weight: 700; padding: 0 5px; }
+    .quiz label { display: block; margin: 9px 0; line-height: 1.5; }
+    .quiz input { accent-color: var(--teal); margin-inline-end: 7px; }
+    .feedback { margin-top: 11px; padding: 12px; border-radius: 10px; background: #edf5f5; line-height: 1.7; }
+    .feedback.success { background: #e7f6e9; color: #175b34; }
+    .feedback.retry { background: #fff4df; color: #6a430e; }
+    footer { background: #e5eeee; padding: 18px 24px 24px; color: #47636b; font-size: .82rem; line-height: 1.8; }
+    footer a { color: #006d71; text-underline-offset: 3px; }
+    .foot-inner p { margin: 0 0 5px; }
+    /* The drawing is deliberately slower than the numerical high-speed shaft. */
+    .spinning .rotor-spin, .spinning .slow-spin { animation: spin var(--blade-duration) linear infinite; }
+    .spinning .gear-large { animation: spin var(--blade-duration) linear infinite; }
+    .spinning .gear-small, .spinning .fast-spin { animation: spin-reverse var(--fast-duration) linear infinite; }
+    .windy .wind-line { animation: air var(--wind-duration) ease-in-out infinite alternate; }
+    .windless .wind-line { opacity: .17; }
+    .spinning .electric-path { stroke: #f2ab25; stroke-dasharray: 11 8; animation: flow 1s linear infinite; }
+    .spinning .electric-light { fill: #f8c04a; filter: drop-shadow(0 0 7px #f5a627); }
+    .rotor-spin, .slow-spin, .gear-large, .gear-small, .fast-spin { transform-box: fill-box; transform-origin: center; }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    @keyframes spin-reverse { to { transform: rotate(-360deg); } }
+    @keyframes flow { to { stroke-dashoffset: -38; } }
+    @keyframes air { to { opacity: .4; transform: translateX(16px); } }
+    @media (max-width: 860px) {
+      .layout { grid-template-columns: 1fr; }
+      .panel { display: grid; grid-template-columns: 1fr 1fr; }
+      .panel h2, .panel .aside-note { grid-column: 1 / -1; }
+    }
+    @media (max-width: 590px) {
+      main { padding: 14px 10px 27px; }
+      .top { padding: 23px 16px 26px; }
+      .panel { display: flex; }
+      .steps, .explain, .quiz { padding: 16px; }
+      .stage-detail { grid-template-columns: 1fr; }
+      .energy-tag { justify-self: start; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+    }
+  </style>
+</head>
+<body>
+  <header class="top">
+    <div class="top-inner">
+      <a class="back-link" href="lesson-l2-wind-applications-student.html#working-principle">العودة إلى درس تطبيقات طاقة الرياح</a>
+      <span class="eyebrow">التكنولوجيا · الصف التاسع · تطبيقات طاقة الرياح</span>
+      <h1>من حركة الرياح إلى شبكة الكهرباء</h1>
+      <p>حرّك منزلق الرياح، وشاهد كيف تدور الشفرات ببطء، ثم ترفع علبة المسننات سرعة الدوران قبل أن ينتج المولد الكهرباء. اختر أي جزء لتقرأ وظيفته.</p>
+    </div>
+  </header>
+  <main>
+    <div class="layout">
+      <section class="figure card" aria-labelledby="figure-title">
+        <div class="figure-head"><h2 id="figure-title">مسار التحويل داخل العنفة</h2><small>اتّبع الأسهم من اليسار إلى اليمين، ومرّر المخطط أفقيًا على الهاتف</small></div>
+        <div class="diagram-wrap">
+          <svg class="diagram has-focus" id="diagram" viewBox="0 0 1200 620" xmlns="http://www.w3.org/2000/svg" role="group" aria-label="مخطط أصلي تفاعلي يوضح أجزاء عنفة الرياح من الشفرات حتى الشبكة الكهربائية">
+            <defs>
+              <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#edf8f9"/><stop offset="1" stop-color="#fbfdfb"/></linearGradient>
+              <linearGradient id="tower" x1="0" y1="0" x2="1" y2="0"><stop stop-color="#a1c5cc"/><stop offset=".5" stop-color="#edf7f5"/><stop offset="1" stop-color="#97b9c2"/></linearGradient>
+              <marker id="arrowhead" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0 0 L10 5 L0 10Z" fill="#38a7ac"/></marker>
+            </defs>
+            <rect width="1200" height="620" fill="url(#sky)"/>
+            <path d="M0 545 Q170 520 340 540 T680 536 T1040 537 T1200 530 L1200 620 H0Z" fill="#dfebe1"/>
+            <path d="M0 566 Q290 545 540 564 T1200 560" fill="none" stroke="#bfd3c7" stroke-width="3"/>
+            <g data-svg-stage="0" tabindex="0" role="button" aria-label="المرحلة ١: الرياح">
+              <text x="79" y="178" text-anchor="middle">الرياح</text>
+              <path class="wind-line" d="M25 225 H145" stroke="#38a7ac" stroke-width="5" stroke-linecap="round" marker-end="url(#arrowhead)"/>
+              <path class="wind-line" d="M45 271 H155" stroke="#38a7ac" stroke-width="5" stroke-linecap="round" marker-end="url(#arrowhead)" style="animation-delay:.3s"/>
+              <path class="wind-line" d="M18 322 H146" stroke="#38a7ac" stroke-width="5" stroke-linecap="round" marker-end="url(#arrowhead)" style="animation-delay:.55s"/>
+              <path class="wind-line" d="M58 368 H146" stroke="#38a7ac" stroke-width="5" stroke-linecap="round" marker-end="url(#arrowhead)" style="animation-delay:.8s"/>
+            </g>
+            <!-- Original schematic; the attached published diagram is not embedded. -->
+            <path d="M645 355 H685 L704 534 H625Z" fill="url(#tower)" stroke="#6e9da9" stroke-width="3"/>
+            <rect x="247" y="215" width="490" height="146" rx="34" fill="#f9ffff" stroke="#83a9b3" stroke-width="4"/>
+            <path d="M250 252 Q376 226 735 240" fill="none" stroke="#e6f2f2" stroke-width="11"/>
+            <g data-svg-stage="2" tabindex="0" role="button" aria-label="المرحلة ٣: محور السرعة المنخفضة">
+              <text x="330" y="192" text-anchor="middle">المحور المنخفض</text>
+              <line x1="261" y1="291" x2="395" y2="291" stroke="#477a83" stroke-width="15" stroke-linecap="round"/>
+              <g class="slow-spin"><circle cx="325" cy="291" r="20" fill="#d8eae8" stroke="#427984" stroke-width="5"/><path d="M325 272 V310 M306 291 H344" stroke="#427984" stroke-width="4"/></g>
+            </g>
+            <g data-svg-stage="3" tabindex="0" role="button" aria-label="المرحلة ٤: علبة المسننات">
+              <text x="474" y="192" text-anchor="middle">علبة المسننات</text>
+              <rect x="393" y="231" width="174" height="122" rx="16" fill="#fff3dc" stroke="#dba95b" stroke-width="3"/>
+              <g class="gear-large"><circle cx="448" cy="291" r="39" fill="#cfddd7" stroke="#748d88" stroke-width="9" stroke-dasharray="12 3"/><circle cx="448" cy="291" r="30" fill="#e8f2ed" stroke="#748d88" stroke-width="3"/><path d="M448 261 V321 M418 291 H478 M427 270 L469 312 M469 270 L427 312" stroke="#77978d" stroke-width="4"/><circle cx="448" cy="291" r="8" fill="#54736e"/></g>
+              <g class="gear-small"><circle cx="507" cy="291" r="18" fill="#e7d4a9" stroke="#a67d3d" stroke-width="7" stroke-dasharray="7 2"/><circle cx="507" cy="291" r="12" fill="#faeaca" stroke="#a67d3d" stroke-width="2"/><path d="M507 280 V302 M496 291 H518" stroke="#a67d3d" stroke-width="3"/><circle cx="507" cy="291" r="4" fill="#a67d3d"/></g>
+              <text class="minor-label" x="475" y="341" text-anchor="middle">كبير ← صغير</text>
+              <rect class="badge" x="443" y="365" width="93" height="27" rx="13"/><text class="badge-text" x="489" y="384" text-anchor="middle">نحو ×100</text>
+            </g>
+            <g data-svg-stage="4" tabindex="0" role="button" aria-label="المرحلة ٥: محور السرعة العالية">
+              <text x="589" y="193" text-anchor="middle">المحور العالي</text>
+              <line x1="549" y1="291" x2="627" y2="291" stroke="#477a83" stroke-width="11" stroke-linecap="round"/>
+              <g class="fast-spin"><circle cx="585" cy="291" r="15" fill="#dce9eb" stroke="#347783" stroke-width="4"/><path d="M585 276 V306 M570 291 H600" stroke="#347783" stroke-width="3"/></g>
+            </g>
+            <g data-svg-stage="5" tabindex="0" role="button" aria-label="المرحلة ٦: المولد الكهربائي">
+              <text x="669" y="193" text-anchor="middle">المولد</text>
+              <rect x="620" y="238" width="97" height="110" rx="17" fill="#e1eef5" stroke="#618da3" stroke-width="3"/>
+              <rect x="635" y="252" width="68" height="80" rx="10" fill="#edf8fb" stroke="#8bb2bc" stroke-width="2"/>
+              <path d="M641 257 C658 269 639 284 656 296 S659 323 644 331 M660 255 C677 267 658 284 675 296 S678 322 663 332 M681 254 C699 269 680 283 696 297 S698 319 686 331" fill="none" stroke="#dc9457" stroke-width="4"/>
+              <g class="fast-spin"><circle cx="670" cy="291" r="15" fill="#f8fbf8" stroke="#376b83" stroke-width="3"/><path d="M670 278 V304 M657 291 H683" stroke="#376b83" stroke-width="3"/></g>
+            </g>
+            <g data-svg-stage="1" tabindex="0" role="button" aria-label="المرحلة ٢: الشفرات والدوار">
+              <text x="209" y="124" text-anchor="middle">الشفرات والدوّار</text>
+              <g class="rotor-spin">
+                <path d="M216 286 C201 258 193 196 205 148 Q226 133 229 155 C236 204 226 264 216 286Z" fill="#f5ffff" stroke="#548ca0" stroke-width="4"/>
+                <path d="M216 286 C201 258 193 196 205 148 Q226 133 229 155 C236 204 226 264 216 286Z" transform="rotate(120 216 286)" fill="#f5ffff" stroke="#548ca0" stroke-width="4"/>
+                <path d="M216 286 C201 258 193 196 205 148 Q226 133 229 155 C236 204 226 264 216 286Z" transform="rotate(240 216 286)" fill="#f5ffff" stroke="#548ca0" stroke-width="4"/>
+                <circle cx="216" cy="286" r="20" fill="#d5e6e7" stroke="#4e8290" stroke-width="5"/>
+              </g>
+            </g>
+            <g data-svg-stage="6" tabindex="0" role="button" aria-label="المرحلة ٧: الكابل داخل البرج">
+              <text x="696" y="551" text-anchor="middle">كابل البرج</text>
+              <path class="electric-path" d="M703 341 V515 H803" fill="none" stroke="#87a4a9" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+            </g>
+            <g data-svg-stage="7" tabindex="0" role="button" aria-label="المرحلة ٨: محول رفع الجهد">
+              <text x="849" y="425" text-anchor="middle">محوّل رفع الجهد</text>
+              <path d="M806 481 L849 455 L895 481 V540 H806Z" fill="#ebf5f1" stroke="#6b998e" stroke-width="3"/>
+              <rect x="826" y="496" width="47" height="32" rx="5" fill="#f4d9a1" stroke="#a8804c" stroke-width="3"/>
+              <path d="M837 486 v-14 M861 486 v-14" stroke="#6b998e" stroke-width="5"/>
+              <path d="M837 506 q12 -13 24 0 q-12 13 -24 0 M837 519 q12 -13 24 0 q-12 13 -24 0" fill="none" stroke="#a66b34" stroke-width="2"/>
+            </g>
+            <path class="electric-path" d="M896 515 H986" fill="none" stroke="#87a4a9" stroke-width="8" stroke-linecap="round"/>
+            <g data-svg-stage="8" tabindex="0" role="button" aria-label="المرحلة ٩: الشبكة الكهربائية">
+              <text x="1050" y="425" text-anchor="middle">الشبكة الكهربائية</text>
+              <path d="M1044 441 L989 563 M1044 441 L1099 563 M1004 525 H1084 M1017 491 H1071 M1032 457 H1056" fill="none" stroke="#597c88" stroke-width="6" stroke-linecap="round"/>
+              <path d="M998 483 H1130 M985 519 H1146" stroke="#688f99" stroke-width="3"/>
+              <circle class="electric-light" cx="1091" cy="483" r="7" fill="#aebcbc"/><circle class="electric-light" cx="1122" cy="519" r="7" fill="#aebcbc"/>
+            </g>
+          </svg>
+        </div>
+        <p class="figure-note">الرسم توضيحي أصلي وغير مرسوم بمقياس الأحجام أو السرعات. زوج المسننات المرسوم يشرح المبدأ، والزيادة إلى نحو 100 ضعف تمثل حصيلة عدة مراحل داخل علبة السرعة.</p>
+      </section>
+
+      <aside class="panel card" aria-labelledby="controls-title">
+        <h2 id="controls-title">تحكّم في العنفة</h2>
+        <div>
+          <label class="control-label" for="windSpeed"><span>سرعة الرياح</span><output id="windOutput" for="windSpeed">10 م/ث</output></label>
+          <input id="windSpeed" type="range" min="0" max="15" step="1" value="10">
+          <div class="scale" aria-hidden="true"><span>0</span><span>5</span><span>10</span><span>15 م/ث</span></div>
+        </div>
+        <div class="controls">
+          <button type="button" id="powerBtn" class="primary" aria-pressed="true">إيقاف العنفة</button>
+          <button type="button" id="tourBtn" class="secondary">ابدأ الشرح</button>
+          <button type="button" id="resetBtn" class="secondary">إعادة الضبط</button>
+        </div>
+        <div id="status" class="status" role="status" aria-live="polite">العنفة تعمل وتوصل الكهرباء إلى الشبكة.</div>
+        <div class="metrics" aria-label="عدادات السرعة">
+          <div class="metric"><span>الشفرات والمحور منخفض السرعة</span><strong id="lowRpm">11 دورة/دقيقة</strong></div>
+          <div class="metric"><span>المحور عالي السرعة والمولد</span><strong id="highRpm">1100 دورة/دقيقة</strong></div>
+          <div class="metric ratio"><span>الزيادة التقريبية داخل علبة السرعة</span><strong>×100</strong></div>
+          <div class="metric"><span>حالة خروج الكهرباء</span><strong id="flowState">تصل للشبكة</strong></div>
+        </div>
+        <p class="aside-note">الأعداد مثال تعليمي تقريبي؛ تختلف سرعة الدوران ونسبة المسننات حسب تصميم العنفة. يبدأ دوران هذا النموذج عند 4 م/ث. حركة الرسم أبطأ من عدّاد المحور السريع كي تراها بوضوح.</p>
+      </aside>
+    </div>
+
+    <section class="steps card" aria-labelledby="steps-title">
+      <div class="section-lead"><h2 id="steps-title">تتبّع الطاقة خطوة بخطوة</h2><p>اختر بطاقة أو جزءًا من الرسم؛ الترتيب يبدأ من الرياح.</p></div>
+      <div class="step-scroll"><div class="step-rail" id="stepRail">
+        <button class="step-btn" data-step="0" aria-pressed="true"><span class="step-number">1</span><span>الرياح</span></button><span class="arrow" aria-hidden="true">→</span>
+        <button class="step-btn" data-step="1" aria-pressed="false"><span class="step-number">2</span><span>الشفرات</span></button><span class="arrow" aria-hidden="true">→</span>
+        <button class="step-btn" data-step="2" aria-pressed="false"><span class="step-number">3</span><span>المحور البطيء</span></button><span class="arrow" aria-hidden="true">→</span>
+        <button class="step-btn" data-step="3" aria-pressed="false"><span class="step-number">4</span><span>المسننات</span></button><span class="arrow" aria-hidden="true">→</span>
+        <button class="step-btn" data-step="4" aria-pressed="false"><span class="step-number">5</span><span>المحور السريع</span></button><span class="arrow" aria-hidden="true">→</span>
+        <button class="step-btn" data-step="5" aria-pressed="false"><span class="step-number">6</span><span>المولد</span></button><span class="arrow" aria-hidden="true">→</span>
+        <button class="step-btn" data-step="6" aria-pressed="false"><span class="step-number">7</span><span>الكابل</span></button><span class="arrow" aria-hidden="true">→</span>
+        <button class="step-btn" data-step="7" aria-pressed="false"><span class="step-number">8</span><span>المحوّل</span></button><span class="arrow" aria-hidden="true">→</span>
+        <button class="step-btn" data-step="8" aria-pressed="false"><span class="step-number">9</span><span>الشبكة</span></button>
+      </div></div>
+      <div class="stage-detail" id="stageDetail" aria-live="polite">
+        <div><h3 id="stageTitle">١ · الرياح</h3><p id="stageText">الهواء المتحرك يحمل طاقة حركية. عندما يمر على الشفرات يستطيع جعلها تدور.</p></div>
+        <span class="energy-tag" id="stageEnergy">طاقة حركية للهواء</span>
+      </div>
+    </section>
+
+    <section class="explain card" aria-labelledby="answer-title">
+      <div class="section-lead"><h2 id="answer-title">السؤال: كيف تتولد الكهرباء من الرياح؟</h2><button type="button" id="answerBtn" class="primary" aria-expanded="false" aria-controls="answer">اعرض الإجابة النموذجية</button></div>
+      <div id="answer" class="answer" hidden>
+        <p><strong>الإجابة:</strong> تدفع الرياح الشفرات فتدير الدوّار ومحور السرعة المنخفضة. تنقل علبة المسننات الدوران عبر مسننات كبيرة وصغيرة وتزيد سرعة محور السرعة العالية. يدير هذا المحور المولدَ، فيحوّل المولد الطاقة الحركية إلى كهربائية. تنتقل الكهرباء في كابلات البرج إلى محوّل يرفع الجهد لتسهيل نقلها، ثم تصل إلى الشبكة الكهربائية.</p>
+        <p><strong>تذكّر:</strong> المسننات ترفع <em>سرعة الدوران</em> ولا تولّد الكهرباء؛ المولد هو الذي يحوّل الطاقة الحركية إلى كهربائية، والمحوّل يغيّر الجهد.</p>
+      </div>
+    </section>
+
+    <section class="quiz card" aria-labelledby="quiz-title">
+      <h2 id="quiz-title">تحقّق من فهمك</h2>
+      <form id="quizForm">
+        <fieldset><legend>١. ما أثر المسننات في هذا النموذج؟</legend>
+          <label><input type="radio" name="q1" value="a">تزيد سرعة دوران المحور الخارج</label>
+          <label><input type="radio" name="q1" value="b">تحوّل الحركة مباشرة إلى كهرباء</label>
+        </fieldset>
+        <fieldset><legend>٢. أي جزء يحوّل الطاقة الحركية إلى كهربائية؟</legend>
+          <label><input type="radio" name="q2" value="a">علبة المسننات</label>
+          <label><input type="radio" name="q2" value="b">المولد الكهربائي</label>
+        </fieldset>
+        <fieldset><legend>٣. ماذا يفعل المحوّل الكهربائي بعد خروج الكهرباء من البرج؟</legend>
+          <label><input type="radio" name="q3" value="a">يرفع الجهد لتسهيل النقل</label>
+          <label><input type="radio" name="q3" value="b">يصنع طاقة إضافية</label>
+        </fieldset>
+        <button class="primary" type="submit">تحقّق من الإجابات</button>
+        <div id="quizFeedback" class="feedback" role="status" aria-live="polite" hidden></div>
+      </form>
+    </section>
+  </main>
+  <footer>
+    <div class="foot-inner">
+      <p>محاكاة تعليمية مبسطة لعنفة تعمل بعلبة سرعة. توجد أيضًا عنفات ذات قيادة مباشرة لا تستخدم علبة مسننات.</p>
+      <p>للتوسّع: المثال المرجعي 18 دورة/دقيقة ← 1800 دورة/دقيقة ورد في <a href="https://www.energy.gov/articles/how-wind-turbine-works" target="_blank" rel="noopener noreferrer">شرح وزارة الطاقة الأميركية</a>؛ وتفاصيل أجزاء العنفة والمحوّل في <a href="https://www.energy.gov/cmei/systems/explore-wind-turbine-text-version" target="_blank" rel="noopener noreferrer">الشرح النصي للمكوّنات</a>.</p>
+    </div>
+  </footer>
+  <script>
+    (() => {
+      'use strict';
+      const stages = [
+        ['١ · الرياح', 'الهواء المتحرك يحمل طاقة حركية. عندما يمر على الشفرات يستطيع جعلها تدور.', 'طاقة حركية للهواء'],
+        ['٢ · الشفرات والدوّار', 'تلتقط الشفرات طاقة الرياح فتدور مع مركزها. هنا تتحول حركة الهواء إلى حركة دوران ميكانيكية.', 'حركة دورانية'],
+        ['٣ · محور السرعة المنخفضة', 'يدور هذا المحور مع الشفرات، وينقل حركتها إلى علبة المسننات. سرعته أقل من سرعة محور المولد.', 'حركة دورانية بطيئة'],
+        ['٤ · علبة المسننات', 'ينقل المسنن الكبير الحركة إلى مسنن أصغر يدور أسرع. تتكرر الزيادة في عدة مراحل؛ المثال هنا نحو 100 ضعف. زيادة السرعة لا تعني صنع طاقة إضافية.', 'سرعة دوران أعلى'],
+        ['٥ · محور السرعة العالية', 'ينقل هذا المحور الحركة الأسرع الخارجة من علبة المسننات إلى المولد الكهربائي.', 'حركة دورانية سريعة'],
+        ['٦ · المولد الكهربائي', 'يحوّل المولد الطاقة الميكانيكية للدوران إلى طاقة كهربائية. هذه هي نقطة توليد الكهرباء.', 'طاقة كهربائية'],
+        ['٧ · الكابل داخل البرج', 'تنتقل الكهرباء التي خرجت من المولد عبر كابلات تمر داخل البرج نحو المحوّل.', 'نقل الكهرباء'],
+        ['٨ · محوّل رفع الجهد', 'يرفع المحوّل جهد الكهرباء لتنتقل عبر المسافات الطويلة بفقد أقل. هو لا يولّد كهرباء جديدة.', 'جهد كهربائي أعلى'],
+        ['٩ · الشبكة الكهربائية', 'تنتقل الكهرباء عبر خطوط النقل إلى الشبكة الكهربائية التي توزّعها إلى مناطق الاستخدام.', 'توزيع الكهرباء']
+      ];
+      const root = document.documentElement;
+      const speed = document.getElementById('windSpeed');
+      const windOutput = document.getElementById('windOutput');
+      const lowRpm = document.getElementById('lowRpm');
+      const highRpm = document.getElementById('highRpm');
+      const flowState = document.getElementById('flowState');
+      const status = document.getElementById('status');
+      const powerBtn = document.getElementById('powerBtn');
+      const tourBtn = document.getElementById('tourBtn');
+      const resetBtn = document.getElementById('resetBtn');
+      const stepButtons = [...document.querySelectorAll('.step-btn')];
+      const svgParts = [...document.querySelectorAll('[data-svg-stage]')];
+      let enabled = true;
+      let selected = 0;
+      let tourTimer = null;
+
+      function stopTour() {
+        if (tourTimer) clearTimeout(tourTimer);
+        tourTimer = null;
+        tourBtn.textContent = 'ابدأ الشرح';
+        tourBtn.setAttribute('aria-pressed', 'false');
+      }
+
+      function chooseStage(index, fromTour = false) {
+        if (!fromTour) stopTour();
+        selected = index;
+        document.getElementById('stageTitle').textContent = stages[index][0];
+        document.getElementById('stageText').textContent = stages[index][1];
+        document.getElementById('stageEnergy').textContent = stages[index][2];
+        stepButtons.forEach(button => button.setAttribute('aria-pressed', String(Number(button.dataset.step) === index)));
+        svgParts.forEach(part => {
+          const isSelected = Number(part.dataset.svgStage) === index;
+          part.classList.toggle('is-selected', isSelected);
+          part.setAttribute('aria-pressed', String(isSelected));
+        });
+        if (fromTour) stepButtons[index].scrollIntoView({ block: 'nearest', inline: 'nearest', behavior: 'smooth' });
+      }
+
+      function updateWind() {
+        const wind = Number(speed.value);
+        const active = enabled && wind >= 4;
+        const low = active ? Math.min(18, Math.round((wind - 3) * 1.5)) : 0;
+        const high = low * 100;
+        windOutput.textContent = `${wind} م/ث`;
+        lowRpm.textContent = `${low} دورة/دقيقة`;
+        highRpm.textContent = `${high} دورة/دقيقة`;
+        flowState.textContent = active ? 'تصل للشبكة' : 'لا توليد';
+        root.classList.toggle('spinning', active);
+        root.classList.toggle('windy', wind > 0);
+        root.classList.toggle('windless', wind === 0);
+        root.style.setProperty('--wind-duration', `${Math.max(.55, 1.9 - wind * .09)}s`);
+        root.style.setProperty('--blade-duration', `${Math.max(3.3, 60 / Math.max(low, 1))}s`);
+        root.style.setProperty('--fast-duration', `${Math.max(.56, 11 / Math.max(low, 1))}s`);
+        status.classList.toggle('off', !active);
+        status.textContent = !enabled ? 'العنفة متوقفة يدويًا؛ لا توليد للكهرباء.' :
+          wind < 4 ? 'الرياح دون حد بدء الدوران في هذا النموذج؛ لا توليد للكهرباء.' :
+          'العنفة تعمل وتوصل الكهرباء إلى الشبكة.';
+        powerBtn.textContent = enabled ? 'إيقاف العنفة' : 'تشغيل العنفة';
+        powerBtn.setAttribute('aria-pressed', String(enabled));
+      }
+
+      speed.addEventListener('input', updateWind);
+      powerBtn.addEventListener('click', () => { enabled = !enabled; updateWind(); });
+      resetBtn.addEventListener('click', () => {
+        stopTour(); speed.value = '10'; enabled = true; chooseStage(0); updateWind();
+        const answer = document.getElementById('answer');
+        answer.hidden = true;
+        document.getElementById('answerBtn').setAttribute('aria-expanded', 'false');
+        document.getElementById('answerBtn').textContent = 'اعرض الإجابة النموذجية';
+        document.getElementById('quizForm').reset();
+        const feedback = document.getElementById('quizFeedback');
+        feedback.hidden = true;
+        feedback.textContent = '';
+      });
+      stepButtons.forEach(button => button.addEventListener('click', () => chooseStage(Number(button.dataset.step))));
+      svgParts.forEach(part => {
+        part.addEventListener('click', () => chooseStage(Number(part.dataset.svgStage)));
+        part.addEventListener('keydown', event => {
+          if (event.key === 'Enter' || event.key === ' ') { event.preventDefault(); chooseStage(Number(part.dataset.svgStage)); }
+        });
+      });
+      tourBtn.addEventListener('click', () => {
+        if (tourTimer) { stopTour(); return; }
+        tourBtn.textContent = 'إيقاف الشرح';
+        tourBtn.setAttribute('aria-pressed', 'true');
+        let next = 0;
+        const advance = () => {
+          chooseStage(next, true);
+          next += 1;
+          if (next < stages.length) tourTimer = setTimeout(advance, 2300);
+          else tourTimer = setTimeout(stopTour, 2300);
+        };
+        advance();
+      });
+      document.getElementById('answerBtn').addEventListener('click', event => {
+        const answer = document.getElementById('answer');
+        answer.hidden = !answer.hidden;
+        event.currentTarget.setAttribute('aria-expanded', String(!answer.hidden));
+        event.currentTarget.textContent = answer.hidden ? 'اعرض الإجابة النموذجية' : 'أخفِ الإجابة';
+      });
+      document.getElementById('quizForm').addEventListener('submit', event => {
+        event.preventDefault();
+        const form = new FormData(event.currentTarget);
+        const feedback = document.getElementById('quizFeedback');
+        feedback.hidden = false;
+        if (['q1', 'q2', 'q3'].some(name => !form.has(name))) {
+          feedback.className = 'feedback retry';
+          feedback.textContent = 'أجب عن الأسئلة الثلاثة أولًا، ثم تحقّق من إجاباتك.';
+          return;
+        }
+        const correct = Number(form.get('q1') === 'a') + Number(form.get('q2') === 'b') + Number(form.get('q3') === 'a');
+        feedback.className = `feedback ${correct === 3 ? 'success' : 'retry'}`;
+        feedback.textContent = correct === 3 ? '٣ من ٣: صحيح! المسننات ترفع سرعة الدوران، والمولد ينتج الكهرباء، والمحوّل يرفع الجهد.' :
+          `${correct} من ٣. راجع بطاقات علبة المسننات والمولد والمحوّل ثم حاول مرة أخرى.`;
+      });
+      chooseStage(0);
+      updateWind();
+    })();
+  </script>
+</body>
+</html>
