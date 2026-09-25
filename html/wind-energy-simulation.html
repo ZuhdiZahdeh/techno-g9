@@ -62,6 +62,8 @@
     .primary:hover { background: #00676b; }
     .secondary { border: 1px solid #bdd6d9; color: #204a58; background: #f5fbfb; }
     .secondary:hover { background: #e8f4f4; }
+    .tour-status { margin: 0; padding: 9px 12px; border-radius: 10px; background: #edf7f6; color: #175461; line-height: 1.6; }
+    .tour-status.error { background: #fff0df; color: #754209; }
     .status { border-radius: 11px; background: #eaf7f0; color: #17563d; padding: 10px 12px; line-height: 1.6; font-weight: 700; }
     .status.off { background: #f2f4f5; color: #52616a; }
     .metrics { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 9px; }
@@ -106,11 +108,19 @@
     .windless .wind-line { opacity: .17; }
     .spinning .electric-path { stroke: #f2ab25; stroke-dasharray: 11 8; animation: flow 1s linear infinite; }
     .spinning .electric-light { fill: #f8c04a; filter: drop-shadow(0 0 7px #f5a627); }
+    .touring .diagram [data-svg-stage].is-selected { animation: stage-pulse 1.25s ease-in-out infinite; }
+    .tour-paused .diagram .rotor-spin, .tour-paused .diagram .slow-spin,
+    .tour-paused .diagram .gear-large, .tour-paused .diagram .gear-small,
+    .tour-paused .diagram .fast-spin, .tour-paused .diagram .wind-line,
+    .tour-paused .diagram .electric-path, .tour-paused .diagram [data-svg-stage].is-selected {
+      animation-play-state: paused;
+    }
     .rotor-spin, .slow-spin, .gear-large, .gear-small, .fast-spin { transform-box: fill-box; transform-origin: center; }
     @keyframes spin { to { transform: rotate(360deg); } }
     @keyframes spin-reverse { to { transform: rotate(-360deg); } }
     @keyframes flow { to { stroke-dashoffset: -38; } }
     @keyframes air { to { opacity: .4; transform: translateX(16px); } }
+    @keyframes stage-pulse { 50% { opacity: .68; } }
     @media (max-width: 860px) {
       .layout { grid-template-columns: 1fr; }
       .panel { display: grid; grid-template-columns: 1fr 1fr; }
@@ -229,9 +239,11 @@
         </div>
         <div class="controls">
           <button type="button" id="powerBtn" class="primary" aria-pressed="true">إيقاف العنفة</button>
-          <button type="button" id="tourBtn" class="secondary">ابدأ الشرح</button>
+          <button type="button" id="tourBtn" class="secondary" aria-pressed="false">ابدأ الشرح</button>
+          <button type="button" id="tourStopBtn" class="secondary" hidden>إنهاء الشرح</button>
           <button type="button" id="resetBtn" class="secondary">إعادة الضبط</button>
         </div>
+        <p id="tourStatus" class="tour-status" hidden></p>
         <div id="status" class="status" role="status" aria-live="polite">العنفة تعمل وتوصل الكهرباء إلى الشبكة.</div>
         <div class="metrics" aria-label="عدادات السرعة">
           <div class="metric"><span>الشفرات والمحور منخفض السرعة</span><strong id="lowRpm">11 دورة/دقيقة</strong></div>
@@ -310,6 +322,17 @@
         ['٨ · محوّل رفع الجهد', 'يرفع المحوّل جهد الكهرباء لتنتقل عبر المسافات الطويلة بفقد أقل. هو لا يولّد كهرباء جديدة.', 'جهد كهربائي أعلى'],
         ['٩ · الشبكة الكهربائية', 'تنتقل الكهرباء عبر خطوط النقل إلى الشبكة الكهربائية التي توزّعها إلى مناطق الاستخدام.', 'توزيع الكهرباء']
       ];
+      const narration = [
+        'الرياح هواء متحرك يحمل طاقة حركية. عندما تهب على العنفة، تصل هذه الطاقة إلى الشفرات.',
+        'تلتقط الشفرات طاقة الرياح، فيدور الدوّار معها. هكذا تتحول حركة الهواء إلى حركة دورانية.',
+        'ينقل محور السرعة المنخفضة دوران الشفرات إلى علبة المسننات. يدور ببطء مقارنة بالمحور الذي يقود المولد.',
+        'داخل علبة السرعة، يقود مسنن كبير مسننًا أصغر فيدور أسرع. وتتكرر الزيادة عبر مراحل حتى نحو مئة ضعف في هذا المثال. المسننات لا تصنع طاقة جديدة.',
+        'ينقل محور السرعة العالية الدوران السريع من علبة المسننات إلى المولد الكهربائي.',
+        'يحوّل المولد طاقة الدوران الميكانيكية إلى طاقة كهربائية. هنا تتولّد الكهرباء فعليًا.',
+        'تسير الكهرباء من المولد عبر كابلات داخل البرج باتجاه محوّل رفع الجهد.',
+        'يرفع المحوّل جهد الكهرباء لتنتقل لمسافات طويلة بفقد أقل، من دون توليد طاقة جديدة.',
+        'أخيرًا، تنتقل الكهرباء عبر خطوط النقل إلى الشبكة الكهربائية، ومنها إلى مناطق الاستخدام.'
+      ];
       const root = document.documentElement;
       const speed = document.getElementById('windSpeed');
       const windOutput = document.getElementById('windOutput');
@@ -319,18 +342,71 @@
       const status = document.getElementById('status');
       const powerBtn = document.getElementById('powerBtn');
       const tourBtn = document.getElementById('tourBtn');
+      const tourStopBtn = document.getElementById('tourStopBtn');
+      const tourStatus = document.getElementById('tourStatus');
       const resetBtn = document.getElementById('resetBtn');
+      const stageDetail = document.getElementById('stageDetail');
       const stepButtons = [...document.querySelectorAll('.step-btn')];
       const svgParts = [...document.querySelectorAll('[data-svg-stage]')];
+      const speechAvailable = 'speechSynthesis' in window && 'SpeechSynthesisUtterance' in window;
+      const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
       let enabled = true;
       let selected = 0;
-      let tourTimer = null;
+      let tourState = 'idle';
+      let tourIndex = 0;
+      let tourRun = 0;
+      let startupTimer = null;
+      let utteranceStarted = false;
+      let advanceAfterResume = false;
+      let savedWind = null;
 
-      function stopTour() {
-        if (tourTimer) clearTimeout(tourTimer);
-        tourTimer = null;
-        tourBtn.textContent = 'ابدأ الشرح';
-        tourBtn.setAttribute('aria-pressed', 'false');
+      function renderTourControls() {
+        const active = tourState !== 'idle';
+        tourBtn.textContent = tourState === 'playing' ? 'إيقاف مؤقت' :
+          tourState === 'paused' ? 'متابعة الشرح' : 'ابدأ الشرح';
+        tourBtn.setAttribute('aria-pressed', String(active));
+        tourStopBtn.hidden = !active;
+        root.classList.toggle('touring', active);
+        root.classList.toggle('tour-paused', tourState === 'paused');
+        stageDetail.setAttribute('aria-live', active ? 'off' : 'polite');
+      }
+
+      function stopTour(message = '') {
+        const active = tourState !== 'idle';
+        tourRun += 1;
+        clearTimeout(startupTimer);
+        startupTimer = null;
+        if (active && speechAvailable) window.speechSynthesis.cancel();
+        tourState = 'idle';
+        advanceAfterResume = false;
+        renderTourControls();
+        if (savedWind) {
+          speed.value = savedWind.speed;
+          enabled = savedWind.enabled;
+          savedWind = null;
+          updateWind();
+        }
+        tourStatus.classList.remove('error');
+        tourStatus.removeAttribute('role');
+        tourStatus.textContent = message;
+        tourStatus.hidden = !message;
+      }
+
+      function tourError(message) {
+        stopTour();
+        tourStatus.hidden = false;
+        tourStatus.classList.add('error');
+        tourStatus.setAttribute('role', 'alert');
+        tourStatus.textContent = message;
+      }
+
+      function revealInScroller(scroller, element) {
+        if (!scroller || !element) return;
+        const box = scroller.getBoundingClientRect();
+        const item = element.getBoundingClientRect();
+        if (item.left >= box.left && item.right <= box.right) return;
+        const offset = (item.left + item.right - box.left - box.right) / 2;
+        scroller.scrollBy({ left: offset, behavior: reducedMotion.matches ? 'auto' : 'smooth' });
       }
 
       function chooseStage(index, fromTour = false) {
@@ -345,7 +421,113 @@
           part.classList.toggle('is-selected', isSelected);
           part.setAttribute('aria-pressed', String(isSelected));
         });
-        if (fromTour) stepButtons[index].scrollIntoView({ block: 'nearest', inline: 'nearest', behavior: 'smooth' });
+        if (fromTour) {
+          revealInScroller(document.querySelector('.step-scroll'), stepButtons[index]);
+          revealInScroller(document.querySelector('.diagram-wrap'),
+            svgParts.find(part => Number(part.dataset.svgStage) === index));
+        }
+      }
+
+      function speakStage(index) {
+        if (tourState !== 'playing') return;
+        if (index >= stages.length) {
+          stopTour('اكتمل الشرح الصوتي. يمكنك إعادة تشغيله أو استكشاف الأجزاء بنفسك.');
+          return;
+        }
+        tourIndex = index;
+        utteranceStarted = false;
+        advanceAfterResume = false;
+        chooseStage(index, true);
+        tourStatus.textContent = `المرحلة ${index + 1} من ${stages.length}: ${stages[index][0]}`;
+        const run = tourRun;
+        const utterance = new SpeechSynthesisUtterance(narration[index]);
+        const arabicVoice = window.speechSynthesis.getVoices().find(voice => /^ar(?:-|$)/i.test(voice.lang));
+        utterance.lang = arabicVoice ? arabicVoice.lang : 'ar';
+        if (arabicVoice) utterance.voice = arabicVoice;
+        utterance.rate = .92;
+        utterance.onstart = () => {
+          if (run !== tourRun) return;
+          utteranceStarted = true;
+          clearTimeout(startupTimer);
+          startupTimer = null;
+        };
+        utterance.onend = () => {
+          if (run !== tourRun) return;
+          clearTimeout(startupTimer);
+          startupTimer = null;
+          if (!utteranceStarted) {
+            tourError('تعذّر تشغيل الصوت العربي في هذا المتصفح. جرّب متصفحًا يتيح النطق الصوتي.');
+          } else if (tourState === 'paused') {
+            advanceAfterResume = true;
+          } else {
+            speakStage(index + 1);
+          }
+        };
+        utterance.onerror = () => {
+          if (run === tourRun) tourError('توقّف النطق الصوتي. تأكد من توفر صوت عربي في جهازك ثم أعد المحاولة.');
+        };
+        startupTimer = setTimeout(() => {
+          if (run === tourRun && tourState === 'playing' && !utteranceStarted) {
+            tourError('لم يبدأ الصوت في هذا المتصفح. تحقق من إعدادات الصوت أو جرّب متصفحًا آخر.');
+          }
+        }, 8000);
+        try {
+          window.speechSynthesis.speak(utterance);
+        } catch {
+          tourError('تعذّر تشغيل الصوت في هذا المتصفح. يمكنك تجربة متصفح آخر يدعم النطق العربي.');
+        }
+      }
+
+      function startTour() {
+        if (!speechAvailable) {
+          tourError('هذا المتصفح لا يدعم النطق الصوتي. يمكنك متابعة المراحل يدويًا، أو فتح المحاكاة في متصفح يدعمه.');
+          return;
+        }
+        tourStatus.hidden = false;
+        tourStatus.classList.remove('error');
+        tourStatus.removeAttribute('role');
+        savedWind = { speed: speed.value, enabled };
+        if (!enabled || Number(speed.value) < 4) {
+          enabled = true;
+          speed.value = '10';
+          updateWind();
+        }
+        tourRun += 1;
+        window.speechSynthesis.cancel();
+        tourState = 'playing';
+        renderTourControls();
+        speakStage(0);
+      }
+
+      function pauseTour() {
+        if (tourState !== 'playing') return;
+        tourState = 'paused';
+        clearTimeout(startupTimer);
+        startupTimer = null;
+        window.speechSynthesis.pause();
+        renderTourControls();
+        tourStatus.textContent = `الشرح متوقف مؤقتًا عند ${stages[tourIndex][0]}.`;
+      }
+
+      function resumeTour() {
+        if (tourState !== 'paused') return;
+        tourState = 'playing';
+        renderTourControls();
+        tourStatus.textContent = `نتابع ${stages[tourIndex][0]}.`;
+        if (advanceAfterResume) {
+          window.speechSynthesis.resume();
+          speakStage(tourIndex + 1);
+          return;
+        }
+        window.speechSynthesis.resume();
+        if (!utteranceStarted) {
+          const run = tourRun;
+          startupTimer = setTimeout(() => {
+            if (run === tourRun && tourState === 'playing' && !utteranceStarted) {
+              tourError('لم يبدأ الصوت في هذا المتصفح. تحقق من إعدادات الصوت أو جرّب متصفحًا آخر.');
+            }
+          }, 8000);
+        }
       }
 
       function updateWind() {
@@ -371,8 +553,13 @@
         powerBtn.setAttribute('aria-pressed', String(enabled));
       }
 
-      speed.addEventListener('input', updateWind);
-      powerBtn.addEventListener('click', () => { enabled = !enabled; updateWind(); });
+      speed.addEventListener('input', () => {
+        const newSpeed = speed.value;
+        stopTour();
+        speed.value = newSpeed;
+        updateWind();
+      });
+      powerBtn.addEventListener('click', () => { stopTour(); enabled = !enabled; updateWind(); });
       resetBtn.addEventListener('click', () => {
         stopTour(); speed.value = '10'; enabled = true; chooseStage(0); updateWind();
         const answer = document.getElementById('answer');
@@ -392,18 +579,15 @@
         });
       });
       tourBtn.addEventListener('click', () => {
-        if (tourTimer) { stopTour(); return; }
-        tourBtn.textContent = 'إيقاف الشرح';
-        tourBtn.setAttribute('aria-pressed', 'true');
-        let next = 0;
-        const advance = () => {
-          chooseStage(next, true);
-          next += 1;
-          if (next < stages.length) tourTimer = setTimeout(advance, 2300);
-          else tourTimer = setTimeout(stopTour, 2300);
-        };
-        advance();
+        if (tourState === 'idle') startTour();
+        else if (tourState === 'playing') pauseTour();
+        else resumeTour();
       });
+      tourStopBtn.addEventListener('click', () => stopTour('انتهى الشرح. اضغط «ابدأ الشرح» لتشغيله من البداية.'));
+      document.addEventListener('visibilitychange', () => {
+        if (document.hidden) pauseTour();
+      });
+      window.addEventListener('pagehide', () => stopTour());
       document.getElementById('answerBtn').addEventListener('click', event => {
         const answer = document.getElementById('answer');
         answer.hidden = !answer.hidden;
