@@ -322,17 +322,8 @@
         ['٨ · محوّل رفع الجهد', 'يرفع المحوّل جهد الكهرباء لتنتقل عبر المسافات الطويلة بفقد أقل. هو لا يولّد كهرباء جديدة.', 'جهد كهربائي أعلى'],
         ['٩ · الشبكة الكهربائية', 'تنتقل الكهرباء عبر خطوط النقل إلى الشبكة الكهربائية التي توزّعها إلى مناطق الاستخدام.', 'توزيع الكهرباء']
       ];
-      const narration = [
-        'الرياح هواء متحرك يحمل طاقة حركية. عندما تهب على العنفة، تصل هذه الطاقة إلى الشفرات.',
-        'تلتقط الشفرات طاقة الرياح، فيدور الدوّار معها. هكذا تتحول حركة الهواء إلى حركة دورانية.',
-        'ينقل محور السرعة المنخفضة دوران الشفرات إلى علبة المسننات. يدور ببطء مقارنة بالمحور الذي يقود المولد.',
-        'داخل علبة السرعة، يقود مسنن كبير مسننًا أصغر فيدور أسرع. وتتكرر الزيادة عبر مراحل حتى نحو مئة ضعف في هذا المثال. المسننات لا تصنع طاقة جديدة.',
-        'ينقل محور السرعة العالية الدوران السريع من علبة المسننات إلى المولد الكهربائي.',
-        'يحوّل المولد طاقة الدوران الميكانيكية إلى طاقة كهربائية. هنا تتولّد الكهرباء فعليًا.',
-        'تسير الكهرباء من المولد عبر كابلات داخل البرج باتجاه محوّل رفع الجهد.',
-        'يرفع المحوّل جهد الكهرباء لتنتقل لمسافات طويلة بفقد أقل، من دون توليد طاقة جديدة.',
-        'أخيرًا، تنتقل الكهرباء عبر خطوط النقل إلى الشبكة الكهربائية، ومنها إلى مناطق الاستخدام.'
-      ];
+      const narrationAudio = stages.map((_, index) =>
+        `../assets/audio/lesson2/wind/simulation/anas-wind-stage-${String(index + 1).padStart(2, '0')}.mp3`);
       const root = document.documentElement;
       const speed = document.getElementById('windSpeed');
       const windOutput = document.getElementById('windOutput');
@@ -348,15 +339,13 @@
       const stageDetail = document.getElementById('stageDetail');
       const stepButtons = [...document.querySelectorAll('.step-btn')];
       const svgParts = [...document.querySelectorAll('[data-svg-stage]')];
-      const speechAvailable = 'speechSynthesis' in window && 'SpeechSynthesisUtterance' in window;
       const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
       let enabled = true;
       let selected = 0;
       let tourState = 'idle';
       let tourIndex = 0;
       let tourRun = 0;
-      let startupTimer = null;
-      let utteranceStarted = false;
+      let activeAudio = null;
       let advanceAfterResume = false;
       let savedWind = null;
 
@@ -372,11 +361,17 @@
       }
 
       function stopTour(message = '') {
-        const active = tourState !== 'idle';
         tourRun += 1;
-        clearTimeout(startupTimer);
-        startupTimer = null;
-        if (active && speechAvailable) window.speechSynthesis.cancel();
+        if (activeAudio) {
+          activeAudio.pause();
+          activeAudio.onended = null;
+          activeAudio.onerror = null;
+          activeAudio.onwaiting = null;
+          activeAudio.onplaying = null;
+          activeAudio.removeAttribute('src');
+          activeAudio.load();
+          activeAudio = null;
+        }
         tourState = 'idle';
         advanceAfterResume = false;
         renderTourControls();
@@ -428,61 +423,57 @@
         }
       }
 
-      function speakStage(index) {
+      function playStage(index) {
         if (tourState !== 'playing') return;
         if (index >= stages.length) {
-          stopTour('اكتمل الشرح الصوتي. يمكنك إعادة تشغيله أو استكشاف الأجزاء بنفسك.');
+          stopTour('اكتمل الشرح بصوت أنس. يمكنك إعادة تشغيله أو استكشاف الأجزاء بنفسك.');
           return;
         }
+        if (activeAudio) {
+          activeAudio.pause();
+          activeAudio.onended = null;
+          activeAudio.onerror = null;
+          activeAudio.onwaiting = null;
+          activeAudio.onplaying = null;
+        }
         tourIndex = index;
-        utteranceStarted = false;
         advanceAfterResume = false;
         chooseStage(index, true);
-        tourStatus.textContent = `المرحلة ${index + 1} من ${stages.length}: ${stages[index][0]}`;
+        const stageStatus = `المرحلة ${index + 1} من ${stages.length}: ${stages[index][0]}`;
+        tourStatus.textContent = stageStatus;
         const run = tourRun;
-        const utterance = new SpeechSynthesisUtterance(narration[index]);
-        const arabicVoice = window.speechSynthesis.getVoices().find(voice => /^ar(?:-|$)/i.test(voice.lang));
-        utterance.lang = arabicVoice ? arabicVoice.lang : 'ar';
-        if (arabicVoice) utterance.voice = arabicVoice;
-        utterance.rate = .92;
-        utterance.onstart = () => {
-          if (run !== tourRun) return;
-          utteranceStarted = true;
-          clearTimeout(startupTimer);
-          startupTimer = null;
+        const audio = new Audio(narrationAudio[index]);
+        activeAudio = audio;
+        const isCurrent = () => run === tourRun && audio === activeAudio;
+        audio.onwaiting = () => {
+          if (isCurrent() && tourState === 'playing') tourStatus.textContent = `جار تحميل صوت أنس: ${stageStatus}`;
         };
-        utterance.onend = () => {
-          if (run !== tourRun) return;
-          clearTimeout(startupTimer);
-          startupTimer = null;
-          if (!utteranceStarted) {
-            tourError('تعذّر تشغيل الصوت العربي في هذا المتصفح. جرّب متصفحًا يتيح النطق الصوتي.');
-          } else if (tourState === 'paused') {
+        audio.onplaying = () => {
+          if (isCurrent() && tourState === 'playing') tourStatus.textContent = stageStatus;
+        };
+        audio.onended = () => {
+          if (!isCurrent()) return;
+          if (tourState === 'paused') {
             advanceAfterResume = true;
-          } else {
-            speakStage(index + 1);
+          } else if (tourState === 'playing') {
+            playStage(index + 1);
           }
         };
-        utterance.onerror = () => {
-          if (run === tourRun) tourError('توقّف النطق الصوتي. تأكد من توفر صوت عربي في جهازك ثم أعد المحاولة.');
+        audio.onerror = () => {
+          if (isCurrent()) tourError(`تعذّر تحميل تسجيل صوت أنس للمرحلة ${index + 1}. تحقق من اتصال الإنترنت ثم أعد المحاولة.`);
         };
-        startupTimer = setTimeout(() => {
-          if (run === tourRun && tourState === 'playing' && !utteranceStarted) {
-            tourError('لم يبدأ الصوت في هذا المتصفح. تحقق من إعدادات الصوت أو جرّب متصفحًا آخر.');
-          }
-        }, 8000);
         try {
-          window.speechSynthesis.speak(utterance);
+          audio.play().catch(() => {
+            if (isCurrent() && tourState === 'playing') {
+              tourError(`تعذّر تشغيل تسجيل صوت أنس للمرحلة ${index + 1}. تحقق من اتصال الإنترنت وإعدادات الصوت ثم أعد المحاولة.`);
+            }
+          });
         } catch {
-          tourError('تعذّر تشغيل الصوت في هذا المتصفح. يمكنك تجربة متصفح آخر يدعم النطق العربي.');
+          tourError(`تعذّر تشغيل تسجيل صوت أنس للمرحلة ${index + 1}. تحقق من إعدادات الصوت ثم أعد المحاولة.`);
         }
       }
 
       function startTour() {
-        if (!speechAvailable) {
-          tourError('هذا المتصفح لا يدعم النطق الصوتي. يمكنك متابعة المراحل يدويًا، أو فتح المحاكاة في متصفح يدعمه.');
-          return;
-        }
         tourStatus.hidden = false;
         tourStatus.classList.remove('error');
         tourStatus.removeAttribute('role');
@@ -493,18 +484,15 @@
           updateWind();
         }
         tourRun += 1;
-        window.speechSynthesis.cancel();
         tourState = 'playing';
         renderTourControls();
-        speakStage(0);
+        playStage(0);
       }
 
       function pauseTour() {
         if (tourState !== 'playing') return;
         tourState = 'paused';
-        clearTimeout(startupTimer);
-        startupTimer = null;
-        window.speechSynthesis.pause();
+        if (activeAudio) activeAudio.pause();
         renderTourControls();
         tourStatus.textContent = `الشرح متوقف مؤقتًا عند ${stages[tourIndex][0]}.`;
       }
@@ -514,19 +502,20 @@
         tourState = 'playing';
         renderTourControls();
         tourStatus.textContent = `نتابع ${stages[tourIndex][0]}.`;
-        if (advanceAfterResume) {
-          window.speechSynthesis.resume();
-          speakStage(tourIndex + 1);
+        if (advanceAfterResume || activeAudio?.ended) {
+          playStage(tourIndex + 1);
           return;
         }
-        window.speechSynthesis.resume();
-        if (!utteranceStarted) {
-          const run = tourRun;
-          startupTimer = setTimeout(() => {
-            if (run === tourRun && tourState === 'playing' && !utteranceStarted) {
-              tourError('لم يبدأ الصوت في هذا المتصفح. تحقق من إعدادات الصوت أو جرّب متصفحًا آخر.');
+        const audio = activeAudio;
+        const run = tourRun;
+        try {
+          audio.play().catch(() => {
+            if (run === tourRun && audio === activeAudio && tourState === 'playing') {
+              tourError(`تعذّر متابعة تسجيل صوت أنس للمرحلة ${tourIndex + 1}. تحقق من اتصال الإنترنت ثم أعد المحاولة.`);
             }
-          }, 8000);
+          });
+        } catch {
+          tourError(`تعذّر متابعة تسجيل صوت أنس للمرحلة ${tourIndex + 1}. أعد المحاولة.`);
         }
       }
 
