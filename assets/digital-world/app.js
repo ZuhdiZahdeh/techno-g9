@@ -96,9 +96,9 @@ $('quiz-restart').addEventListener('click',()=>{qi=0;answers=[];renderQuestion()
 }
 $('print-activity')?.addEventListener('click',()=>window.print());
 
-const navLinks=[...document.querySelectorAll('.section-nav a')];
+const navLinks=[...document.querySelectorAll('.lesson-toc a')];
 function setActiveNav(id){navLinks.forEach(a=>{const on=a.hash==='#'+id;a.classList.toggle('active',on);if(on)a.setAttribute('aria-current','location');else a.removeAttribute('aria-current');});}
-if('IntersectionObserver'in window){const observer=new IntersectionObserver(entries=>{const visible=entries.filter(e=>e.isIntersecting).sort((a,b)=>a.boundingClientRect.top-b.boundingClientRect.top);if(visible[0])setActiveNav(visible[0].target.id);},{rootMargin:'-150px 0px -55% 0px',threshold:0});document.querySelectorAll('main>.section').forEach(s=>observer.observe(s));}
+if('IntersectionObserver'in window){const observer=new IntersectionObserver(entries=>{const visible=entries.filter(e=>e.isIntersecting).sort((a,b)=>a.boundingClientRect.top-b.boundingClientRect.top);if(visible[0])setActiveNav(visible[0].target.id);},{rootMargin:'-35px 0px -60% 0px',threshold:0});document.querySelectorAll('main>.content-section').forEach(s=>observer.observe(s));}
 navLinks.forEach(a=>a.addEventListener('click',()=>setActiveNav(a.hash.slice(1))));
 if(navLinks.some(a=>a.hash===location.hash))setActiveNav(location.hash.slice(1));
 
