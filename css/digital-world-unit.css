@@ -1,0 +1,29 @@
+.unit-breadcrumbs { display: flex; gap: 10px; flex-wrap: wrap; margin: 24px 0; color: var(--muted); font-size: .85rem; }
+.unit-breadcrumbs a { color: var(--teal-600); }
+.digital-intro { padding: clamp(26px, 5vw, 48px); color: white; background: linear-gradient(130deg, #08243c, #123c63 60%, #0f7c78); border-radius: 24px; position: relative; overflow: hidden; }
+.digital-intro .eyebrow { color: #a9f1ec; }
+.digital-intro h1 { font-size: clamp(2.4rem, 6vw, 4rem); margin: 0 0 16px; line-height: 1.4; }
+.digital-intro > p:not(.eyebrow) { color: #e0eef4; max-width: 770px; font-size: 1.1rem; }
+.digital-intro .button { margin-top: 12px; }
+.unit-prelude { display: grid; grid-template-columns: 1.35fr 1fr; gap: 30px; align-items: start; margin-top: 36px; }
+.prelude-card { background: white; border: 1px solid var(--line); border-top: 5px solid var(--teal-500); padding: 28px; border-radius: 16px; }
+.prelude-card h2 { color: var(--navy-950); font-size: 1.6rem; line-height: 1.65; margin: 14px 0; }
+.prelude-card p { color: var(--muted); }
+.prelude-card .button { margin-top: 12px; }
+.unit-tools { display: flex; gap: 8px; list-style: none; padding: 0; flex-wrap: wrap; }
+.unit-tools li { background: #eaf5f1; padding: 4px 11px; border-radius: 7px; font-size: .8rem; color: #17655d; }
+.textbook-bridge { padding: 25px; border-right: 3px solid var(--teal-600); background: #e7f1f6; border-radius: 12px; }
+.textbook-bridge h2 { font-size: 1.3rem; color: var(--navy-950); line-height: 1.7; margin: 0 0 12px; }
+.textbook-bridge p { color: #415c70; margin-bottom: 0; }
+.lesson-route { margin-top: 40px; }
+.lesson-route h2 { color: var(--navy-950); font-size: 1.8rem; margin-bottom: 8px; }
+.route-grid { list-style: none; padding: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.route-grid a { display: flex; gap: 18px; height: 100%; padding: 25px; border: 1px solid var(--line); background: white; border-radius: 14px; }
+.route-grid a:hover { border-color: var(--teal-600); background: #f3fbf8; }
+.route-number { font: 700 27px/1.6 Arial, sans-serif; color: var(--teal-600); }
+.route-grid h3 { font-size: 1.15rem; line-height: 1.65; margin: 0 0 8px; }
+.route-grid p { color: var(--muted); font-size: .9rem; margin: 0; }
+.unit-next { background: #e8f5ef; padding: 24px 28px; border-radius: 14px; margin: 32px 0 45px; }
+.unit-next h2 { color: var(--navy-950); font-size: 1.3rem; margin: 0 0 10px; }
+.unit-next p { margin: 0; color: #42615b; }
+@media (max-width: 700px) { .unit-prelude, .route-grid { grid-template-columns: 1fr; } .unit-prelude { gap: 18px; } .prelude-card, .textbook-bridge { padding: 22px; } .route-grid a { padding: 20px; } .unit-next { padding: 22px; } }

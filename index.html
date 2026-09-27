@@ -3,12 +3,12 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="موقع طلاب الصف التاسع في مبحث التكنولوجيا: دروس الطاقة النظيفة والأنشطة والمواد التعليمية.">
+  <meta name="description" content="موقع طلاب الصف التاسع في مبحث التكنولوجيا: وحدتا تكنولوجيا الطاقة النظيفة وعالم رقمي، مع دروس وأنشطة ومحاكاة تفاعلية.">
   <meta name="theme-color" content="#123c63">
   <title>تكنولوجيا الصف التاسع | موقع الطالب</title>
   <link rel="icon" href="assets/tech-g9-favicon.ico" sizes="any">
   <link rel="stylesheet" href="css/student-site.css">
-  <link rel="stylesheet" href="css/home.css?v=20260919-mycube">
+  <link rel="stylesheet" href="css/home.css?v=20260927-units">
 </head>
 <body>
   <a class="skip-link" href="#main-content">انتقل إلى المحتوى</a>
@@ -40,32 +40,37 @@
         <h1 id="welcome-title">موقع الطالب لمبحث التكنولوجيا</h1>
         <p class="welcome-text">الدروس والملخصات والأنشطة مرتبة وفق تسلسل الكتاب، لتصل إلى المادة المطلوبة بسرعة من الحاسوب أو الهاتف.</p>
         <div class="welcome-actions">
-          <a class="button button-primary" href="html/lesson-clean-energy-student.html">ابدأ بالدرس الأول</a>
+          <a class="button button-primary" href="#unit-choices">اختر الوحدة</a>
           <a class="button button-secondary" id="continueLink" href="html/lesson-clean-energy-student.html">متابعة التعلّم</a>
         </div>
       </div>
 
-      <div class="unit-focus" aria-label="الوحدة الحالية">
-        <span class="unit-number">01</span>
-        <p>الوحدة الأولى</p>
-        <h2>تكنولوجيا الطاقة النظيفة</h2>
-        <span class="unit-status">المحتوى المتاح حاليًا</span>
-      </div>
+      <nav class="unit-picker" id="unit-choices" aria-label="اختر الوحدة الدراسية">
+        <p class="unit-picker-title">اختر الوحدة وابدأ رحلتك</p>
+        <a class="unit-choice" href="#unit-clean-energy">
+          <span class="unit-choice-number" aria-hidden="true">01</span>
+          <span><small>الوحدة الأولى</small><strong>تكنولوجيا الطاقة النظيفة</strong><span class="unit-choice-detail">الدروس والتطبيقات وأوراق العمل</span></span>
+          <span aria-hidden="true">←</span>
+        </a>
+        <a class="unit-choice unit-choice-digital" href="html/digital-world/index.html" data-lesson-link>
+          <span class="unit-choice-number" aria-hidden="true">02</span>
+          <span><small>الوحدة الثانية</small><strong>عالم رقمي</strong><span class="unit-choice-detail">من الذرّة إلى أشباه الموصلات والثنائيات</span></span>
+          <span aria-hidden="true">←</span>
+        </a>
+      </nav>
     </section>
 
-    <section class="learning-section" aria-labelledby="lessons-title">
-      <div class="section-heading">
-        <div>
-          <p class="eyebrow">مسار التعلّم</p>
-          <h2 id="lessons-title">دروس الوحدة الأولى</h2>
-        </div>
-        <div class="search-control">
-          <label class="sr-only" for="lessonSearch">ابحث في الدروس والأنشطة</label>
-          <input id="lessonSearch" type="search" placeholder="ابحث في الدروس والأنشطة..." autocomplete="off">
-          <button id="clearSearch" type="button" aria-label="مسح البحث" hidden>مسح</button>
-        </div>
+    <div class="section-heading directory-toolbar">
+      <p class="directory-label">دروس وأنشطة الفصل الأول</p>
+      <div class="search-control">
+        <label class="sr-only" for="lessonSearch">ابحث في الوحدتين والأنشطة</label>
+        <input id="lessonSearch" type="search" placeholder="ابحث في الوحدتين والأنشطة..." autocomplete="off">
+        <button id="clearSearch" type="button" aria-label="مسح البحث" hidden>مسح</button>
       </div>
-
+    </div>
+    <p class="empty-state" id="emptyState" role="status" hidden>لا توجد دروس أو أنشطة أو أوراق عمل تطابق كلمات البحث.</p>
+    <section class="learning-section unit-section" id="unit-clean-energy" data-card-section aria-labelledby="lessons-title">
+      <div class="section-heading"><div><p class="eyebrow">الوحدة الأولى</p><h2 id="lessons-title">تكنولوجيا الطاقة النظيفة</h2></div><a class="unit-back" href="#unit-choices">اختيار الوحدة ↑</a></div>
       <div class="lesson-grid" id="lessonsGrid">
         <article class="lesson-card lesson-card-overview" data-search="المتجددة غير المتجددة قديم حديث فلسطين مرج بن عامر النقب رام الله غزة محاكاة مصباح محرك مولد عنفة DMM شدة التيار فرق الجهد">
           <div class="lesson-topline"><span class="lesson-index">الدرس ١</span><span class="lesson-kind">شرح وأنشطة</span></div>
@@ -98,10 +103,31 @@
         </article>
       </div>
 
-      <p class="empty-state" id="emptyState" role="status" hidden>لا توجد دروس أو أنشطة أو أوراق عمل تطابق كلمات البحث.</p>
     </section>
 
 
+
+    <section class="learning-section unit-section" id="unit-digital-world" data-card-section aria-labelledby="digital-title">
+      <div class="section-heading"><div><p class="eyebrow">الوحدة الثانية</p><h2 id="digital-title">عالم رقمي</h2></div><a class="unit-back" href="html/digital-world/index.html" data-lesson-link>استكشف الوحدة ←</a></div>
+      <div class="lesson-grid">
+        <article class="lesson-card lesson-card-overview lesson-card-digital" data-search="الوحدة الثانية عالم رقمي أشباه الموصلات الثنائيات ديود الذرة الإلكترونات التكافؤ موصل عازل سيليكون تطعيم فوسفور بورون N P ثنائي ترانزستور منحنى خصائص انحياز أمامي عكسي انهيار قانون أوم محاكاة">
+          <div class="lesson-topline"><span class="lesson-index">تمهيد للوحدة</span><span class="lesson-kind">شرح ومحاكاة وفيديو</span></div>
+          <h3>أشباه الموصلات والثنائيات</h3>
+          <p>من مكونات الذرّة وأنواع المواد إلى التطعيم، ثم الثنائي واتجاه التيار ومنحنى خصائصه. أساس لفهم الترانزستور في درس «ثورة رقمية في حياتنا».</p>
+          <a class="lesson-open" data-lesson-link href="html/digital-world/atoms-materials.html">ابدأ الدرس التمهيدي <span aria-hidden="true">←</span></a>
+          <details class="lesson-pages">
+            <summary>عرض صفحات الدرس <span class="pages-count">٤ صفحات + نشاط وتقويم ذاتي</span></summary>
+            <nav aria-label="صفحات أشباه الموصلات والثنائيات">
+              <a data-lesson-link href="html/digital-world/atoms-materials.html">١ · الذرّة والمواد</a>
+              <a data-lesson-link href="html/digital-world/doping.html">٢ · التطعيم والنوعان N وP</a>
+              <a data-lesson-link href="html/digital-world/diodes.html">٣ · الثنائي والانحياز</a>
+              <a data-lesson-link href="html/digital-world/characteristics.html">٤ · المنحنى والتطبيق والتقويم</a>
+            </nav>
+          </details>
+        </article>
+        <aside class="unit-learning-note"><p class="eyebrow">سؤال الوحدة</p><h3>كيف نبني العالم الرقمي من خصائص المادة؟</h3><p>ابدأ بالتجربة: بدّل الذرة المطعِّمة، ثم اعكس توصيل الثنائي، واقرأ ما يتغير في التيار.</p><a class="button button-secondary" href="html/digital-world/index.html">افتح خريطة الوحدة</a></aside>
+      </div>
+    </section>
 
     <section class="learning-section" id="enrichment-section" data-card-section aria-labelledby="enrichment-title">
       <div class="section-heading"><div><p class="eyebrow">من التعلّم إلى التطبيق</p><h2 id="enrichment-title">أنشطة وتطبيقات</h2></div></div>
@@ -170,6 +196,6 @@
     </div>
   </footer>
 
-  <script src="js/home.js?v=20260914-independent" defer></script>
+  <script src="js/home.js?v=20260927-units" defer></script>
 </body>
 </html>
