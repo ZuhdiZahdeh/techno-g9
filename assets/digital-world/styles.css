@@ -472,3 +472,19 @@
  .digital-lesson[data-lesson-page="characteristics"] .print-area tr { break-inside:avoid; }
  .digital-lesson[data-lesson-page="characteristics"] .drawing-space { height:155px; border:1px solid #777; }
 }
+
+
+/* Isotope identity beside the interactive silicon atom model. */
+.digital-lesson .silicon-identity { display:grid; grid-template-columns:120px minmax(0,1fr); align-items:center; gap:16px; margin:20px 0; padding:16px; border:1px solid var(--line); border-radius:12px; background:#fff; }
+.digital-lesson .silicon-identity img { display:block; width:100%; height:auto; }
+.digital-lesson .silicon-identity figcaption { min-width:0; color:var(--navy-900); font-size:.85rem; line-height:1.8; }
+.digital-lesson .silicon-identity figcaption > strong { display:block; margin-bottom:8px; }
+.digital-lesson .silicon-identity dl { display:grid; gap:3px; margin:0; }
+.digital-lesson .silicon-identity dl > div { display:flex; flex-wrap:wrap; justify-content:space-between; gap:4px 12px; }
+.digital-lesson .silicon-identity dt { color:var(--muted); }
+.digital-lesson .silicon-identity dd { margin:0; font-weight:700; }
+.digital-lesson .silicon-identity .small { margin:10px 0 0; font-size:.77rem; }
+@media(max-width:1100px) and (min-width:761px), (max-width:480px) {
+ .digital-lesson .silicon-identity { grid-template-columns:minmax(0,1fr); }
+ .digital-lesson .silicon-identity img { width:144px; max-width:100%; margin-inline:auto; }
+}

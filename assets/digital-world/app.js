@@ -14,7 +14,7 @@ function selectButton(parent,attr,value){document.querySelectorAll(`${parent} [$
 
 // Atom: a school shell model of the neutral isotope silicon-28.
 let particle='electron';
-const particleInfo={proton:'البروتون موجب الشحنة، ويوجد داخل النواة. عدد البروتونات يحدد نوع العنصر؛ للسيليكون 14 بروتونًا.',neutron:'النيوترون متعادل الشحنة ويوجد في النواة. في السيليكون-28 المعروض هنا 14 نيوترونًا.',electron:'الإلكترون سالب الشحنة ويوجد خارج النواة. في ذرة السيليكون المتعادلة 14 إلكترونًا، فتتوازن الشحنة الكلية.',valence:'للسيليكون أربعة إلكترونات تكافؤ في المستوى الخارجي. هذه الإلكترونات تشارك في الروابط، وهي مفتاح فهم التطعيم.'};
+const particleInfo={proton:'البروتون موجب الشحنة، ويوجد داخل النواة. عدد البروتونات يحدد نوع العنصر؛ للسيليكون 14 بروتونًا.',neutron:'النيوترون متعادل الشحنة ويوجد في النواة. في السيليكون-28 المعروض هنا 14 نيوترونًا.',electron:'الإلكترون سالب الشحنة ويوجد خارج النواة. في ذرة السيليكون المتعادلة 14 إلكترونًا، فتتوازن الشحنة الكلية.',valence:'للسيليكون أربعة إلكترونات تكافؤ في المستوى الأخير. تشارك هذه الإلكترونات في تكوين روابط تساهمية مع الذرات المجاورة، وهي مفتاح فهم عملية التطعيم.'};
 function renderAtom(){let s='';[64,110,153].forEach((r,i)=>{s+=svgCircle(220,180,r,'none',`stroke="${particle==='valence'&&i===2?'#088b7e':'#adbfcd'}" stroke-width="${particle==='valence'&&i===2?3:1.3}"`);});
  for(let i=0;i<28;i++){const row=Math.floor(i/7),col=i%7,x=220+(col-3)*9,y=180+(row-1.5)*10,kind=i%2?'neutron':'proton';s+=svgCircle(x,y,4.3,kind==='proton'?'#cc6245':'#7e90a3',`opacity="${['electron','valence',kind].includes(particle)?1:.22}"`);}
  [2,8,4].forEach((count,ring)=>{for(let i=0;i<count;i++){const a=(i/count*2*Math.PI)-Math.PI/2+(ring===1?Math.PI/8:0),r=[64,110,153][ring],x=220+r*Math.cos(a),y=180+r*Math.sin(a),op=particle==='valence'?(ring===2?1:.23):(particle==='electron'?1:.35);s+=svgCircle(x,y,8,'#087f73',`opacity="${op}"`)+svgText(x,y+4,'−',`fill="white" font-size="13" text-anchor="middle" opacity="${op}"`);}});
@@ -119,3 +119,4 @@ if(document.modelContext?.registerTool){
  if(available.doping)register({name:'select_dopant',description:'Select the atom shown in the doping model.',inputSchema:{type:'object',properties:{dopant:{type:'string',enum:['Si','P','B']}},required:['dopant'],additionalProperties:false},execute:input=>{if(!input||!['Si','P','B'].includes(input.dopant)||Object.keys(input).some(k=>k!=='dopant'))throw new Error('Invalid dopant');setDopant(input.dopant);return{dopant};}});
  window.addEventListener('pagehide',()=>life.abort(),{once:true});
 }
+
