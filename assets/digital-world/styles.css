@@ -76,7 +76,7 @@
 .digital-lesson .type-comparison .eyebrow {font-size:13px}
 .digital-lesson .type-n {border-color:var(--teal)!important}
 .digital-lesson .type-p {border-color:var(--rose)!important}
-.digital-lesson .type-letter {font:800 36px/1.4 Arial;color:var(--teal)}
+.digital-lesson .type-letter {font:800 24px/1.4 Arial;color:var(--teal);direction:ltr;unicode-bidi:isolate;white-space:nowrap;flex-shrink:0}
 .digital-lesson .type-p .type-letter {color:var(--rose)}
 .digital-lesson .hole-lab {display:grid;grid-template-columns:1fr 1fr;gap:30px;border:1px solid var(--line);padding:25px;border-radius:12px;align-items:center}
 .digital-lesson .hole-lab p {font-size:15px;color:var(--muted)}
