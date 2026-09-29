@@ -2,6 +2,10 @@
 .digital-lesson .atoms-narration[hidden],.digital-lesson .atoms-narration [hidden]{display:none!important}
 .digital-lesson .lesson-audio-button,.digital-lesson .lesson-audio-restart{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:44px;padding:8px 14px;border:1px solid #9bcac5;border-radius:10px;font:inherit;font-size:.9rem;color:#0b625e;background:#e9f6f4;cursor:pointer}
 .digital-lesson .lesson-audio-restart{background:#fff;font-size:.85rem}
+.digital-lesson .atoms-narration .lesson-audio-button svg{width:22px;height:22px;max-width:22px;flex:0 0 22px;overflow:hidden;display:block;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.digital-lesson .atoms-narration .lesson-audio-button .audio-pause-icon,.digital-lesson .atoms-narration .lesson-audio-button .audio-play-icon{display:none}
+.digital-lesson .atoms-narration .lesson-audio-button[data-playing=true] .audio-pause-icon,.digital-lesson .atoms-narration .lesson-audio-button[data-state=paused] .audio-play-icon{display:block}
+.digital-lesson .atoms-narration .lesson-audio-button[data-playing=true] .audio-speaker-icon,.digital-lesson .atoms-narration .lesson-audio-button[data-state=paused] .audio-speaker-icon{display:none}
 .digital-lesson .lesson-audio-button[data-playing=true]{color:#fff;background:#0f7c78;border-color:#0f7c78}
 .digital-lesson .atoms-narration .lesson-audio-status{margin:8px 0 0;font-size:.85rem;color:#425e72}
 .digital-lesson .atoms-narration.is-reading{outline:2px solid #15958f;outline-offset:2px;background:#effaf7}
